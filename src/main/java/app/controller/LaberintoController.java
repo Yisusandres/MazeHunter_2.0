@@ -13,13 +13,12 @@ import laberinto.celdas.GestorImagenes;
 import java.util.ArrayList;
 
 public class LaberintoController {
-    public int filas = 15;
-    public int columnas = 20;
+    public int filas = 35;
+    public int columnas = 40;
     @FXML private GridPane rootGridPane;
     Laberinto laberinto = new Laberinto(filas, columnas, 1);
     GestorImagenes gestorImage = new GestorImagenes();
     public void initialize() {
-        laberinto.imprimirLaberinto();
         rootGridPane.getChildren().clear();
         rootGridPane.getColumnConstraints().clear();
         rootGridPane.getRowConstraints().clear();

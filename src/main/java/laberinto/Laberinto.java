@@ -21,7 +21,7 @@ import laberinto.celdas.*;
 
 public class Laberinto {
     private Celda[][] laberinto;
-    private int filas, columnas;
+    private int filas, columnas, dificultad = 1;
     private Posicion.Pair<Integer, Integer> jugadorPos;
     private Pair<Integer, Integer> salidaPos;
     private Pair<Integer, Integer> llavePos;
@@ -153,6 +153,45 @@ public class Laberinto {
 
         verificarMuros(posicion_puerta);
         verificarMuros(posicion_llave);
+
+
+        int numeroTrampas = filas / 4 * this.dificultad;
+        Random rand = new Random();
+        int max = filas - 2;
+        int min = 1;
+        while(numeroTrampas > 0) {
+            int aleatorio1 =  rand.nextInt(max -  min + 1) + min;
+            int aleatorio2 =  rand.nextInt(max -  min + 1) + min;
+            if(laberinto[aleatorio1][aleatorio2].isTraspasable() && !(laberinto[aleatorio1][aleatorio2] instanceof LLave) && !(laberinto[aleatorio1][aleatorio2] instanceof Salida) && aleatorio1 != posicion_usuario.first && aleatorio2 != posicion_usuario.second) {
+                laberinto[aleatorio1][aleatorio2] = new Trampa();
+                numeroTrampas--;
+            }
+        }
+
+        int numeroVidas = (filas / 3) / 2;
+        rand = new Random();
+        max = filas - 2;
+        while(numeroVidas > 0) {
+            int aleatorio1 =  rand.nextInt(max -  min + 1) + min;
+            int aleatorio2 =  rand.nextInt(max -  min + 1) + min;
+            if(laberinto[aleatorio1][aleatorio2].isTraspasable() && !(laberinto[aleatorio1][aleatorio2] instanceof Trampa) && !(laberinto[aleatorio1][aleatorio2] instanceof Salida) && !(laberinto[aleatorio1][aleatorio2] instanceof LLave) && aleatorio1 != posicion_usuario.first && aleatorio2 != posicion_usuario.second) {
+                laberinto[aleatorio1][aleatorio2] = new VidaExtra(10);
+                numeroVidas--;
+            }
+        }
+
+        int numeroCristales = filas / 2;
+        rand = new Random();
+        max = filas - 2;
+        while(numeroCristales > 0) {
+            int aleatorio1 = rand.nextInt(max - min + 1) + min;
+            int aleatorio2 = rand.nextInt(max - min + 1) + min;
+            if (laberinto[aleatorio1][aleatorio2].isTraspasable() && !(laberinto[aleatorio1][aleatorio2] instanceof Trampa) && !(laberinto[aleatorio1][aleatorio2] instanceof Salida) && !(laberinto[aleatorio1][aleatorio2] instanceof VidaExtra) && !(laberinto[aleatorio1][aleatorio2] instanceof LLave) && aleatorio1 != posicion_usuario.first && aleatorio2 != posicion_usuario.second) {
+                int valor = rand.nextInt(4) + 1;
+                laberinto[aleatorio1][aleatorio2] = new Cristal(valor);
+                numeroCristales--;
+            }
+        }
     }
 
     private Pair<Integer, Integer> seleccionarComienzo(Celda[][] laberinto) {
