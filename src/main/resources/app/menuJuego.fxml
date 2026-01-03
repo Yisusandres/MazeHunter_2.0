@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="357.0" prefWidth="402.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuJuegoController">
+   <children>
+      <VBox alignment="CENTER" layoutX="219.0" prefHeight="357.0" prefWidth="209.0" spacing="35.0">
+         <children>
+            <Label fx:id="nombreUsuarioLabel" layoutX="68.0" layoutY="54.0" text="Nombre de usario" textAlignment="CENTER" textFill="#b73737">
+               <font>
+                  <Font name="Consolas Bold" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="-35.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Seleccione:" textAlignment="CENTER" textFill="#26cc05">
+               <font>
+                  <Font name="Comic Sans MS Bold Italic" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+             <Button fx:id="nuevoLaberinto" minHeight="-Infinity" minWidth="-Infinity" onAction="#jugarNuevoLaberinto" prefHeight="20.0" prefWidth="70.0">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/buttons/nuevoLaberinto_button.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="buttonRegistrar" minHeight="-Infinity" minWidth="-Infinity" onAction="#cargarLaberintoGuardado" prefHeight="20.0" prefWidth="70.0">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/buttons/cargarLaberinto_button.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="buttonIniciarSesion1" minHeight="-Infinity" minWidth="-Infinity" onAction="#verEstadisticas" prefHeight="20.0" prefWidth="70.0">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/buttons/verEstadisticas_button.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="buttonIniciarSesion2" minHeight="-Infinity" minWidth="-Infinity" onAction="#seleccionarSkin" prefHeight="20.0" prefWidth="70.0">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/buttons/escogerSkin_button.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </VBox>
+      <ImageView fitHeight="39.0" fitWidth="153.0" layoutX="47.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/textoTitulo/tituloMenu.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backButton" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="33.0" prefWidth="36.0" textAlignment="CENTER">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/buttons/retroceder_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</Pane>
