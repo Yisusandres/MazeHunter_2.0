@@ -1,0 +1,5 @@
+[
+  {"nombreUsuario":"Jesus","correo":"jasifontes@gmail.com","contrasena":"Jesus12345","guardadoPartida":{"minutosJugados":0.0,"partidasGanadas":0,"partidasPerdidas":0,"trampasActivadas":0,"cristalesObtenidos":0}},
+  {"nombreUsuario":"Darwin","correo":"dbmarcano@gmail.com","contrasena":"DB654321","guardadoPartida":{"minutosJugados":0.0,"partidasGanadas":0,"partidasPerdidas":0,"trampasActivadas":0,"cristalesObtenidos":0}},
+  {"nombreUsuario":"Fabian","correo":"fesifontes@gmail.com","contrasena":"Fabian12345","guardadoPartida":{"minutosJugados":0.0,"partidasGanadas":0,"partidasPerdidas":0,"trampasActivadas":0,"cristalesObtenidos":0}}
+]

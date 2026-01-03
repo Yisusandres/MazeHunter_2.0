@@ -2,25 +2,134 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="191.0" prefWidth="160.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.RegistrarController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-   <GridPane>
-     <columnConstraints>
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-     </columnConstraints>
-     <rowConstraints>
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-     </rowConstraints>
-   </GridPane>
-   <Label text="Registrar" />
-
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
-</VBox>
+<HBox alignment="TOP_CENTER" maxHeight="370.0" maxWidth="520.0" minHeight="370.0" minWidth="520.0" prefHeight="370.0" prefWidth="520.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.RegistrarController">
+   <children>
+      <AnchorPane prefHeight="370.0" prefWidth="255.0">
+         <children>
+            <VBox layoutX="19.0" layoutY="73.0" prefHeight="228.0" prefWidth="217.0" style="-fx-background-color: #b48247; -fx-background-radius: 40; -fx-border-color: #855a38; -fx-border-radius: 30; -fx-border-width: 9;">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="189.0" text="Nombre de usuario" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="2.0" top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="campoNombreUsuario" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="195.0" style="-fx-background-radius: 9;">
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="10.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="errorNombreUsuario" prefHeight="17.0" prefWidth="180.0" text="Este campo no puede estar vacio" textFill="RED" underline="true" visible="false">
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="189.0" text="Direccion de correo" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="campoCorreo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="195.0" style="-fx-background-radius: 9;">
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="10.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="errorCorreo" prefHeight="17.0" prefWidth="180.0" text="Este campo no puede estar vacio" textFill="RED" underline="true" visible="false">
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="189.0" text="Contrasena" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="campoContrasena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="195.0" style="-fx-background-radius: 9;">
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="10.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="errorContrasena" prefHeight="17.0" prefWidth="180.0" text="Este campo no puede estar vacio" textFill="RED" underline="true" visible="false">
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <Pane layoutX="14.0" layoutY="294.0" prefHeight="75.0" prefWidth="217.0">
+               <children>
+                  <Button fx:id="crearCuenta_Button" layoutX="137.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCrearButton" prefHeight="33.0" prefWidth="80.0" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/buttons/crearCuenta_Button.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="backButton" layoutX="14.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="33.0" prefWidth="36.0" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/buttons/retroceder_button.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <ImageView fitHeight="45.0" fitWidth="189.0" layoutX="31.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/textoTitulo/tituloRegistrar.png" />
+               </image>
+            </ImageView>
+            <Line endX="-100.00001525878906" endY="213.0" layoutX="348.0" layoutY="157.0" opacity="0.33" startX="-100.00001525878906" startY="-157.0" stroke="#dbdbdb" />
+         </children>
+      </AnchorPane>
+      <Pane>
+         <HBox.margin>
+            <Insets top="23.0" />
+         </HBox.margin>
+         <children>
+            <ImageView fitHeight="204.0" fitWidth="230.0" focusTraversable="true" layoutX="5.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/imagenesFondo/registrarse_requisitos.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D height="260.0" width="300.0" />
+               </viewport>
+            </ImageView>
+            <ImageView fitHeight="155.0" fitWidth="167.0" layoutX="26.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/icono/iconoVentana.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+   <VBox.margin>
+      <Insets left="2.0" />
+   </VBox.margin>
+</HBox>

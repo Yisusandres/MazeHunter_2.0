@@ -5,18 +5,17 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="rootVBox" alignment="CENTER" prefHeight="352.0" prefWidth="368.0" spacing="50.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuInicialController">
+<VBox fx:id="rootVBox" alignment="CENTER" prefHeight="352.0" prefWidth="368.0" spacing="40.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuInicialController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <ImageView fitHeight="126.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="235.0" fitWidth="318.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../imagenes/wellcomeText.png" />
+         <Image url="@../imagenes/imagenesFondo/BienvenidaMenu.png" />
       </image></ImageView>
-   <ImageView fitHeight="62.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
     <Button fx:id="buttonIniciarSesion" minHeight="-Infinity" minWidth="-Infinity" onAction="#onIniciarSesion" prefHeight="20.0" prefWidth="70.0">
       <graphic>
-         <ImageView fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="45.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../imagenes/buttons/iniciarSesion_Button.png" />
             </image>
@@ -24,7 +23,7 @@
       </graphic></Button>
    <Button fx:id="buttonRegistrar" layoutX="119.0" layoutY="238.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#onRegistrar" prefHeight="20.0" prefWidth="70.0">
       <graphic>
-         <ImageView fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="45.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../imagenes/buttons/register_button.png" />
             </image>
@@ -33,7 +32,7 @@
    </Button>
    <Button fx:id="buttonSalir" layoutX="119.0" layoutY="218.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#onSalir" prefHeight="20.0" prefWidth="58.0">
       <graphic>
-         <ImageView fitHeight="40.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../imagenes/buttons/exitButton.png" />
             </image>

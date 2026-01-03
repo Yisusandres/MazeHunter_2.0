@@ -1,15 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="191.0" prefWidth="160.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="app.controller.IniciarSesionController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-   <Label text="Iniciar sesion" />
-
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
-</VBox>
+<HBox alignment="TOP_RIGHT" fillHeight="false" maxHeight="370.0" maxWidth="520.0" minHeight="370.0" minWidth="520.0" prefHeight="365.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.IniciarSesionController">
+    <VBox alignment="TOP_CENTER" prefHeight="370.0" prefWidth="284.0" spacing="1.0" style="-fx-background-color: #1A022B;">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
+      <ImageView fitHeight="77.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/textoTitulo/tituloIniciarSesion.png" />
+         </image>
+      </ImageView>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="184.0" prefWidth="238.0" style="-fx-background-color: #b48247; -fx-background-radius: 40; -fx-border-color: #855a38; -fx-border-radius: 30; -fx-border-width: 9;">
+         <children>
+            <Label prefHeight="18.0" prefWidth="121.0" text="Direccion de correo" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="2.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="campoCorreo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="215.0" style="-fx-background-radius: 9;">
+               <VBox.margin>
+                  <Insets left="2.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Comic Sans MS Bold Italic" size="10.0" />
+               </font>
+            </TextField>
+            <Label fx:id="errorCorreo" prefHeight="17.0" prefWidth="232.0" textFill="RED" underline="true">
+               <VBox.margin>
+                  <Insets left="2.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="20.0" prefWidth="203.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="67.0" text="Contrasena" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="verContra_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verContrasena" prefHeight="20.0" prefWidth="59.0" style="-fx-background-color: #b48247;" text="(Mostrar)" textFill="WHITE" underline="true">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="10.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="2.0" />
+               </padding>
+            </HBox>
+            <PasswordField fx:id="campoContrasena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="215.0" style="-fx-background-radius: 9;">
+               <VBox.margin>
+                  <Insets left="2.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="errorContrasena" ellipsisString="" prefHeight="33.0" prefWidth="217.0" textFill="#0b0303" underline="true" visible="false">
+               <VBox.margin>
+                  <Insets left="2.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </VBox>
+      <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="256.0">
+         <children>
+            <Button fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="33.0" prefWidth="36.0" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/buttons/retroceder_button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="errorAutenticacion" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="115.0" text="Este campo no puede estar vacio" textAlignment="CENTER" textFill="RED" underline="true" visible="false" />
+            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="33.0" prefWidth="80.0" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/buttons/iniciarSesion_Button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="68.0" />
+         </padding>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </HBox>
+    </VBox>
+    <ImageView fitHeight="370.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../imagenes/imagenesFondo/imagenInicioSesion.png" />
+      <HBox.margin>
+         <Insets />
+      </HBox.margin>
+    </ImageView>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</HBox>

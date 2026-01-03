@@ -15,6 +15,9 @@ public class GuardadoPartida {
         this.cristalesObtenidos = cristalesObtenidos;
     }
 
+     public GuardadoPartida() {
+     }
+
     public float getMinutosJugados() {
         return minutosJugados;
     }

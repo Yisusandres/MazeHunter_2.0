@@ -1,25 +1,28 @@
 package app.model;
 
 public class Usuario {
-    private String nombre;
+    private String nombreUsuario;
     private String correo;
     private String contrasena;
     private GuardadoPartida guardadoPartida;
 
 
-    public Usuario(String nombre, String correo, String contrasena) {
-        this.nombre = nombre;
+    public Usuario(String nombreUsuario, String correo, String contrasena) {
+        this.nombreUsuario = nombreUsuario;
         this.correo = correo;
         this.contrasena = contrasena;
         this.guardadoPartida = new GuardadoPartida(0, 0, 0, 0, 0);
     }
 
-    public String getNombre() {
-        return nombre;
+    public Usuario(){
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getContrasena() {
@@ -37,4 +40,14 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public GuardadoPartida getGuardadoPartida() {
+        return guardadoPartida;
+    }
+
+    public void setGuardadoPartida(GuardadoPartida guardadoPartida) {
+        this.guardadoPartida = guardadoPartida;
+    }
+
+
 }
