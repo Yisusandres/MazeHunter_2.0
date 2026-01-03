@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,7 +22,7 @@ public class MainApp extends Application {
         ArrayList<Usuario> usuarios = GestionUsuario.cargarUsuarios();
         GestionUsuario.setListaUsuarios(usuarios);
 
-        VBox root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menuInicial.fxml")));
+        Pane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menuInicial.fxml")));
         Scene scene = new Scene(root, 350, 370);
         stage.setTitle("Bienvenida");
         stage.setScene(scene);

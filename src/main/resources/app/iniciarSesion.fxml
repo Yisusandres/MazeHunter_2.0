@@ -27,7 +27,7 @@
                   <Insets left="2.0" top="15.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="campoCorreo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="215.0" style="-fx-background-radius: 9;">
+            <TextField fx:id="campoCorreo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="215.0" promptText="ejemplo@gmail.com" style="-fx-background-radius: 9;">
                <VBox.margin>
                   <Insets left="2.0" />
                </VBox.margin>
