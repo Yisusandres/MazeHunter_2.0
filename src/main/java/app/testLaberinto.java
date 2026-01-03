@@ -22,6 +22,7 @@ public class testLaberinto extends Application {
         stage.setTitle("Laberinto");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {
