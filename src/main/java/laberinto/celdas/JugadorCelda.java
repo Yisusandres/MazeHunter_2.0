@@ -1,8 +1,5 @@
 package laberinto.celdas;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.util.Objects;
 
 /**
  * Clase que hereda de Celda y representa al
@@ -12,10 +9,10 @@ import java.util.Objects;
  * @version 22.0.2
  * @since 01-11-2025
  */
-public class Jugador extends Celda {
+public class JugadorCelda extends Celda {
     private int salud;
     GestorImagenes gestor = new GestorImagenes();
-    public Jugador() {
+    public JugadorCelda() {
         ImageView imagen = gestor.getImagenJugador();
         setImagenCelda(imagen);
         setTraspasable(true);

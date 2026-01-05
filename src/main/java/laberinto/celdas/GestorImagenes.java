@@ -20,7 +20,7 @@ public class GestorImagenes {
     }
 
     public ImageView getImagenJugador() {
-        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/personajePacman.png"))));
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/personajes/personajeWito.png"))));
     }
 
     public ImageView getImagenVidaExtra() {
@@ -38,4 +38,12 @@ public class GestorImagenes {
    public ImageView getImagenLlave() {
         return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/llave.png"))));
    }
+
+   public ImageView getImagenBomba() {
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/bomba.png"))));
+   }
+
+    public ImageView getImagenEnergia() {
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/energia.png"))));
+    }
 }

@@ -11,7 +11,7 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;
         this.contrasena = contrasena;
-        this.guardadoPartida = new GuardadoPartida(0, 0, 0, 0, 0);
+        this.guardadoPartida = new GuardadoPartida(0,0, 0, 0, 0, 0);
     }
 
     public Usuario(){

@@ -5,14 +5,18 @@ public class GuardadoPartida {
     private int partidasGanadas;
     private int partidasPerdidas;
     private int trampasActivadas;
-    private int cristalesObtenidos;
+    private int cristalesGuardados;
+    private int energiaGuardada;
+    private int bombasGuardadas;
 
-    public GuardadoPartida(float minutosJugados, int partidasGanadas, int partidasPerdidas, int trampasActivadas, int cristalesObtenidos) {
+    public GuardadoPartida(float minutosJugados, int partidasGanadas, int partidasPerdidas, int trampasActivadas,
+                           int cristalesObtenidos, int energiaGuardada) {
         this.minutosJugados = minutosJugados;
         this.partidasGanadas = partidasGanadas;
         this.partidasPerdidas = partidasPerdidas;
         this.trampasActivadas = trampasActivadas;
-        this.cristalesObtenidos = cristalesObtenidos;
+        this.cristalesGuardados = cristalesObtenidos;
+        this.energiaGuardada = energiaGuardada;
     }
 
      public GuardadoPartida() {
@@ -50,11 +54,27 @@ public class GuardadoPartida {
         this.partidasPerdidas = partidasPerdidas;
     }
 
-    public int getCristalesObtenidos() {
-        return cristalesObtenidos;
+    public int getCristalesGuardados() {
+        return cristalesGuardados;
     }
 
-    public void setCristalesObtenidos(int cristalesObtenidos) {
-        this.cristalesObtenidos = cristalesObtenidos;
+    public void setCristalesGuardados(int cristalesGuardados) {
+        this.cristalesGuardados = cristalesGuardados;
+    }
+
+    public int getEnergiaGuardada() {
+        return energiaGuardada;
+    }
+
+    public void setEnergiaGuardada(int energiaGuardada) {
+        this.energiaGuardada = energiaGuardada;
+    }
+
+    public int getBombasGuardadas() {
+        return bombasGuardadas;
+    }
+
+    public void setBombasGuardadas(int bombasGuardadas) {
+        this.bombasGuardadas = bombasGuardadas;
     }
 }

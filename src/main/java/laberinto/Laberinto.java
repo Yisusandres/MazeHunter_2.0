@@ -140,7 +140,7 @@ public class Laberinto {
 
     private void colocarElementos() {
         Pair<Integer, Integer> posicion_usuario = seleccionarPosicionUsuario(laberinto);
-        laberinto[posicion_usuario.first][posicion_usuario.second] = new Jugador();
+        laberinto[posicion_usuario.first][posicion_usuario.second] = new JugadorCelda();
         this.jugadorPos = posicion_usuario;
 
         Pair<Integer, Integer> posicion_puerta = seleccionarPosicionPuerta(posicion_usuario);
@@ -190,6 +190,30 @@ public class Laberinto {
                 int valor = rand.nextInt(4) + 1;
                 laberinto[aleatorio1][aleatorio2] = new Cristal(valor);
                 numeroCristales--;
+            }
+        }
+
+        int numeroBombas = filas / 5;
+        rand = new Random();
+        max = filas - 2;
+        while(numeroBombas > 0) {
+            int aleatorio1 = rand.nextInt(max - min + 1) + min;
+            int aleatorio2 = rand.nextInt(max - min + 1) + min;
+            if (laberinto[aleatorio1][aleatorio2].isTraspasable() && !(laberinto[aleatorio1][aleatorio2] instanceof Trampa) && !(laberinto[aleatorio1][aleatorio2] instanceof Salida) && !(laberinto[aleatorio1][aleatorio2] instanceof VidaExtra) && !(laberinto[aleatorio1][aleatorio2] instanceof Cristal) && !(laberinto[aleatorio1][aleatorio2] instanceof LLave) && aleatorio1 != posicion_usuario.first && aleatorio2 != posicion_usuario.second) {
+                laberinto[aleatorio1][aleatorio2] = new Bomba();
+                numeroBombas--;
+            }
+        }
+
+        int numeroEnergias = filas / 6;
+        rand = new Random();
+        max = filas - 2;
+        while(numeroEnergias > 0) {
+            int aleatorio1 = rand.nextInt(max - min + 1) + min;
+            int aleatorio2 = rand.nextInt(max - min + 1) + min;
+            if (laberinto[aleatorio1][aleatorio2].isTraspasable() && !(laberinto[aleatorio1][aleatorio2] instanceof Trampa) && !(laberinto[aleatorio1][aleatorio2] instanceof Salida) && !(laberinto[aleatorio1][aleatorio2] instanceof VidaExtra) && !(laberinto[aleatorio1][aleatorio2] instanceof Cristal) && !(laberinto[aleatorio1][aleatorio2] instanceof Bomba) && !(laberinto[aleatorio1][aleatorio2] instanceof LLave) && aleatorio1 != posicion_usuario.first && aleatorio2 != posicion_usuario.second) {
+                laberinto[aleatorio1][aleatorio2] = new Energia();
+                numeroEnergias--;
             }
         }
     }
