@@ -15,6 +15,7 @@ import laberinto.Laberinto;
 import laberinto.celdas.Celda;
 import laberinto.celdas.GestorImagenes;
 
+
 import java.util.ArrayList;
 
 import static javafx.scene.input.KeyCode.F;
