@@ -10,6 +10,7 @@ module com.view.mazehunterapp {
     requires java.desktop;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.annotation;
+    requires jdk.incubator.vector;
 
     opens app.controller to javafx.fxml;
     exports app.controller;

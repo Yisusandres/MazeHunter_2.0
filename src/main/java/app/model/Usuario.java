@@ -6,7 +6,6 @@ public class Usuario {
     private String contrasena;
     private GuardadoPartida guardadoPartida;
 
-
     public Usuario(String nombreUsuario, String correo, String contrasena) {
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;

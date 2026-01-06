@@ -11,6 +11,7 @@ public class Jugador extends Usuario {
     private double vida;
     private int cristales;
     private int energia;
+    private static String direccionImagen;
     private List<Bomba> bombas;
     private Pair<Integer, Integer> posicion;
     private GuardadoPartida guardadoPartidaJugador;

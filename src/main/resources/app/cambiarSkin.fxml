@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="402.0" prefWidth="477.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuInicialController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/textoTitulo/escogerSkin.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="45.0" layoutY="114.0" prefHeight="202.0" prefWidth="388.0" spacing="15.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="202.0" prefWidth="71.0" spacing="57.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="15.0" mnemonicParsing="false" onAction="#onThomasPJButton" prefHeight="31.0" prefWidth="15.0" style="-fx-background-color: #1A022B;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/personajes/personajeThomas.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label text="THOMAS" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="202.0" prefWidth="71.0" spacing="57.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="15.0" mnemonicParsing="false" onAction="#onNewtPJButton" prefHeight="31.0" prefWidth="15.0" style="-fx-background-color: #1A022B;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/personajes/personajeNewt.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label text="NEWT" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="202.0" prefWidth="71.0" spacing="57.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="15.0" mnemonicParsing="false" onAction="#onTeresaPJButton" prefHeight="31.0" prefWidth="15.0" style="-fx-background-color: #1A022B;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/personajes/personajeTeresa.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label text="TERESA" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="202.0" prefWidth="71.0" spacing="57.0">
+               <children>
+                  <Button fx:id="frypanButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="15.0" mnemonicParsing="false" onAction="#onFrypanPJButton" prefHeight="31.0" prefWidth="15.0" style="-fx-background-color: #1A022B;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/personajes/personajeFrypan.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label text="FRYPAN" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="continuarButton" layoutX="406.0" layoutY="341.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onContinuarButton" prefHeight="25.0" prefWidth="40.0">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/buttons/continuar_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="17.0" layoutY="341.0" text="PERSONAJE:" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="personajeSeleccionadoLabel" layoutX="110.0" layoutY="341.0" text="THOMAS" textFill="#00ed77">
+         <font>
+            <Font name="Comic Sans MS Bold Italic" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

@@ -8,9 +8,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
-public class testLaberinto extends Application {
+public class TestLaberinto extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("laberinto.fxml"));
@@ -19,7 +18,7 @@ public class testLaberinto extends Application {
         // Obtenemos el controlador que JavaFX creó automáticamente
         LaberintoController controller = loader.getController();
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 800, 620);
         scene.setFill(javafx.scene.paint.Color.web("#3D3452"));
 
         // LE DECIMOS A LA ESCENA QUE MANDE LAS TECLAS AL CONTROLADOR

@@ -11,14 +11,14 @@ import java.util.Random;
 
 public class GestorLaberinto {
     private Laberinto laberinto;
-    private Jugador jugador;
+    private static Jugador jugador;
     private Pair<Integer, Integer> posicionSalida;
     private Pair<Integer, Integer> posicionJugador;
 
     public GestorLaberinto(Laberinto laberinto, Jugador jugador)
     {
         this.laberinto = laberinto;
-        this.jugador = jugador;
+        GestorLaberinto.jugador = jugador;
         this.posicionSalida = laberinto.getSalidaPos();
         this.posicionJugador = laberinto.getJugadorPos();
     }
@@ -152,5 +152,13 @@ public class GestorLaberinto {
         this.posicionJugador.second = columna;
         laberinto.setJugadorPos(posicionJugador);
         laberinto.setLaberinto(mapa);
+    }
+
+    public static Jugador getJugador() {
+        return jugador;
+    }
+
+    public static void setJugador(Jugador jugador) {
+        GestorLaberinto.jugador = jugador;
     }
 }

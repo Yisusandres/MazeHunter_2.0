@@ -1,20 +1,13 @@
 package app.model;
 
 public class GuardadoPartida {
-    private float minutosJugados;
-    private int partidasGanadas;
-    private int partidasPerdidas;
-    private int trampasActivadas;
     private int cristalesGuardados;
     private int energiaGuardada;
     private int bombasGuardadas;
+    private double tiempoGuardado;
+    private int vidaGuardada;
 
-    public GuardadoPartida(float minutosJugados, int partidasGanadas, int partidasPerdidas, int trampasActivadas,
-                           int cristalesObtenidos, int energiaGuardada) {
-        this.minutosJugados = minutosJugados;
-        this.partidasGanadas = partidasGanadas;
-        this.partidasPerdidas = partidasPerdidas;
-        this.trampasActivadas = trampasActivadas;
+    public GuardadoPartida(int cristalesObtenidos, int energiaGuardada) {
         this.cristalesGuardados = cristalesObtenidos;
         this.energiaGuardada = energiaGuardada;
     }
@@ -38,20 +31,20 @@ public class GuardadoPartida {
         this.partidasGanadas = partidasGanadas;
     }
 
-    public int getTrampasActivadas() {
-        return trampasActivadas;
-    }
-
-    public void setTrampasActivadas(int trampasActivadas) {
-        this.trampasActivadas = trampasActivadas;
-    }
-
     public int getPartidasPerdidas() {
         return partidasPerdidas;
     }
 
     public void setPartidasPerdidas(int partidasPerdidas) {
         this.partidasPerdidas = partidasPerdidas;
+    }
+
+    public int getTrampasActivadas() {
+        return trampasActivadas;
+    }
+
+    public void setTrampasActivadas(int trampasActivadas) {
+        this.trampasActivadas = trampasActivadas;
     }
 
     public int getCristalesGuardados() {

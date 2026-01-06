@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import static javafx.scene.input.KeyCode.F;
 
 public class LaberintoController {
-    public int filas = 35;
-    public int columnas = 45;
+    public int filas = 55;
+    public int columnas = 65;
     @FXML private GridPane rootGridPane;
     GestorLaberinto gestor;
     Laberinto laberinto = new Laberinto(filas, columnas, 1);

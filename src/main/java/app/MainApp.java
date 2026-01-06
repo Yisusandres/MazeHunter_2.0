@@ -19,9 +19,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        ArrayList<Usuario> usuarios = GestionUsuario.cargarUsuarios();
+        ArrayList<Usuario> usuarios = GestionUsuario.cargarUsuarios("src/main/resources/JSON/usuarios.json");
         GestionUsuario.setListaUsuarios(usuarios);
-
+        GestionUsuario.printUsuarios();
         Pane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menuInicial.fxml")));
         Scene scene = new Scene(root, 350, 370);
         stage.setTitle("Bienvenida");

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="303.0" prefWidth="358.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LaberintoNuevoController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/textoTitulo/tituloNuevoJuego.png" />
+         </image>
+      </ImageView>
+      <MenuButton fx:id="dificultadMenuButton" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="124.0" style="-fx-background-color: #78A653;" text="Dificultad" textFill="WHITE">
+        <items>
+          <MenuItem fx:id="facilMenuItem" mnemonicParsing="false" onAction="#onFacil" text="Facil" />
+          <MenuItem fx:id="normalMenuItem" mnemonicParsing="false" onAction="#onNormal" text="Normal" />
+            <MenuItem fx:id="dificilMenuItem" mnemonicParsing="false" onAction="#onDificil" text="Dificil" />
+        </items>
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font>
+      </MenuButton>
+      <Button layoutX="214.0" layoutY="261.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#onContinuar" prefHeight="20.0" prefWidth="70.0">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/buttons/continuar_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="14.0" layoutY="15.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#onBackButton" prefHeight="20.0" prefWidth="16.0">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/buttons/retroceder_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <VBox alignment="CENTER" layoutX="154.0" layoutY="72.0" prefHeight="169.0" prefWidth="189.0" style="-fx-background-color: #b48247; -fx-background-radius: 40; -fx-border-color: #855a38; -fx-border-radius: 30; -fx-border-width: 9;">
+         <children>
+            <Label text="Datos del laberinto:" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="16.0" prefWidth="171.0">
+               <children>
+                  <Label text="Tamaño:" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tamanoLabel" text="Tamaño" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="16.0" prefWidth="171.0">
+               <children>
+                  <Label text="Trampas:" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="trampasLabel" text="trampas" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="16.0" prefWidth="171.0">
+               <children>
+                  <Label text="Energia:" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="energiaLabel" text="energia cantidad" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="16.0" prefWidth="171.0">
+               <children>
+                  <Label text="Bombas:" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bombaLabel" text="Tamaño" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="Consolas Bold" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="SELECCIONA UNA DIFICULTAD" textFill="#8d0404" visible="false" />
+         </children>
+         <padding>
+            <Insets left="7.0" />
+         </padding>
+      </VBox>
+      <ImageView fx:id="imagenPersonaje" fitHeight="150.0" fitWidth="124.0" layoutX="14.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

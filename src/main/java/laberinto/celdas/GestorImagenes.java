@@ -6,6 +6,15 @@ import javafx.scene.image.ImageView;
 import java.util.Objects;
 
 public class GestorImagenes {
+    private static String rutaPersonaje;
+
+    public static String getRutaPersonaje() {
+        return rutaPersonaje;
+    }
+
+    public static void setRutaPersonaje(String rutaPersonaje) {
+        GestorImagenes.rutaPersonaje = rutaPersonaje;
+    }
 
     public ImageView getImagenCamino() {
         return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/camino.png"))));
@@ -20,7 +29,7 @@ public class GestorImagenes {
     }
 
     public ImageView getImagenJugador() {
-        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/personajes/personajeWito.png"))));
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream(rutaPersonaje))));
     }
 
     public ImageView getImagenVidaExtra() {

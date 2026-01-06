@@ -12,14 +12,12 @@ import java.util.List;
 public class GestionUsuario {
     private static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     static ObjectMapper mapper = new ObjectMapper();
-    private static final File archivoUsuarios = new File("src/main/resources/JSON/usuarios.json");
-
     public GestionUsuario() {
         listaUsuarios = new ArrayList<>();
     }
 
-    public static ArrayList<Usuario> cargarUsuarios() {
-
+    public static ArrayList<Usuario> cargarUsuarios(String direccionArchivo) {
+        File archivoUsuarios = new File(direccionArchivo);
         if (!archivoUsuarios.exists() || archivoUsuarios.length() == 0) {
             System.out.println("El archivo de usuarios no existe o está vacío. Se ha creado una nueva lista de usuarios.");
             return new ArrayList<>();
@@ -49,8 +47,8 @@ public class GestionUsuario {
         }
     }
 
-    public static void actualizarUsuarios(ArrayList<Usuario> listaP) {
-        File prueba = new File("src/main/resources/JSON/prueba.json");
+    public static void actualizarUsuarios(ArrayList<Usuario> listaP, String direccionArchivo) {
+        File prueba = new File(direccionArchivo);
         try {
             mapper.writeValue(prueba, listaP);
         } catch (IOException e) {
