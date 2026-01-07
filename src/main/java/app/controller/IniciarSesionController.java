@@ -1,23 +1,15 @@
 package app.controller;
 
 import app.model.GestionUsuario;
-import app.model.Usuario;
+import app.model.usuarios.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class IniciarSesionController extends ControllerBase{
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
@@ -79,7 +71,9 @@ public class IniciarSesionController extends ControllerBase{
 
         if (autenticado.equals("Autenticación exitosa")){
             System.out.println("Inicio de sesión exitoso");
-            MenuJuegoController.setUsuario(GestionUsuario.buscarUsuarioPorCorreo(correo, listaUsuarios));
+            Usuario usuario = GestionUsuario.buscarUsuarioPorCorreo(correo, listaUsuarios);
+            MenuJuegoController.setUsuario(usuario);
+
             try {
                 cambiarEscena("/app/menuJuego.fxml", 500, 370, event);
             } catch (Exception e) {

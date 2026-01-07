@@ -1,1 +1,37 @@
-[{"nombreUsuario":"Jesus","correo":"jasifontes@gmail.com","contrasena":"12345","guardadoPartida":{"minutosJugados":0.0,"partidasGanadas":0,"partidasPerdidas":0,"trampasActivadas":0,"cristalesGuardados":0,"energiaGuardada":0,"bombasGuardadas":0}},{"nombreUsuario":"Darwin","correo":"dbmarcano@gmail.com","contrasena":"54321","guardadoPartida":{"minutosJugados":0.0,"partidasGanadas":0,"partidasPerdidas":0,"trampasActivadas":0,"cristalesGuardados":0,"energiaGuardada":0,"bombasGuardadas":0}}]
+[ {
+  "nombreUsuario" : "Jesus",
+  "correo" : "7pDt0BSR4kaTP0Gx8IxCEsWvpemcsM8uomMpf6XUO2w=",
+  "contrasena" : "oKW2OR+EAfBmq4MCkWLMNQ==",
+  "guardadoPartida" : null,
+  "estadisticasUsuario" : {
+    "minutosJugados" : 0.0,
+    "partidasGanadas" : 0,
+    "partidasPerdidas" : 0,
+    "trampasActivadas" : 0,
+    "cristalesObtenidos" : 0
+  }
+}, {
+  "nombreUsuario" : "Darwin",
+  "correo" : "vjvkHArOQwoe6ugXKdhdnF6h3l+wzPWjpylMpuVhbC8=",
+  "contrasena" : "mGEQGXcvlWC7uPkVAdHz5g==",
+  "guardadoPartida" : null,
+  "estadisticasUsuario" : {
+    "minutosJugados" : 0.0,
+    "partidasGanadas" : 0,
+    "partidasPerdidas" : 0,
+    "trampasActivadas" : 0,
+    "cristalesObtenidos" : 0
+  }
+}, {
+  "nombreUsuario" : "fabian",
+  "correo" : "8wIUfDS6v8PW4QcmASOPbGpSvkE3CgNULdqXFWfgdSU=",
+  "contrasena" : "mq/irZbIz19owsCNR6XZ0w==",
+  "guardadoPartida" : null,
+  "estadisticasUsuario" : {
+    "minutosJugados" : 0.0,
+    "partidasGanadas" : 0,
+    "partidasPerdidas" : 0,
+    "trampasActivadas" : 0,
+    "cristalesObtenidos" : 0
+  }
+} ]

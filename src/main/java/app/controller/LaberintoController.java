@@ -1,7 +1,7 @@
 package app.controller;
 
 import app.model.GestorLaberinto;
-import app.model.GuardadoPartida;
+import app.model.usuarios.GuardadoPartida;
 import app.model.Jugador;
 import app.model.movimiento.*;
 import javafx.fxml.FXML;
@@ -9,16 +9,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import laberinto.Laberinto;
 import laberinto.celdas.Celda;
 import laberinto.celdas.GestorImagenes;
-
-
-import java.util.ArrayList;
-
-import static javafx.scene.input.KeyCode.F;
 
 public class LaberintoController {
     public int filas = 55;

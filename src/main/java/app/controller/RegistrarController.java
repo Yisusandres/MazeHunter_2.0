@@ -1,5 +1,9 @@
 package app.controller;
 
+import app.model.GestionUsuario;
+import app.model.usuarios.Usuario;
+import app.repository.AlmacenDatos;
+import app.repository.DatosJson;
 import app.service.Encriptacion;
 import app.service.ValidarRegex;
 import javafx.event.ActionEvent;
@@ -14,9 +18,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class RegistrarController {
+public class RegistrarController extends ControllerBase{
     private Scene scene;
     private Stage stage;
 
@@ -39,7 +44,7 @@ public class RegistrarController {
     }
 
     @FXML
-    public void onCrearButton(ActionEvent event) throws IOException {
+    public void onCrearButton(ActionEvent event) throws Exception {
         String correo = campoCorreo.getText().strip();
         String contrasena = campoContrasena.getText().strip();
         String nombreUsuario = campoNombreUsuario.getText().strip();
@@ -48,42 +53,67 @@ public class RegistrarController {
         errorCorreo.setTextFill(javafx.scene.paint.Color.web("#8d2a00"));
         errorNombreUsuario.setTextFill(javafx.scene.paint.Color.web("#8d2a00"));
 
+        String verificarCorreo = "Incorrecto";
+        String verificarContrasena = "Incorrecto";
+        String verificarNombreUsuario = "Incorrecto";
+
+
         if (correo.isEmpty()){
             System.out.println("correo vacío");
             errorCorreo.setText("El correo no puede estar vacío.");
             errorCorreo.setVisible(true);
+            verificarCorreo = "Incorrecto";
         } else if (!ValidarRegex.validarCorreo(correo)){
             System.out.println("formato de correo incorrecto: " + correo);
             errorCorreo.setText("formato de correo incorrecto.");
             errorCorreo.setVisible(true);
+            verificarCorreo = "Incorrecto";
         } else{
             System.out.println(correo);
             errorCorreo.setVisible(false);
             errorCorreo.setText("");
+            verificarCorreo = "Correcto";
         }
 
         if (contrasena.isEmpty()){
             System.out.println("contrasena vacía");
             errorContrasena.setText("La contraseña no puede estar vacía.");
             errorContrasena.setVisible(true);
+            verificarContrasena = "Incorrecto";
         } else if (! ValidarRegex.validarContrasena(contrasena)){
             System.out.println(contrasena);
-            errorContrasena.setText("La contraseña es incorrecta");
+            errorContrasena.setText("Formato de contrasena inconrrecto");
             errorContrasena.setVisible(true);
+            verificarContrasena = "Incorrecto";
         } else{
             System.out.println(contrasena);
             errorContrasena.setVisible(false);
             errorContrasena.setText("");
+            verificarContrasena = "Correcto";
         }
 
         if (nombreUsuario.isEmpty()) {
             System.out.println("nombre de usuario vacío");
             errorNombreUsuario.setText("El nombre no puede estar vacío.");
             errorNombreUsuario.setVisible(true);
+            verificarNombreUsuario = "Incorrecto";
         } else{
             System.out.println(nombreUsuario);
             errorNombreUsuario.setVisible(false);
             errorNombreUsuario.setText("");
+            verificarNombreUsuario = "Correcto";
+        }
+
+        if (verificarNombreUsuario.equals("Correcto") && verificarCorreo.equals("Correcto") && verificarContrasena.equals("Correcto")){
+            Usuario usuario = new Usuario(nombreUsuario, correo, contrasena);
+            GestionUsuario.agregarUsuario(usuario);
+
+            System.out.println("Usuario registrado exitosamente.");
+            AlmacenDatos almacenDatos = new DatosJson();
+            almacenDatos.actualizarDatos(GestionUsuario.getListaUsuarios());
+            MenuJuegoController.setUsuario(usuario);
+
+            cambiarEscena("/app/menuJuego.fxml", 500, 320, event);
         }
     }
 }

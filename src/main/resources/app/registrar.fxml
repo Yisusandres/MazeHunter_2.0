@@ -42,7 +42,7 @@
                         <Insets left="2.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="campoCorreo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="195.0" style="-fx-background-radius: 9;">
+                  <TextField fx:id="campoCorreo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="195.0" promptText="ejemplo@gmail.com" style="-fx-background-radius: 9;">
                      <VBox.margin>
                         <Insets left="2.0" />
                      </VBox.margin>
@@ -63,7 +63,7 @@
                         <Insets left="2.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="campoContrasena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="195.0" style="-fx-background-radius: 9;">
+                  <TextField fx:id="campoContrasena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="195.0" promptText="Ejemplo#123" style="-fx-background-radius: 9;">
                      <VBox.margin>
                         <Insets left="2.0" />
                      </VBox.margin>

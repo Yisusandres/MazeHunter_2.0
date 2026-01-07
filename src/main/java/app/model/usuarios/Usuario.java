@@ -1,16 +1,18 @@
-package app.model;
+package app.model.usuarios;
 
 public class Usuario {
     private String nombreUsuario;
     private String correo;
     private String contrasena;
     private GuardadoPartida guardadoPartida;
+    private EstadisticasUsuario estadisticasUsuario;
 
     public Usuario(String nombreUsuario, String correo, String contrasena) {
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;
         this.contrasena = contrasena;
-        this.guardadoPartida = new GuardadoPartida(0,0, 0, 0, 0, 0);
+        this.guardadoPartida = null;
+        this.estadisticasUsuario = new EstadisticasUsuario(0,0,0,0,0);
     }
 
     public Usuario(){
@@ -48,5 +50,11 @@ public class Usuario {
         this.guardadoPartida = guardadoPartida;
     }
 
+    public EstadisticasUsuario getEstadisticasUsuario() {
+        return estadisticasUsuario;
+    }
 
+    public void setEstadisticasUsuario(EstadisticasUsuario estadisticasUsuario) {
+        this.estadisticasUsuario = estadisticasUsuario;
+    }
 }

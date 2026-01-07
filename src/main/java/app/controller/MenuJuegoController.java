@@ -1,22 +1,14 @@
 package app.controller;
 
 import app.model.GestorLaberinto;
-import app.model.Usuario;
+import app.model.usuarios.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import laberinto.celdas.GestorImagenes;
 
-import java.io.IOException;
-import java.util.Objects;
-
 public class MenuJuegoController extends ControllerBase{
-    static Usuario usuario = GestorLaberinto.getJugador();
+    static Usuario usuario = new Usuario();
     @FXML
     private Label nombreUsuarioLabel;
 
@@ -32,7 +24,7 @@ public class MenuJuegoController extends ControllerBase{
 
     @FXML
     public void jugarNuevoLaberinto(ActionEvent event) throws Exception {
-        cambiarEscena("/app/laberintoNuevo.fxml", 380, 300, event);
+        cambiarEscena("/app/laberintoNuevo.fxml", 500, 370, event);
     }
     @FXML
     public void cargarLaberintoGuardado(ActionEvent event){

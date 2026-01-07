@@ -1,5 +1,7 @@
 package app.model;
 
+import app.model.usuarios.GuardadoPartida;
+import app.model.usuarios.Usuario;
 import laberinto.Posicion.Pair;
 import laberinto.celdas.Bomba;
 

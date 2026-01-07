@@ -1,7 +1,7 @@
 package app.controller;
 
 import app.model.GestionUsuario;
-import app.model.Usuario;
+import app.model.usuarios.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
