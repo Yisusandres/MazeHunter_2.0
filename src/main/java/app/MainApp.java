@@ -34,5 +34,7 @@ public class MainApp extends Application {
         stage.setResizable(false);
         stage.getIcons().add(image);
         stage.show();
+
+
     }
 }
