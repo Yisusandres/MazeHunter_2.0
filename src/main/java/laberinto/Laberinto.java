@@ -163,8 +163,14 @@ public class Laberinto {
             if(this.filas >= 26 && this.filas <= 45) {
                 numeroTrampas = 6;
                 numeroEnergias = 6;
-            } else {
-                numeroEnergias = 12;
+                if (this.filas >= 31 && this.filas <= 40) {
+                    numeroTrampas = 12;
+                    numeroEnergias = 12;
+                }
+                if (this.filas >= 41) {
+                    numeroTrampas = 18;
+                    numeroEnergias = 18;
+                }
             }
         }
         
