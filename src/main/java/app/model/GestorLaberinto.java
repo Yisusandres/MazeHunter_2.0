@@ -186,6 +186,7 @@ public class GestorLaberinto {
         }
     }
 
+
     public void ponerBomba(int filaObjetivo, int columnaObjetivo) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[filaObjetivo][columnaObjetivo].getTipo().equals("Muro")) return;
