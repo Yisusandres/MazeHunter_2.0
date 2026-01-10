@@ -64,4 +64,15 @@ public class GestionUsuario {
         listaUsuarios.add(usuario);
     }
 
+
+    public static String recuperarContrasena(String correo, ArrayList<Usuario> listaUsuarios) {
+        for (Usuario u : listaUsuarios) {
+            if (u.getCorreo().equals(correo)) {
+                System.out.println("Usuario encontrado: ");
+                return u.getContrasena();
+            }
+        }
+        System.out.println("El usuario no existe");
+        return "Usuario no existe";
+    }
 }

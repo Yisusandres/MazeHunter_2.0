@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.TestLaberinto;
 import app.model.GestionUsuario;
 import app.model.usuarios.Usuario;
 import javafx.event.ActionEvent;
@@ -8,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class IniciarSesionController extends ControllerBase{
@@ -84,7 +87,7 @@ public class IniciarSesionController extends ControllerBase{
 
 
     @FXML
-    public void verContrasena(ActionEvent actionEvent) {
+    public void verContrasena() {
         String contrasena = "";
         if (verContra_Button.getText().equals("(Mostrar)")) {
             verContra_Button.setText("(Ocultar)");
@@ -97,5 +100,11 @@ public class IniciarSesionController extends ControllerBase{
             campoContrasena.setText(contrasena);
             campoContrasena.setPromptText("");
         }
+    }
+
+    @FXML
+    public void onRecuperarContrasena(ActionEvent event) throws IOException {
+        TestLaberinto testLaberinto = new TestLaberinto();
+        testLaberinto.start(new Stage());
     }
 }

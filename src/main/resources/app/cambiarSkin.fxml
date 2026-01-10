@@ -92,7 +92,7 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="continuarButton" layoutX="406.0" layoutY="341.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onContinuarButton" prefHeight="25.0" prefWidth="40.0">
+      <Button fx:id="continuarButton" layoutX="384.0" layoutY="339.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onContinuarButton" prefHeight="25.0" prefWidth="40.0">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>

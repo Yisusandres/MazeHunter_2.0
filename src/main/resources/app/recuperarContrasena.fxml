@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="205.0" prefWidth="262.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.RecuperarContrasenaController">
+   <children>
+      <VBox layoutX="14.0" layoutY="26.0" prefHeight="137.0" prefWidth="247.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="205.0" text="Ingrese el correo para recuperar" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campoCorreo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="215.0" promptText="ejemplo@gmail.com" style="-fx-background-radius: 9;">
+               <font>
+                  <Font name="Comic Sans MS Bold Italic" size="10.0" />
+               </font>
+            </TextField>
+            <Label fx:id="errorCorreo" prefHeight="17.0" prefWidth="232.0" textFill="RED" underline="true" />
+            <Label fx:id="contrasena" prefHeight="18.0" prefWidth="205.0" text="Contrasena:" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button layoutX="14.0" layoutY="150.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="31.0">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/buttons/retroceder_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="170.0" layoutY="150.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBuscar" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #A2F255; -fx-background-radius: 10;" text="Buscar" textFill="#356036">
+         <font>
+            <Font name="Consolas Bold Italic" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

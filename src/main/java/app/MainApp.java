@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import jdk.jfr.DataAmount;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,12 +25,6 @@ public class MainApp extends Application {
         GestionUsuario.setListaUsuarios(usuarios);
         GestionUsuario.printUsuarios();
 
-        /*
-        ArrayList<Usuario> usuarios = ObtenerJson.cargarDatos();
-        GestionUsuario.setListaUsuarios(usuarios);
-        GestionUsuario.printUsuarios();
-        */
-
         Pane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menuInicial.fxml")));
         Scene scene = new Scene(root, 360, 360);
         stage.setTitle("Bienvenida");
@@ -39,9 +32,5 @@ public class MainApp extends Application {
         stage.setResizable(false);
         stage.getIcons().add(image);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
