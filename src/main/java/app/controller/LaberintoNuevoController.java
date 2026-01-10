@@ -1,11 +1,15 @@
 package app.controller;
 
 import app.TestLaberinto;
+import app.model.GestorLaberinto;
+import app.model.Jugador;
+import app.model.usuarios.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import laberinto.Posicion.Pair;
 
 import java.io.IOException;
 
@@ -15,13 +19,16 @@ public class LaberintoNuevoController extends ControllerBase{
     @FXML private Label trampasLabel;
     @FXML private Label energiaLabel;
     @FXML private Label bombaLabel;
+    @FXML private Label dificultadLabel;
     @FXML private MenuButton dificultadMenuButton;
     @FXML private MenuItem facilMenuItem;
     @FXML private MenuItem normalMenuItem;
-    @FXML private MenuItem dificilMenuItem;;
+    @FXML private MenuItem dificilMenuItem;
+
+    public static Usuario usuario = new Usuario();
 
     public void initialize() {
-
+        usuario = MenuJuegoController.getUsuario();
     }
 
     public static void setDificultadSeleccionada(int dificultadSeleccionada) {
@@ -30,43 +37,84 @@ public class LaberintoNuevoController extends ControllerBase{
 
     public void onFacil(ActionEvent event) {
         setLabelDificultad("5x10 a 15x25", "2 o 3", "2 o 3", "5");
-        facilMenuItem.setVisible(false);
-        normalMenuItem.setVisible(true);
-        dificilMenuItem.setVisible(true);
-        dificultadMenuButton.setText("Facil");
+        dificultadLabel.setText("Fácil");
         setDificultadSeleccionada(1);
     }
 
     public void onNormal(ActionEvent event) {
-        setLabelDificultad("5x10 a 15x25", "2 o 3", "2 o 3", "5");
-        facilMenuItem.setVisible(true);
-        normalMenuItem.setVisible(false);
-        dificilMenuItem.setVisible(true);
-        dificultadMenuButton.setText("Normal");
+        setLabelDificultad("16x26 a 25x35", "4 o 5", "4 o 5", "15");
+        dificultadLabel.setText("Normal");
         setDificultadSeleccionada(2);
     }
 
     public void onDificil(ActionEvent event) {
+        setLabelDificultad("26x36 a 45x65", "6, 12 y 18", "6, 12 y 18", "20");
+        dificultadLabel.setText("Dificil");
+        setDificultadSeleccionada(3);
     }
 
     public void onContinuar(ActionEvent event) throws IOException {
+        String nombre = usuario.getNombreUsuario();
+        String correo = usuario.getCorreo();
+        String contrasena = usuario.getContrasena();
+        LaberintoController.setJugador(new Jugador(nombre, correo, contrasena));
+        Pair<Integer, Integer> tamano = devolverTamano(dificultadSeleccionada);
+        LaberintoController.setColumnas(tamano.second);
+        LaberintoController.setFilas(tamano.first);
+        System.out.println("Tamano laberinto: " + tamano.first + "x" + tamano.second);
+        LaberintoController.setDificultad(dificultadSeleccionada);
         TestLaberinto testLaberinto  = new TestLaberinto();
         testLaberinto.start(new Stage());
     }
 
-    public void onBackButton(ActionEvent event) {
+    public void onBackButton(ActionEvent event) throws Exception {
+        cambiarEscena("/app/laberintoNuevo.fxml", 500, 370, event);
     }
 
     public void setLabelDificultad(String tamano, String trampas, String energia, String bomba) {
         tamanoLabel.setText(tamano);
+        tamanoLabel.setVisible(true);
         trampasLabel.setText(trampas);
+        trampasLabel.setVisible(true);
         energiaLabel.setText(energia);
+        energiaLabel.setVisible(true);
         bombaLabel.setText(bomba);
+        bombaLabel.setVisible(true);
     }
 
     private static int dificultadSeleccionada = 0; // 0: Ninguna, 1: Fácil, 2: Normal, 3: Difícil
 
     public static int getDificultadSeleccionada() {
         return dificultadSeleccionada;
+    }
+
+    public Pair<Integer, Integer> devolverTamano(int dificultad){
+        int filas, columnas;
+        Pair<Integer, Integer> tamano = new Pair<>();
+        if (dificultad == 1){
+            filas = GestorLaberinto.aleatorio(5, 15);
+            if (filas < 15){
+                columnas = filas + 5;
+            } else{
+                columnas = filas + 10;
+            }
+            tamano.first = filas;
+            tamano.second = columnas;
+        } else if (dificultad == 2) {
+            filas = GestorLaberinto.aleatorio(16, 25);
+            columnas = filas + 10;
+            tamano.first = filas;
+            tamano.second = columnas;
+        } else if (dificultad == 3) {
+            filas = GestorLaberinto.aleatorio(26, 45);
+            if (filas <= 36){
+                columnas = filas + 10;
+            } else{
+                columnas = filas + 20;
+            }
+            tamano.first = filas;
+            tamano.second = columnas;
+        }
+        return tamano;
     }
 }

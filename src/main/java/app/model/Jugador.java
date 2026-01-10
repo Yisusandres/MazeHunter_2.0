@@ -9,27 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador extends Usuario {
-    private boolean llave = false;
+    private boolean llave;
     private double vida;
     private int cristales;
     private int energia;
     private static String direccionImagen;
-    private List<Bomba> bombas;
+    private int bombas;
     private Pair<Integer, Integer> posicion;
-    private GuardadoPartida guardadoPartidaJugador;
 
-    public Jugador(String nombreUsuario, String correo, String contrasena, boolean llave, double vida, GuardadoPartida guardadoPartidaJugador) {
+    // Jugador guardado
+    public Jugador(String nombreUsuario, String correo, String contrasena, GuardadoPartida guardadoPartida) {
         super(nombreUsuario, correo, contrasena);
-        this.llave = llave;
-        this.vida = vida;
-        this.guardadoPartidaJugador = guardadoPartidaJugador;
-        this.cristales = guardadoPartidaJugador.getCristalesGuardados();
-        this.energia = guardadoPartidaJugador.getEnergiaGuardada();
-        List<Bomba> bombasCargadas = new ArrayList<>();
-        for (int i = 0; i < guardadoPartidaJugador.getBombasGuardadas(); i++) {
-            bombasCargadas.add(new Bomba());
-        }
-        this.bombas = bombasCargadas;
+        this.llave = guardadoPartida.isLlaveObtenida();
+        this.vida = guardadoPartida.getVidaGuardada();
+        this.cristales = guardadoPartida.getCristalesGuardados();
+        this.energia = guardadoPartida.getEnergiaGuardada();
+        this.bombas = guardadoPartida.getBombasGuardadas();
     }
 
     public Jugador(String nombreUsuario, String correo, String contrasena) {
@@ -38,6 +33,7 @@ public class Jugador extends Usuario {
         this.vida = 100;
         this.cristales = 0;
         this.energia = 100;
+        this.bombas = 0;
     }
 
     public boolean isLlave() {
@@ -56,14 +52,6 @@ public class Jugador extends Usuario {
         this.vida = vida;
     }
 
-    public GuardadoPartida getGuardadoPartidaJugador() {
-        return guardadoPartidaJugador;
-    }
-
-    public void setGuardadoPartidaJugador(GuardadoPartida guardadoPartidaJugador) {
-        this.guardadoPartidaJugador = guardadoPartidaJugador;
-    }
-
     public int getCristales() {
         return cristales;
     }
@@ -76,11 +64,23 @@ public class Jugador extends Usuario {
         this.energia = energia;
     }
 
-    public List<Bomba> getBombas() {
+    public void perderVida(int i) {
+        this.vida -= i;
+    }
+
+    public void setCristales(int cristales) {
+        this.cristales = cristales;
+    }
+
+    public int getBombas() {
         return bombas;
     }
 
-    public void perderVida(int i) {
-        this.vida -= i;
+    public void setBombas(int bombas) {
+        this.bombas = bombas;
+    }
+
+    public void aumentarBomba(){
+        this.bombas += 1;
     }
 }

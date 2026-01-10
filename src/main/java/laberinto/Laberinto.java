@@ -160,7 +160,7 @@ public class Laberinto {
 
         if(this.dificultad == 3) {
             numeroBombas = 20;
-            if(this.filas >= 26 && this.filas <= 30) {
+            if(this.filas >= 26 && this.filas <= 45) {
                 numeroTrampas = 6;
                 numeroEnergias = 6;
             } else {
@@ -169,7 +169,7 @@ public class Laberinto {
         }
         
         Random rand = new Random();
-        int max = filas - 2;
+        int max = filas - 1;
         int min = 1;
         while(numeroTrampas > 0) {
             int aleatorio1 =  rand.nextInt(max -  min + 1) + min;
@@ -218,7 +218,7 @@ public class Laberinto {
 
         
         rand = new Random();
-        max = filas - 2;
+        max = filas - 1;
         while(numeroEnergias > 0) {
             int aleatorio1 = rand.nextInt(max - min + 1) + min;
             int aleatorio2 = rand.nextInt(max - min + 1) + min;

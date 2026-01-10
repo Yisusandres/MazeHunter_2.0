@@ -63,10 +63,9 @@ public class GestorLaberinto {
 
     public void chequearSiEsCristal(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
-        Random random = new Random();
         int aleatorio =  aleatorio(1, 5);
         if(mapa[fila][columna].getTipo().equals("Cristal")) {
-            jugador.getGuardadoPartidaJugador().setCristalesGuardados(jugador.getGuardadoPartidaJugador().getCristalesGuardados() + aleatorio);
+            jugador.setCristales(jugador.getCristales() + aleatorio);
             System.out.println("Has recogido un cristal! Cristales: " + jugador.getCristales());
         }
     }
@@ -89,7 +88,7 @@ public class GestorLaberinto {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[fila][columna].getTipo().equals("Bomba")) {
             System.out.println("Has obtenido una bomba! Puedes usarla para destruir muros.");
-            jugador.getBombas().add(new Bomba());
+            jugador.aumentarBomba();
         }
     }
 
@@ -214,6 +213,7 @@ public class GestorLaberinto {
                 mapa[indicadorBomba.first][indicadorBomba.second] = new Camino();
             }
         }
+        jugador.setEnergia(jugador.getEnergia() - 20);
         mapa[filaObjetivo][columnaObjetivo] = new Celda();
         mapa[filaObjetivo][columnaObjetivo] = new Camino();
     }

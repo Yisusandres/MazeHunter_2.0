@@ -47,7 +47,7 @@ public class RecuperarContrasenaController extends ControllerBase {
 
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
-        System.exit(0);
+        cambiarEscena("/app/iniciarSesion.fxml", 520, 370, event);
     }
 
 }

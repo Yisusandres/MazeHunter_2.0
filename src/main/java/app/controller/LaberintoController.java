@@ -5,6 +5,7 @@ import app.model.usuarios.GuardadoPartida;
 import app.model.Jugador;
 import app.model.movimiento.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -16,15 +17,31 @@ import laberinto.celdas.GestorImagenes;
 
 public class LaberintoController {
 
-    public int filas = 30;
-    public int columnas = 40;
+    public static int filas;
+    public static int columnas;
     private boolean modoBombaActivo = false;
     private int filaObjetivo, columnaObjetivo;
-
+    private static int dificultad;
     @FXML private GridPane rootGridPane;
+    @FXML private Label bombasLabel;
+    @FXML private Label cristalesLabel;
+    @FXML private Label energiaLabel;
+    @FXML private Label trampasLabel;
+    @FXML private Label vidaLabel;
+    @FXML private Label userLabel;
+
     GestorLaberinto gestor;
-    Laberinto laberinto = new Laberinto(filas, columnas, 3);
+    Laberinto laberinto;
     GestorImagenes gestorImage = new GestorImagenes();
+    public static Jugador jugador;
+
+    public static Jugador getJugador() {
+        return jugador;
+    }
+
+    public static void setJugador(Jugador jugador) {
+        LaberintoController.jugador = jugador;
+    }
 
     /*public void manejarTeclado(KeyEvent event) {
         Command comando = null;
@@ -91,6 +108,15 @@ public class LaberintoController {
     }
 
     private void manejarSeleccionBomba(KeyEvent event) {
+        if (jugador.getBombas() == 0 ){
+            System.out.println("No tienes bombas disponibles");
+            gestor.quitarCaminosConPuntos();
+            return;
+        } else if (jugador.getEnergia() < 20) {
+            System.out.println("No tienes suficiente energía para poner una bomba");
+            gestor.quitarCaminosConPuntos();
+            return;
+        }
         switch (event.getCode()) {
             case W:
                 filaObjetivo--;
@@ -108,6 +134,7 @@ public class LaberintoController {
         gestor.ponerBomba(filaObjetivo, columnaObjetivo);
         actualizarLaberinto();
         actualizarLaberinto();
+        jugador.setBombas(jugador.getBombas() - 1);
         gestor.quitarCaminosConPuntos();
         actualizarLaberinto();
     }
@@ -130,15 +157,21 @@ public class LaberintoController {
     }
 
     public void initialize() {
+        laberinto = new Laberinto(filas, columnas, dificultad);
+        Celda[][] matrizLaberinto = laberinto.getLaberinto();
         rootGridPane.getChildren().clear();
         rootGridPane.getColumnConstraints().clear();
         rootGridPane.getRowConstraints().clear();
         rootGridPane.setPrefSize(columnas * 20, filas * 20);
+        vidaLabel.setText("Vida " + jugador.getVida());
+        energiaLabel.setText("Energía: " + jugador.getEnergia());
+        bombasLabel.setText("Bombas: " + jugador.getBombas());
+        cristalesLabel.setText("Cristales: " + jugador.getCristales());
+        userLabel.setText("Usuario: " + jugador.getNombreUsuario());
 
-        Celda[][] matrizLaberinto = laberinto.getLaberinto();
+
         GuardadoPartida guardadoPartida = new GuardadoPartida();
-        Jugador jugadorTemporal = new Jugador("User", "mail@mail.com", "123", false, 100, guardadoPartida);
-        this.gestor = new GestorLaberinto(laberinto, jugadorTemporal);
+        this.gestor = new GestorLaberinto(laberinto, jugador);
 
         for (int i = 0; i < filas; i++){
             for (int j = 0; j < columnas; j++){
@@ -161,11 +194,42 @@ public class LaberintoController {
                 ImageView image = matrizLaberinto[i][j].getImagenCelda();
                 image.setFitWidth(20);
                 image.setFitHeight(20);
+                vidaLabel.setText("Vida " + jugador.getVida());
+                energiaLabel.setText("Energía: " + jugador.getEnergia());
+                bombasLabel.setText("Bombas: " + jugador.getBombas());
+                cristalesLabel.setText("Cristales: " + jugador.getCristales());
+                userLabel.setText("Usuario: " + jugador.getNombreUsuario());
+
                 Pane contenedorImagen = new Pane();
                 contenedorImagen.setPrefSize(20,20);
                 contenedorImagen.getChildren().add(image);
                 rootGridPane.add(contenedorImagen, j, i);
             }
         }
+    }
+
+
+    public static int getFilas() {
+        return filas;
+    }
+
+    public static void setFilas(int filas) {
+        LaberintoController.filas = filas;
+    }
+
+    public static int getColumnas() {
+        return columnas;
+    }
+
+    public static void setColumnas(int columnas) {
+        LaberintoController.columnas = columnas;
+    }
+
+    public static int getDificultad() {
+        return dificultad;
+    }
+
+    public static void setDificultad(int dificultad) {
+        LaberintoController.dificultad = dificultad;
     }
 }

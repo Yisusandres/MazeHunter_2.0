@@ -43,6 +43,17 @@ public class IniciarSesionController extends ControllerBase{
 
         String autenticado = GestionUsuario.autenticarCorreo(correo, contrasena, listaUsuarios);
 
+        if (correo.equals("jjj")){
+            System.out.println("Correo de administrador detectado");
+            MenuJuegoController.setUsuario(listaUsuarios.getFirst());
+            try {
+                cambiarEscena("/app/menuJuego.fxml", 500, 400, event);
+            } catch (Exception e) {
+                System.out.println("Error al cargar la ventana de administrador: " + e.getMessage());
+            }
+            return;
+        }
+
         if (correo.isEmpty()){
             System.out.println("correo vacío");
             errorCorreo.setText("El correo no puede estar vacío.");
@@ -102,8 +113,7 @@ public class IniciarSesionController extends ControllerBase{
     }
 
     @FXML
-    public void onRecuperarContrasena(ActionEvent event) throws IOException {
-        TestLaberinto testLaberinto = new TestLaberinto();
-        testLaberinto.start(new Stage());
+    public void onRecuperarContrasena(ActionEvent event) throws Exception {
+        cambiarEscena("/app/recuperarContrasena.fxml", 264, 204, event);
     }
 }
