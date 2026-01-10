@@ -15,13 +15,11 @@ public class TestLaberinto extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("laberinto.fxml"));
         Pane root = loader.load();
 
-        // Obtenemos el controlador que JavaFX creó automáticamente
         LaberintoController controller = loader.getController();
 
         Scene scene = new Scene(root, 800, 620);
         scene.setFill(javafx.scene.paint.Color.web("#3D3452"));
 
-        // LE DECIMOS A LA ESCENA QUE MANDE LAS TECLAS AL CONTROLADOR
         scene.setOnKeyPressed(controller::manejarTeclado);
 
         stage.setTitle("Laberinto");

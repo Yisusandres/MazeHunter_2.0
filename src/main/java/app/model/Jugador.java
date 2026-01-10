@@ -68,10 +68,6 @@ public class Jugador extends Usuario {
         return cristales;
     }
 
-    public void setCristales(int cristales) {
-        this.cristales = cristales;
-    }
-
     public int getEnergia() {
         return energia;
     }
@@ -82,14 +78,6 @@ public class Jugador extends Usuario {
 
     public List<Bomba> getBombas() {
         return bombas;
-    }
-
-    public void setBombas(List<Bomba> bombas) {
-        this.bombas = bombas;
-    }
-
-    public void setPosicion(Pair<Integer, Integer> posicion) {
-        this.posicion = posicion;
     }
 
     public void perderVida(int i) {

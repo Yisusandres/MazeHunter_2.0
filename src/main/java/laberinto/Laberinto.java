@@ -1,11 +1,11 @@
 package laberinto;
 
+import app.model.GestorLaberinto;
 import laberinto.celdas.Celda;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Stack;
+import java.security.Key;
+import java.util.*;
+
 import laberinto.Posicion.Pair;
 import laberinto.celdas.*;
 
@@ -21,14 +21,15 @@ import laberinto.celdas.*;
 
 public class Laberinto {
     private Celda[][] laberinto;
-    private int filas, columnas, dificultad = 1;
-    private Posicion.Pair<Integer, Integer> jugadorPos;
+    private int filas, columnas, dificultad;
+    private Pair<Integer, Integer> jugadorPos;
     private Pair<Integer, Integer> salidaPos;
     private Pair<Integer, Integer> llavePos;
     private Random random;
     public Laberinto(int filas, int columnas, int dificultad) {
         this.filas = filas;
         this.columnas = columnas;
+        this.dificultad = dificultad;
         this.random = new Random();
         this.laberinto = new Celda[filas][columnas];
         generarLaberinto();
@@ -46,16 +47,8 @@ public class Laberinto {
         return filas;
     }
 
-    public void setFilas(int filas) {
-        this.filas = filas;
-    }
-
     public int getColumnas() {
         return columnas;
-    }
-
-    public void setColumnas(int columnas) {
-        this.columnas = columnas;
     }
 
     public Pair<Integer, Integer> getJugadorPos() {
@@ -66,34 +59,21 @@ public class Laberinto {
         this.jugadorPos = jugadorPos;
     }
 
-    public Pair<Integer, Integer> getSalidaPos() {
-        return salidaPos;
-    }
-
-    public void setSalidaPos(Pair<Integer, Integer> salidaPos) {
-        this.salidaPos = salidaPos;
-    }
-
-    public Pair<Integer, Integer> getLlavePos() {
-        return llavePos;
-    }
-
-    public void setLlavePos(Pair<Integer, Integer> llavePos) {
-        this.llavePos = llavePos;
-    }
-
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
-    }
+    public Pair<Integer, Integer> getSalidaPos() {return salidaPos;}
 
     private void inicializarLaberinto() {
+        int aleatorio, numeroMurosRojos = 0;
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                laberinto[i][j] = new Muro();
+                if(i % 2 != 0 && j % 2 != 0) numeroMurosRojos = GestorLaberinto.aleatorio(6, 8);
+                else numeroMurosRojos = 0;
+                aleatorio = (int)(Math.random()*2);
+                if(aleatorio == 1 && i != 0 && j != 0 && i != 1 && j != 1 && i != filas - 1 && j != columnas - 1 && i != filas - 2 && j != columnas - 2 && numeroMurosRojos > 0) {
+                    laberinto[i][j] = new MuroRojo();
+                }
+                else {
+                    laberinto[i][j] = new Muro();
+                }
             }
         }
     }
@@ -154,8 +134,40 @@ public class Laberinto {
         verificarMuros(posicion_puerta);
         verificarMuros(posicion_llave);
 
+        int numeroTrampas = 0, numeroVidas, numeroCristales, numeroBombas = 0, numeroEnergias = 0;
 
-        int numeroTrampas = filas / 4 * this.dificultad;
+        if(this.dificultad == 1) {
+            numeroBombas = 5;
+            if(this.filas >= 5 && this.filas <= 10) {
+                numeroTrampas = 2;
+                numeroEnergias = 2;
+            } else {
+                numeroTrampas = 3;
+                numeroEnergias = 3;
+            }
+        }
+
+        if(this.dificultad == 2) {
+            numeroBombas = 15;
+            if(this.filas >= 16 && this.filas <= 20) {
+                numeroTrampas = 4;
+                numeroEnergias = 4;
+            } else {
+                numeroTrampas = 5;
+                numeroEnergias = 5;
+            }
+        }
+
+        if(this.dificultad == 3) {
+            numeroBombas = 20;
+            if(this.filas >= 26 && this.filas <= 30) {
+                numeroTrampas = 6;
+                numeroEnergias = 6;
+            } else {
+                numeroEnergias = 12;
+            }
+        }
+        
         Random rand = new Random();
         int max = filas - 2;
         int min = 1;
@@ -168,7 +180,7 @@ public class Laberinto {
             }
         }
 
-        int numeroVidas = (filas / 3) / 2;
+        numeroVidas = (filas / 3) / 2;
         rand = new Random();
         max = filas - 2;
         while(numeroVidas > 0) {
@@ -180,7 +192,7 @@ public class Laberinto {
             }
         }
 
-        int numeroCristales = filas / 2;
+        numeroCristales = filas / 2;
         rand = new Random();
         max = filas - 2;
         while(numeroCristales > 0) {
@@ -192,8 +204,7 @@ public class Laberinto {
                 numeroCristales--;
             }
         }
-
-        int numeroBombas = filas / 5;
+        
         rand = new Random();
         max = filas - 2;
         while(numeroBombas > 0) {
@@ -205,7 +216,7 @@ public class Laberinto {
             }
         }
 
-        int numeroEnergias = filas / 6;
+        
         rand = new Random();
         max = filas - 2;
         while(numeroEnergias > 0) {
@@ -238,7 +249,7 @@ public class Laberinto {
         return comienzo;
     }
 
-    private List<Pair<Integer, Integer>> definirVecinos(Pair<Integer, Integer> actual) {
+    public List<Pair<Integer, Integer>> definirVecinos(Pair<Integer, Integer> actual) {
         List<Pair<Integer, Integer>> vecinos = new ArrayList<>();
         // Arriba
         if(actual.first - 2 > 0)
@@ -269,6 +280,43 @@ public class Laberinto {
         {
             Pair<Integer, Integer> vecino = new Pair<>();
             vecino.first = actual.first + 2;
+            vecino.second = actual.second;
+            vecinos.add(vecino);
+        }
+        return vecinos;
+    }
+
+    public List<Pair<Integer, Integer>> definirVecinosParaBomba(Pair<Integer, Integer> actual) {
+        List<Pair<Integer, Integer>> vecinos = new ArrayList<>();
+        // Arriba
+        if(actual.first - 1 > 0)
+        {
+            Pair<Integer, Integer> vecino = new Pair<>();
+            vecino.first = actual.first - 1;
+            vecino.second = actual.second;
+            vecinos.add(vecino);
+        }
+        //Izquierda
+        if(actual.second - 1 > 0)
+        {
+            Pair<Integer, Integer> vecino = new Pair<>();
+            vecino.first = actual.first;
+            vecino.second = actual.second - 1;
+            vecinos.add(vecino);
+        }
+        //Derecha
+        if(actual.second + 1 < columnas - 1)
+        {
+            Pair<Integer, Integer> vecino = new Pair<>();
+            vecino.first = actual.first;
+            vecino.second = actual.second + 1;
+            vecinos.add(vecino);
+        }
+        //Abajo
+        if(actual.first + 1 < filas - 1)
+        {
+            Pair<Integer, Integer> vecino = new Pair<>();
+            vecino.first = actual.first + 1;
             vecino.second = actual.second;
             vecinos.add(vecino);
         }
@@ -415,6 +463,5 @@ public class Laberinto {
 
     public static void main(String[] args) {
         Laberinto laberinto = new Laberinto(15, 25, 1);
-        laberinto.imprimirLaberinto();
     }
 }

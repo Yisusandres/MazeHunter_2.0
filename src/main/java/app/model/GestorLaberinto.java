@@ -1,19 +1,20 @@
 package app.model;
 
+import app.controller.LaberintoController;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 import laberinto.Laberinto;
 import laberinto.Posicion.Pair;
-import laberinto.celdas.Bomba;
-import laberinto.celdas.Camino;
-import laberinto.celdas.Celda;
-import laberinto.celdas.JugadorCelda;
+import laberinto.celdas.*;
 
-import java.util.Random;
+import java.util.*;
 
 public class GestorLaberinto {
     private Laberinto laberinto;
     private static Jugador jugador;
     private Pair<Integer, Integer> posicionSalida;
     private Pair<Integer, Integer> posicionJugador;
+    private List<Integer> celdasEnNumero = new ArrayList<>();
 
     public GestorLaberinto(Laberinto laberinto, Jugador jugador)
     {
@@ -23,21 +24,8 @@ public class GestorLaberinto {
         this.posicionJugador = laberinto.getJugadorPos();
     }
 
-    public Pair<Integer, Integer> getPosicionSalida() {
-        return posicionSalida;
-    }
 
-    public void setPosicionSalida(Pair<Integer, Integer> posicionSalida) {
-        this.posicionSalida = posicionSalida;
-    }
-
-    public Pair<Integer, Integer> getPosicionJugador() {
-        return posicionJugador;
-    }
-
-    public void setPosicionJugador(Pair<Integer, Integer> posicionJugador) {
-        this.posicionJugador = posicionJugador;
-    }
+    public Pair<Integer, Integer> getPosicionJugador() {return posicionJugador;}
 
     public boolean posicionValida(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
@@ -60,7 +48,7 @@ public class GestorLaberinto {
         mover(fila, columna);
     }
 
-    public int aleatorio(int min, int max) {
+    public static int aleatorio(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
@@ -86,9 +74,14 @@ public class GestorLaberinto {
     public void chequearSiEsVida(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         int aleatorio =  aleatorio(1, 2);
-        if(mapa[fila][columna].getTipo().equals("Vida") && jugador.getVida() + aleatorio * 5 < 100) {
-            jugador.setVida(jugador.getVida() + aleatorio * 5);
-            System.out.println("Has recogido vida! Vida aumentada: " + jugador.getVida());
+        if(mapa[fila][columna].getTipo().equals("Vida")) {
+            if(jugador.getVida() + aleatorio * 5 < 100) {
+                jugador.setVida(jugador.getVida() + aleatorio * 5);
+                System.out.println("Has recogido vida! Vida aumentada: " + jugador.getVida());
+            }
+            else {
+                System.out.println("Ya tienes 100% de vida!");
+            }
         }
     }
 
@@ -109,23 +102,17 @@ public class GestorLaberinto {
         }
     }
 
-    public boolean chequearSiEsLlave(int fila, int columna) {
+    public void chequearSiEsLlave(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[fila][columna].getTipo().equals("Llave")) {
             jugador.setLlave(true);
             System.out.println("Has recogido la llave! Ahora puedes abrir la salida del laberinto.");
             mapa[posicionSalida.first][posicionSalida.second].setTraspasable(true);
-            return true;
         }
-        return false;
     }
 
     public boolean chequearSiEsSalida(int fila, int columna) {
-        if(fila == posicionSalida.first && columna == posicionSalida.second) {
-            System.out.println("Felicidades! Has llegado a la salida del laberinto.");
-            return true;
-        }
-        return false;
+        return fila == posicionSalida.first && columna == posicionSalida.second;
     }
 
     public void mover(int fila, int columna) {
@@ -141,7 +128,16 @@ public class GestorLaberinto {
         chequearSiEsVida(fila, columna);
         chequearSiEsBomba(fila, columna);
         chequearSiEsEnergia(fila, columna);
-        if(chequearSiEsSalida(fila, columna) && chequearSiEsLlave(fila, columna)) return;
+        chequearSiEsLlave(fila, columna);
+        if(chequearSiEsSalida(fila, columna)) {
+            if(jugador.isLlave()) {
+                System.out.println("Felicidades! Has salido del laberinto.");
+                return;
+            } else {
+                System.out.println("Necesitas la llave para salir del laberinto.");
+                return;
+            }
+        }
 
         mapa[posicionJugador.first][posicionJugador.second] = new Celda();
         mapa[posicionJugador.first][posicionJugador.second] = new Camino();
@@ -154,11 +150,82 @@ public class GestorLaberinto {
         laberinto.setLaberinto(mapa);
     }
 
-    public static Jugador getJugador() {
-        return jugador;
+    public void guardarLaberinto() {
+        Map<String, Integer> celdas = new HashMap<>();
+        celdas.put("Muro", 1);
+        celdas.put("MuroRojo", 2);
+        celdas.put("Camino", 3);
+        celdas.put("Trampa", 4);
+        celdas.put("Cristal", 5);
+        celdas.put("Bomba", 6);
+        celdas.put("Energia", 7);
+        celdas.put("Vida", 8);
+        celdas.put("Jugador", 9);
+        celdas.put("Llave", 10);
+        celdas.put("Salida", 11);
+        String celda;
+        Celda[][] mapa = laberinto.getLaberinto();
+        for (int i = 0; i < laberinto.getFilas(); i++) {
+            for (int j = 0; j < laberinto.getColumnas(); j++) {
+                celda = mapa[i][j].getTipo();
+                celdasEnNumero.add(celdas.get(celda));
+            }
+        }
     }
 
-    public static void setJugador(Jugador jugador) {
-        GestorLaberinto.jugador = jugador;
+    public void radearBomba(int filaActual, int columnaActual) {
+        Celda[][] mapa = laberinto.getLaberinto();
+        Pair<Integer, Integer> posicionDelJugador = new Pair<>();
+        posicionDelJugador.first = filaActual;
+        posicionDelJugador.second = columnaActual;
+        List<Pair<Integer, Integer>> posicionesParaBomba = laberinto.definirVecinosParaBomba(posicionDelJugador);
+        for(Pair<Integer, Integer> indicadorBomba : posicionesParaBomba) {
+            if(mapa[indicadorBomba.first][indicadorBomba.second].getTipo().equals("Camino")) {
+                mapa[indicadorBomba.first][indicadorBomba.second] = new Celda();
+                mapa[indicadorBomba.first][indicadorBomba.second] = new CaminoConPunto();
+            }
+        }
+    }
+
+    public void ponerBomba(int filaObjetivo, int columnaObjetivo) {
+        Celda[][] mapa = laberinto.getLaberinto();
+        if(mapa[filaObjetivo][columnaObjetivo].getTipo().equals("Muro")) return;
+        mapa[filaObjetivo][columnaObjetivo] = new Celda();
+        mapa[filaObjetivo][columnaObjetivo] = new Bomba();
+        mapa[filaObjetivo][columnaObjetivo].setTraspasable(false);
+        System.out.println("Bomba puesta en posicion: " + filaObjetivo + " " + columnaObjetivo);
+        PauseTransition pausa = new PauseTransition(Duration.seconds(1));
+        pausa.setOnFinished(event -> {
+            explotarBomba(filaObjetivo, columnaObjetivo);
+        });
+        pausa.play();
+    }
+
+    public void explotarBomba(int filaObjetivo, int columnaObjetivo) {
+        Celda[][] mapa = laberinto.getLaberinto();
+        Pair<Integer, Integer> posicionBomba = new Pair<>();
+        posicionBomba.first = filaObjetivo;
+        posicionBomba.second = columnaObjetivo;
+        List<Pair<Integer, Integer>> vecinosDeBomba = laberinto.definirVecinosParaBomba(posicionBomba);
+        for(Pair<Integer, Integer> indicadorBomba : vecinosDeBomba) {
+            if(mapa[indicadorBomba.first][indicadorBomba.second].getTipo().equals("MuroRojo")) {
+                mapa[indicadorBomba.first][indicadorBomba.second] = new Celda();
+                mapa[indicadorBomba.first][indicadorBomba.second] = new Camino();
+            }
+        }
+        mapa[filaObjetivo][columnaObjetivo] = new Celda();
+        mapa[filaObjetivo][columnaObjetivo] = new Camino();
+    }
+
+    public void quitarCaminosConPuntos() {
+        Celda[][] mapa = laberinto.getLaberinto();
+        Pair<Integer, Integer> posicionDelJugador = laberinto.getJugadorPos();
+        List<Pair<Integer, Integer>> posicionesParaBomba = laberinto.definirVecinosParaBomba(posicionDelJugador);
+        for(Pair<Integer, Integer> indicadorBomba : posicionesParaBomba) {
+            if(mapa[indicadorBomba.first][indicadorBomba.second].getTipo().equals("CaminoConPunto")) {
+                mapa[indicadorBomba.first][indicadorBomba.second] = new Celda();
+                mapa[indicadorBomba.first][indicadorBomba.second] = new Camino();
+            }
+        }
     }
 }

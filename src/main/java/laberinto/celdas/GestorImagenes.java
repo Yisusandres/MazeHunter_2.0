@@ -20,6 +20,10 @@ public class GestorImagenes {
         return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/camino.png"))));
     }
 
+    public ImageView getImagenCaminoConPunto() {
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/caminoConPunto.png"))));
+    }
+
     public ImageView getImagenCristal() {
         return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/cristal.png"))));
     }
@@ -28,8 +32,12 @@ public class GestorImagenes {
         return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/muroGris.png"))));
     }
 
+    public ImageView getImagenMuroRojo() {
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/muroRojo.png"))));
+    }
+
     public ImageView getImagenJugador() {
-        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream(rutaPersonaje))));
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/personajes/personajeWito.png"))));
     }
 
     public ImageView getImagenVidaExtra() {

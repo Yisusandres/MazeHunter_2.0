@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class IniciarSesionController extends ControllerBase{
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
-
     @FXML private TextField campoCorreo;
     @FXML private PasswordField campoContrasena;
     @FXML private Button loginButton;

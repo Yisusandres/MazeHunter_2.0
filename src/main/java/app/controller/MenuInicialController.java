@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class MenuInicialController extends ControllerBase{
+public class MenuInicialController extends ControllerBase {
     @FXML
     private void onIniciarSesion(ActionEvent event) throws Exception {
         cambiarEscena("/app/iniciarSesion.fxml", 520, 370, event);
