@@ -190,6 +190,7 @@ public class GestorLaberinto {
     public void ponerBomba(int filaObjetivo, int columnaObjetivo) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[filaObjetivo][columnaObjetivo].getTipo().equals("Muro")) return;
+        if(mapa[filaObjetivo][columnaObjetivo].getTipo().equals("MuroRojo")) return;
         mapa[filaObjetivo][columnaObjetivo] = new Celda();
         mapa[filaObjetivo][columnaObjetivo] = new Bomba();
         mapa[filaObjetivo][columnaObjetivo].setTraspasable(false);
