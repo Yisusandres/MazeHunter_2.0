@@ -47,6 +47,14 @@ public class GestorLaberinto {
         return mapa[fila][columna].isTraspasable();
     }
 
+    public static Jugador getJugador() {
+        return jugador;
+    }
+
+    public static void setJugador(Jugador jugador) {
+        GestorLaberinto.jugador = jugador;
+    }
+
     public void derecha(int fila, int columna) {
         mover(fila, columna);
     }
@@ -134,6 +142,19 @@ public class GestorLaberinto {
         int fila = laberinto.getSalidaPos().first;
         int columna = laberinto.getSalidaPos().second;
         return fila == getPosicionJugador().first && columna == getPosicionJugador().second && jugador.isLlave();
+    }
+    public boolean verificarDerrota() {
+        return jugador.getVida() <= 0;
+    }
+
+    private static boolean haPerdido;
+
+    public static boolean isHaPerdido() {
+        return haPerdido;
+    }
+
+    public static void setHaPerdido(boolean estado) {
+        haPerdido = estado;
     }
 
     public void mover(int fila, int columna) {
@@ -254,6 +275,7 @@ public class GestorLaberinto {
             }
         }
     }
+
 
 
 }

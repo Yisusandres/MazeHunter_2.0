@@ -16,6 +16,7 @@ public class Jugador extends Usuario {
     private int energia;
     private static String direccionImagen;
     private int bombas;
+    private int trampas;
     private Pair<Integer, Integer> posicion;
 
     // Jugador guardado
