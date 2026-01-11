@@ -6,8 +6,11 @@ import app.model.Jugador;
 import app.model.usuarios.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import laberinto.Posicion.Pair;
 
@@ -25,6 +28,7 @@ public class LaberintoNuevoController extends ControllerBase{
     @FXML private MenuItem normalMenuItem;
     @FXML private MenuItem dificilMenuItem;
 
+    Stage stage;
     public static Usuario usuario = new Usuario();
 
     public void initialize() {
@@ -63,8 +67,24 @@ public class LaberintoNuevoController extends ControllerBase{
         LaberintoController.setFilas(tamano.first);
         System.out.println("Tamano laberinto: " + tamano.first + "x" + tamano.second);
         LaberintoController.setDificultad(dificultadSeleccionada);
-        TestLaberinto testLaberinto  = new TestLaberinto();
-        testLaberinto.start(new Stage());
+
+        /*
+        Pane root = javafx.fxml.FXMLLoader.load(java.util.Objects.requireNonNull(getClass().getResource("laberinto.fxml")));
+        Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+        Scene scene = new javafx.scene.Scene(root, 800, 620);
+        stage.setScene(scene);
+        stage.show();
+        */
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/laberinto.fxml"));
+        Pane root = loader.load();
+        Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+        LaberintoController controller = loader.getController();
+        Scene scene = new Scene(root, 800, 620);
+        scene.setFill(javafx.scene.paint.Color.web("#3D3452"));
+        scene.setOnKeyPressed(controller::manejarTeclado);
+        stage.setTitle("Laberinto");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void onBackButton(ActionEvent event) throws Exception {
@@ -92,7 +112,7 @@ public class LaberintoNuevoController extends ControllerBase{
         int filas, columnas;
         Pair<Integer, Integer> tamano = new Pair<>();
         if (dificultad == 1){
-            filas = GestorLaberinto.aleatorio(5, 15);
+            filas = GestorLaberinto.aleatorio(6, 15);
             if (filas < 15){
                 columnas = filas + 5;
             } else{

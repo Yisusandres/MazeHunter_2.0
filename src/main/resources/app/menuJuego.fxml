@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane prefHeight="357.0" prefWidth="402.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuJuegoController">
+<Pane prefHeight="350.0" prefWidth="400.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuJuegoController">
    <children>
-      <VBox alignment="CENTER" layoutX="219.0" prefHeight="357.0" prefWidth="209.0" spacing="35.0">
+      <VBox alignment="CENTER" layoutX="219.0" prefHeight="357.0" prefWidth="174.0" spacing="35.0">
          <children>
             <Label fx:id="nombreUsuarioLabel" layoutX="68.0" layoutY="54.0" text="Nombre de usario" textAlignment="CENTER" textFill="#b73737">
                <font>
@@ -50,11 +53,11 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="buttonIniciarSesion2" minHeight="-Infinity" minWidth="-Infinity" onAction="#seleccionarSkin" prefHeight="20.0" prefWidth="70.0">
+            <Button fx:id="BackButton" minHeight="-Infinity" minWidth="-Infinity" onAction="#onBackButton" prefHeight="20.0" prefWidth="70.0">
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="41.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imagenes/buttons/escogerSkin_button.png" />
+                        <Image url="@../imagenes/buttons/cerrarJuegoButton.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -74,5 +77,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <ImageView fitHeight="260.0" fitWidth="127.0" layoutX="50.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/personajes/personajeThomas.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

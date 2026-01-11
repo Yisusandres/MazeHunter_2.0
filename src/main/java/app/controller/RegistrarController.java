@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,7 +27,8 @@ public class RegistrarController extends ControllerBase{
     private Stage stage;
 
     @FXML public TextField campoCorreo;
-    @FXML public TextField campoContrasena;
+    @FXML public PasswordField campoContrasena;
+    @FXML public PasswordField campoContrasena2;
     @FXML public TextField campoNombreUsuario;
     @FXML public Button crearCuenta_Button;
     @FXML public Button backButton;
@@ -56,7 +58,7 @@ public class RegistrarController extends ControllerBase{
         String verificarCorreo = "Incorrecto";
         String verificarContrasena = "Incorrecto";
         String verificarNombreUsuario = "Incorrecto";
-
+        Usuario usuarioVerificar = GestionUsuario.buscarUsuarioPorCorreo(correo, GestionUsuario.getListaUsuarios());
 
         if (correo.isEmpty()){
             System.out.println("correo vacío");
@@ -66,6 +68,11 @@ public class RegistrarController extends ControllerBase{
         } else if (!ValidarRegex.validarCorreo(correo)){
             System.out.println("formato de correo incorrecto: " + correo);
             errorCorreo.setText("formato de correo incorrecto.");
+            errorCorreo.setVisible(true);
+            verificarCorreo = "Incorrecto";
+        } else if (usuarioVerificar != null) {
+            System.out.println("Correo registrado: " + correo);
+            errorCorreo.setText("Correo registrado");
             errorCorreo.setVisible(true);
             verificarCorreo = "Incorrecto";
         } else{
@@ -83,6 +90,11 @@ public class RegistrarController extends ControllerBase{
         } else if (! ValidarRegex.validarContrasena(contrasena)){
             System.out.println(contrasena);
             errorContrasena.setText("Formato de contrasena inconrrecto");
+            errorContrasena.setVisible(true);
+            verificarContrasena = "Incorrecto";
+        } else if (!contrasena.equals(campoContrasena2.getText())) {
+            System.out.println("error contrasenas diferentes");
+            errorContrasena.setText("Las contrasenas no coinciden");
             errorContrasena.setVisible(true);
             verificarContrasena = "Incorrecto";
         } else{
@@ -112,8 +124,7 @@ public class RegistrarController extends ControllerBase{
             AlmacenDatos almacenDatos = new DatosJson();
             almacenDatos.actualizarDatos(GestionUsuario.getListaUsuarios());
             MenuJuegoController.setUsuario(usuario);
-
-            cambiarEscena("/app/menuJuego.fxml", 500, 320, event);
+            cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
         }
     }
 }

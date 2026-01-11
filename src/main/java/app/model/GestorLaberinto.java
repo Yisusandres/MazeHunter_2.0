@@ -1,6 +1,8 @@
 package app.model;
 
 import app.controller.LaberintoController;
+import app.model.usuarios.EstadisticasUsuario;
+import app.model.usuarios.Usuario;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import laberinto.Laberinto;
@@ -10,11 +12,21 @@ import laberinto.celdas.*;
 import java.util.*;
 
 public class GestorLaberinto {
-    private Laberinto laberinto;
+    private static Laberinto laberinto;
     private static Jugador jugador;
+    private static Usuario usuarioActivo = new Usuario();
     private Pair<Integer, Integer> posicionSalida;
     private Pair<Integer, Integer> posicionJugador;
-    private List<Integer> celdasEnNumero = new ArrayList<>();
+    private static ArrayList<Integer> celdasEnNumero = new ArrayList<>();
+
+
+    public static Usuario getUsuarioActivo() {
+        return usuarioActivo;
+    }
+
+    public static void setUsuarioActivo(Usuario usuarioActivo) {
+        GestorLaberinto.usuarioActivo = usuarioActivo;
+    }
 
     public GestorLaberinto(Laberinto laberinto, Jugador jugador)
     {
@@ -58,6 +70,7 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Trampa")) {
             jugador.perderVida(20);
             System.out.println("Cuidado! Has caido en una trampa. Vida restante: " + jugador.getVida());
+
         }
     }
 
@@ -153,7 +166,7 @@ public class GestorLaberinto {
         laberinto.setLaberinto(mapa);
     }
 
-    public void guardarLaberinto() {
+    public static ArrayList<Integer> guardarLaberinto() {
         Map<String, Integer> celdas = new HashMap<>();
         celdas.put("Muro", 1);
         celdas.put("MuroRojo", 2);
@@ -175,6 +188,7 @@ public class GestorLaberinto {
                 celdasEnNumero.add(celdas.get(celda));
             }
         }
+        return celdasEnNumero;
     }
 
     public void radearBomba(int filaActual, int columnaActual) {
@@ -190,7 +204,6 @@ public class GestorLaberinto {
             }
         }
     }
-
 
     public void ponerBomba(int filaObjetivo, int columnaObjetivo) {
         Celda[][] mapa = laberinto.getLaberinto();
@@ -235,4 +248,6 @@ public class GestorLaberinto {
             }
         }
     }
+
+
 }

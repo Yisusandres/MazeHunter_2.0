@@ -2,6 +2,7 @@ package app.controller;
 
 import app.TestLaberinto;
 import app.model.GestionUsuario;
+import app.model.GestorLaberinto;
 import app.model.usuarios.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,10 @@ public class IniciarSesionController extends ControllerBase{
     @FXML private Label errorCorreo;
     @FXML private Label errorAutenticacion;
 
+    public void initialize(){
+        listaUsuarios = GestionUsuario.getListaUsuarios();
+    }
+
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/menuInicial.fxml", 350, 370, event);
@@ -47,7 +52,7 @@ public class IniciarSesionController extends ControllerBase{
             System.out.println("Correo de administrador detectado");
             MenuJuegoController.setUsuario(listaUsuarios.getFirst());
             try {
-                cambiarEscena("/app/menuJuego.fxml", 500, 400, event);
+                cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
             } catch (Exception e) {
                 System.out.println("Error al cargar la ventana de administrador: " + e.getMessage());
             }
@@ -86,9 +91,10 @@ public class IniciarSesionController extends ControllerBase{
             System.out.println("Inicio de sesión exitoso");
             Usuario usuario = GestionUsuario.buscarUsuarioPorCorreo(correo, listaUsuarios);
             MenuJuegoController.setUsuario(usuario);
+            GestorLaberinto.setUsuarioActivo(usuario);
 
             try {
-                cambiarEscena("/app/menuJuego.fxml", 500, 370, event);
+                cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
             } catch (Exception e) {
                 System.out.println("Error al cargar la ventana del juego: " + e.getMessage());
             }

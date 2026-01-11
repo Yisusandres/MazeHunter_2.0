@@ -5,6 +5,7 @@ import app.model.usuarios.GuardadoPartida;
 import app.model.Jugador;
 import app.model.movimiento.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -19,6 +20,7 @@ public class LaberintoController {
 
     public static int filas;
     public static int columnas;
+    public Button backButton;
     private boolean modoBombaActivo = false;
     private int filaObjetivo, columnaObjetivo;
     private static int dificultad;
@@ -193,6 +195,7 @@ public class LaberintoController {
 
     public void actualizarLaberinto() {
         Celda[][] matrizLaberinto = laberinto.getLaberinto();
+
         rootGridPane.getChildren().clear();
         for (int i = 0; i < filas; i++){
             for (int j = 0; j < columnas; j++){
@@ -209,6 +212,7 @@ public class LaberintoController {
                 contenedorImagen.setPrefSize(20,20);
                 contenedorImagen.getChildren().add(image);
                 rootGridPane.add(contenedorImagen, j, i);
+
             }
         }
     }
@@ -236,5 +240,10 @@ public class LaberintoController {
 
     public static void setDificultad(int dificultad) {
         LaberintoController.dificultad = dificultad;
+    }
+
+    @FXML
+    public void onBackButton(KeyEvent event){
+
     }
 }

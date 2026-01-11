@@ -4,34 +4,58 @@
   "contrasena" : "oKW2OR+EAfBmq4MCkWLMNQ==",
   "guardadoPartida" : null,
   "estadisticasUsuario" : {
-    "minutosJugados" : 0.0,
     "partidasGanadas" : 0,
     "partidasPerdidas" : 0,
     "trampasActivadas" : 0,
-    "cristalesObtenidos" : 0
+    "cristalesObtenidos" : 0,
+    "laberintosJugados" : 0
   }
 }, {
   "nombreUsuario" : "Darwin",
   "correo" : "vjvkHArOQwoe6ugXKdhdnF6h3l+wzPWjpylMpuVhbC8=",
-  "contrasena" : "mGEQGXcvlWC7uPkVAdHz5g==",
+  "contrasena" : "Sq9H3RjWJPfrQeyi2otv9g==",
   "guardadoPartida" : null,
   "estadisticasUsuario" : {
-    "minutosJugados" : 0.0,
     "partidasGanadas" : 0,
     "partidasPerdidas" : 0,
     "trampasActivadas" : 0,
-    "cristalesObtenidos" : 0
+    "cristalesObtenidos" : 0,
+    "laberintosJugados" : 0
   }
 }, {
-  "nombreUsuario" : "fabian",
-  "correo" : "8wIUfDS6v8PW4QcmASOPbGpSvkE3CgNULdqXFWfgdSU=",
-  "contrasena" : "mq/irZbIz19owsCNR6XZ0w==",
+  "nombreUsuario" : "giuseppe",
+  "correo" : "vrYwCQ0lnRuqmizZ5J0ZI9FhGJkUSgQSDr/GY+LPj54=",
+  "contrasena" : "ipl+5c3GEU09mQCwk94H/A==",
   "guardadoPartida" : null,
   "estadisticasUsuario" : {
-    "minutosJugados" : 0.0,
     "partidasGanadas" : 0,
     "partidasPerdidas" : 0,
     "trampasActivadas" : 0,
-    "cristalesObtenidos" : 0
+    "cristalesObtenidos" : 0,
+    "laberintosJugados" : 0
+  }
+}, {
+  "nombreUsuario" : "Eskavenprogamer",
+  "correo" : "idLmyAePZyhE+STcqdQdkLHqxhv0tpn4ZJihLDpsbjM=",
+  "contrasena" : "snYTT2x3EqNGD/X6Kpv5sQ==",
+  "guardadoPartida" : null,
+  "estadisticasUsuario" : {
+    "partidasGanadas" : 0,
+    "partidasPerdidas" : 0,
+    "trampasActivadas" : 0,
+    "cristalesObtenidos" : 0,
+    "laberintosJugados" : 0
+  }
+}, {
+  "nombreUsuario" : "Fabian",
+  "correo" : "6dGTJHBOPotqP1quU5XUgA==",
+  "contrasena" : "sL+1dleOk8pWQct4RFZ7vg==",
+  "guardadoPartida" : null,
+  "estadisticasUsuario" : {
+    "partidasGanadas" : 0,
+    "partidasPerdidas" : 0,
+    "trampasActivadas" : 0,
+    "cristalesObtenidos" : 0,
+    "laberintosJugados" : 0
   }
 } ]

@@ -25,10 +25,9 @@ public class MainApp extends Application {
         ArrayList<Usuario> usuarios = datos.cargarDatos();
         GestionUsuario.setListaUsuarios(usuarios);
         GestionUsuario.printUsuarios();
-        
 
         Pane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menuInicial.fxml")));
-        Scene scene = new Scene(root, 360, 360);
+        Scene scene = new Scene(root, 360, 365);
         stage.setTitle("Bienvenida");
         stage.setScene(scene);
         stage.setResizable(false);

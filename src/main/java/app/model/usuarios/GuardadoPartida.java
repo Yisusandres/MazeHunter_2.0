@@ -7,17 +7,20 @@ public class GuardadoPartida {
     private double tiempoGuardado;
     private int vidaGuardada;
     private boolean llaveObtenida;
+    private int[][] laberintoGuardado;
 
-    public GuardadoPartida(int cristalesGuardados, int energiaGuardada, int bombasGuardadas, double tiempoGuardado, int vidaGuardada, boolean llaveObtenida) {
+    public GuardadoPartida(int cristalesGuardados, int energiaGuardada, int bombasGuardadas, double tiempoGuardado, int vidaGuardada, boolean llaveObtenida, int[][] laberintoGuardado) {
         this.cristalesGuardados = cristalesGuardados;
         this.energiaGuardada = energiaGuardada;
         this.bombasGuardadas = bombasGuardadas;
         this.tiempoGuardado = tiempoGuardado;
         this.vidaGuardada = vidaGuardada;
         this.llaveObtenida = llaveObtenida;
+        this.laberintoGuardado = laberintoGuardado;
     }
 
     public GuardadoPartida() {
+        this.laberintoGuardado = null;
         this.cristalesGuardados = 0;
         this.energiaGuardada = 0;
         this.bombasGuardadas = 0;
@@ -72,5 +75,13 @@ public class GuardadoPartida {
 
     public void setLlaveObtenida(boolean llaveObtenida) {
         this.llaveObtenida = llaveObtenida;
+    }
+
+    public int[][] getLaberintoGuardado() {
+        return laberintoGuardado;
+    }
+
+    public void setLaberintoGuardado(int[][] laberintoGuardado) {
+        this.laberintoGuardado = laberintoGuardado;
     }
 }

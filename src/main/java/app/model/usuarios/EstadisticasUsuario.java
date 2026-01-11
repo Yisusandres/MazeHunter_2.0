@@ -1,29 +1,29 @@
 package app.model.usuarios;
 
 public class EstadisticasUsuario {
-    private float minutosJugados;
     private int partidasGanadas;
     private int partidasPerdidas;
     private int trampasActivadas;
     private int cristalesObtenidos;
+    private int laberintosJugados;
 
     public EstadisticasUsuario() {
     }
 
-    public EstadisticasUsuario(float minutosJugados, int partidasGanadas, int partidasPerdidas, int trampasActivadas, int cristalesObtenidos) {
-        this.minutosJugados = minutosJugados;
+    public EstadisticasUsuario(int partidasGanadas, int trampasActivadas, int partidasPerdidas, int cristalesObtenidos, int laberintosJugados) {
         this.partidasGanadas = partidasGanadas;
-        this.partidasPerdidas = partidasPerdidas;
         this.trampasActivadas = trampasActivadas;
+        this.partidasPerdidas = partidasPerdidas;
         this.cristalesObtenidos = cristalesObtenidos;
+        this.laberintosJugados = laberintosJugados;
     }
 
-    public float getMinutosJugados() {
-        return minutosJugados;
+    public int getLaberintosJugados() {
+        return laberintosJugados;
     }
 
-    public void setMinutosJugados(float minutosJugados) {
-        this.minutosJugados = minutosJugados;
+    public void setLaberintosJugados(int laberintosJugados) {
+        this.laberintosJugados = laberintosJugados;
     }
 
     public int getPartidasPerdidas() {

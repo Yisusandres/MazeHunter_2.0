@@ -6,13 +6,26 @@ public class Usuario {
     private String contrasena;
     private GuardadoPartida guardadoPartida;
     private EstadisticasUsuario estadisticasUsuario;
+    private int partidasGanadas;
+    private int partidasPerdidas;
+    private int trampasActivadas;
+    private int cristalesObtenidos;
+    private int laberintosJugados;
 
     public Usuario(String nombreUsuario, String correo, String contrasena) {
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;
         this.contrasena = contrasena;
         this.guardadoPartida = null;
-        this.estadisticasUsuario = new EstadisticasUsuario(0,0,0,0,0);
+        this.estadisticasUsuario = new EstadisticasUsuario(0,0,0,0, 0);
+    }
+
+    public Usuario(String nombreUsuario, String correo, String contrasena, GuardadoPartida guardadoPartida, EstadisticasUsuario estadisticasUsuario) {
+        this.nombreUsuario = nombreUsuario;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.guardadoPartida = guardadoPartida;
+        this.estadisticasUsuario = estadisticasUsuario;
     }
 
     public Usuario(){

@@ -24,7 +24,7 @@ public class MenuJuegoController extends ControllerBase{
 
     @FXML
     public void jugarNuevoLaberinto(ActionEvent event) throws Exception {
-        cambiarEscena("/app/laberintoNuevo.fxml", 500, 370, event);
+        cambiarEscena("/app/laberintoNuevo.fxml", 400, 320, event);
     }
     @FXML
     public void cargarLaberintoGuardado(ActionEvent event){

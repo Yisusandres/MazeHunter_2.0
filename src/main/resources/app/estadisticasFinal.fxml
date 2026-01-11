@@ -10,14 +10,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="281.0" prefWidth="458.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.VerEstadisticasController">
+<Pane prefHeight="281.0" prefWidth="458.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuInicialController">
    <children>
-      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="129.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../imagenes/textoTitulo/tituloEstadisticas.png" />
-         </image>
-      </ImageView>
-      <GridPane fx:id="estadisticasGridPane" gridLinesVisible="true" layoutX="11.0" layoutY="135.0" prefHeight="96.0" prefWidth="436.0" style="-fx-background-color: #300680;">
+      <GridPane fx:id="estadisticasGridPane" gridLinesVisible="true" layoutX="11.0" layoutY="85.0" prefHeight="90.0" prefWidth="436.0" style="-fx-background-color: #300680;">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
@@ -27,20 +22,20 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="42.66669464111328" minHeight="10.0" prefHeight="30.999979654947918" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="65.99999237060547" minHeight="10.0" prefHeight="59.66668701171875" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label fx:id="usuarioLabel" layoutX="46.0" layoutY="112.0" text="Usuario:" textFill="WHITE">
+      <Label fx:id="mensajeLabel" layoutX="145.0" layoutY="29.0" text="FELICIDADES" textFill="#00ff11">
          <font>
-            <Font name="Comic Sans MS Bold Italic" size="16.0" />
+            <Font name="Comic Sans MS Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="13.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="33.0" prefWidth="36.0" textAlignment="CENTER">
+      <Button fx:id="continuarButton" layoutX="379.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onContinuarButton" prefHeight="22.0" prefWidth="36.0" textAlignment="CENTER">
          <graphic>
-            <ImageView fitHeight="36.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="57.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/buttons/retroceder_button.png" />
+                  <Image url="@../imagenes/buttons/continuar_button.png" />
                </image>
             </ImageView>
          </graphic>
