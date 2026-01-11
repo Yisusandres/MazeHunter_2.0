@@ -59,7 +59,7 @@ public class LaberintoNuevoController extends ControllerBase{
 
     public void onAvanzado(ActionEvent event) {
         setLabelDificultad("46x66 a 55x75", "40", "25", "25");
-        dificultadLabel.setText("Dificil");
+        dificultadLabel.setText("Avanzado");
         setDificultadSeleccionada(4);
     }
 

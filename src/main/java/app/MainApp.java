@@ -30,7 +30,6 @@ public class MainApp extends Application {
         Scene scene = new Scene(root, 360, 365);
         stage.setTitle("Bienvenida");
         stage.setScene(scene);
-        stage.setResizable(false);
         stage.getIcons().add(image);
         stage.show();
     }
