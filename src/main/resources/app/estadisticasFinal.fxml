@@ -7,7 +7,7 @@
 
 <Pane prefHeight="281.0" prefWidth="458.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuInicialController">
    <children>
-      <GridPane fx:id="estadisticasGridPane" gridLinesVisible="true" layoutX="14.0" layoutY="96.0" prefHeight="90.0" prefWidth="436.0" style="-fx-background-color: #300680;">
+      <GridPane fx:id="estadisticasGridPane" gridLinesVisible="true" layoutX="11.0" layoutY="106.0" prefHeight="90.0" prefWidth="436.0" style="-fx-background-color: #300680;">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
