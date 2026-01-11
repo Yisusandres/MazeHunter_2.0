@@ -108,6 +108,10 @@ public class GestorLaberinto {
             System.out.println("Has recogido la llave! Ahora puedes abrir la salida del laberinto.");
             mapa[posicionSalida.first][posicionSalida.second].setTraspasable(true);
         }
+        else if(mapa[fila][columna].getTipo().equals("LlaveDeExplosion")) {
+            System.out.println("Has recogido la llave de explosion, ahora puedes poner bombas!");
+            jugador.setLlaveDeExplosion(true);
+        }
     }
 
     public boolean chequearSiEsSalida(int fila, int columna) {
@@ -162,6 +166,7 @@ public class GestorLaberinto {
         celdas.put("Jugador", 9);
         celdas.put("Llave", 10);
         celdas.put("Salida", 11);
+        celdas.put("LlaveDeExplosion", 12);
         String celda;
         Celda[][] mapa = laberinto.getLaberinto();
         for (int i = 0; i < laberinto.getFilas(); i++) {

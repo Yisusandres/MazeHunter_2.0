@@ -233,6 +233,12 @@ public class Laberinto {
                 numeroEnergias--;
             }
         }
+        int aleatorio1, aleatorio2;
+        do {
+            aleatorio1 = GestorLaberinto.aleatorio(1, filas - 2);
+            aleatorio2 = GestorLaberinto.aleatorio(1, columnas - 2);
+        } while(laberinto[aleatorio1][aleatorio2].getTipo().equals("Muro") || laberinto[aleatorio1][aleatorio2].getTipo().equals("MuroRojo") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Trampa") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Salida") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Llave") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Cristal") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Bomba") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Energia") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Vida") || laberinto[aleatorio1][aleatorio2].getTipo().equals("Jugador"));
+        laberinto[aleatorio1][aleatorio2] = new LLaveDeExplosion();
     }
 
     private Pair<Integer, Integer> seleccionarComienzo(Celda[][] laberinto) {

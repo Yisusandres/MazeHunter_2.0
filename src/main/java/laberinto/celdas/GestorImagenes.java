@@ -63,4 +63,8 @@ public class GestorImagenes {
     public ImageView getImagenEnergia() {
         return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/energia.png"))));
     }
+
+    public ImageView getImagenLlaveDeExplosion() {
+        return new ImageView(new Image(Objects.requireNonNull(GestorImagenes.class.getResourceAsStream("/imagenes/celdas/llaveDeExplosion.png"))));
+    }
 }

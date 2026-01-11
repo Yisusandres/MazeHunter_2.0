@@ -10,6 +10,7 @@ import java.util.List;
 
 public class Jugador extends Usuario {
     private boolean llave;
+    private boolean llaveDeExplosion;
     private double vida;
     private int cristales;
     private int energia;
@@ -30,6 +31,7 @@ public class Jugador extends Usuario {
     public Jugador(String nombreUsuario, String correo, String contrasena) {
         super(nombreUsuario, correo, contrasena);
         this.llave = false;
+        this.llaveDeExplosion = false;
         this.vida = 100;
         this.cristales = 0;
         this.energia = 100;
@@ -82,5 +84,12 @@ public class Jugador extends Usuario {
 
     public void aumentarBomba(){
         this.bombas += 1;
+    }
+
+    public boolean isLlaveDeExplosion() {
+        return llaveDeExplosion;
+    }
+    public void setLlaveDeExplosion(boolean llaveDeExplosion) {
+        this.llaveDeExplosion = llaveDeExplosion;
     }
 }

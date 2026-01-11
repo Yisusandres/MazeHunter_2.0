@@ -117,6 +117,11 @@ public class LaberintoController {
             gestor.quitarCaminosConPuntos();
             return;
         }
+        else if(!jugador.isLlaveDeExplosion()) {
+            System.out.println("No tienes la llave de explosion no puedes explotar muros rojos");
+            gestor.quitarCaminosConPuntos();
+            return;
+        }
         switch (event.getCode()) {
             case W:
                 filaObjetivo--;
