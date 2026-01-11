@@ -1,15 +1,4 @@
 [ {
-  "nombreUsuario" : "Jesus",
-  "correo" : "7pDt0BSR4kaTP0Gx8IxCEsWvpemcsM8uomMpf6XUO2w=",
-  "contrasena" : "oKW2OR+EAfBmq4MCkWLMNQ==",
-  "guardadoPartida" : null,
-  "partidasGanadas" : 0,
-  "partidasPerdidas" : 0,
-  "bombasRecolectadas" : 8,
-  "trampasActivadas" : 1,
-  "cristalesObtenidos" : 5,
-  "laberintosJugados" : 2
-}, {
   "nombreUsuario" : "Darwin",
   "correo" : "vjvkHArOQwoe6ugXKdhdnF6h3l+wzPWjpylMpuVhbC8=",
   "contrasena" : "Sq9H3RjWJPfrQeyi2otv9g==",
@@ -20,4 +9,15 @@
   "trampasActivadas" : 1,
   "cristalesObtenidos" : 4,
   "laberintosJugados" : 2
+}, {
+  "nombreUsuario" : "Jesus",
+  "correo" : "7pDt0BSR4kaTP0Gx8IxCEsWvpemcsM8uomMpf6XUO2w=",
+  "contrasena" : "oKW2OR+EAfBmq4MCkWLMNQ==",
+  "guardadoPartida" : null,
+  "partidasGanadas" : 0,
+  "partidasPerdidas" : 0,
+  "bombasRecolectadas" : 8,
+  "trampasActivadas" : 1,
+  "cristalesObtenidos" : 5,
+  "laberintosJugados" : 4
 } ]
