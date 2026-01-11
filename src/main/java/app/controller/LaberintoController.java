@@ -101,8 +101,18 @@ public class LaberintoController extends ControllerBase {
         }
         actualizarLaberinto();
         if (gestor.verificarVictoria()) {
+            GestorLaberinto.setHaPerdido(false);
             try {
-                cambiarEscenaDesdeNodo("/app/verEstadisticas.fxml", 500, 370, rootGridPane);
+                cambiarEscenaDesdeNodo("/app/estadisticasFinal.fxml", 500, 370, rootGridPane);
+            } catch (Exception e) {
+                System.out.println("Error al cargar la pantalla de victoria: " + e.getMessage());
+            }
+        }
+        if(gestor.verificarDerrota()) {
+            System.out.println("Has perdido...");
+            GestorLaberinto.setHaPerdido(true);
+            try {
+                cambiarEscenaDesdeNodo("/app/estadisticasFinal.fxml", 500, 370, rootGridPane);
             } catch (Exception e) {
                 System.out.println("Error al cargar la pantalla de victoria: " + e.getMessage());
             }

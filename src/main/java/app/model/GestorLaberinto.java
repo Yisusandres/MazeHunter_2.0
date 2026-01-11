@@ -1,7 +1,8 @@
 package app.model;
 
+import app.controller.LaberintoController;
+import app.model.usuarios.EstadisticasUsuario;
 import app.model.usuarios.Usuario;
-import app.repository.DatosJson;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import laberinto.Laberinto;
@@ -17,7 +18,6 @@ public class GestorLaberinto {
     private Pair<Integer, Integer> posicionSalida;
     private Pair<Integer, Integer> posicionJugador;
     private static ArrayList<Integer> celdasEnNumero = new ArrayList<>();
-    private DatosJson datosJson = new DatosJson();
 
 
     public static Usuario getUsuarioActivo() {
@@ -47,6 +47,14 @@ public class GestorLaberinto {
         return mapa[fila][columna].isTraspasable();
     }
 
+    public static Jugador getJugador() {
+        return jugador;
+    }
+
+    public static void setJugador(Jugador jugador) {
+        GestorLaberinto.jugador = jugador;
+    }
+
     public void derecha(int fila, int columna) {
         mover(fila, columna);
     }
@@ -71,10 +79,6 @@ public class GestorLaberinto {
             jugador.perderVida(20);
             System.out.println("Cuidado! Has caido en una trampa. Vida restante: " + jugador.getVida());
 
-            usuarioActivo.setTrampasActivadas(usuarioActivo.getTrampasActivadas()+1);
-            System.out.println(usuarioActivo.getCristalesObtenidos() + "- " + usuarioActivo.getCorreo());
-            GestionUsuario.actualizarUsuario(usuarioActivo);
-            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
         }
     }
 
@@ -84,12 +88,6 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Cristal")) {
             jugador.setCristales(jugador.getCristales() + aleatorio);
             System.out.println("Has recogido un cristal! Cristales: " + jugador.getCristales());
-
-            usuarioActivo.setCristalesObtenidos(usuarioActivo.getCristalesObtenidos()+aleatorio);
-            System.out.println(usuarioActivo.getCristalesObtenidos() + "- " + usuarioActivo.getCorreo());
-            GestionUsuario.actualizarUsuario(usuarioActivo);
-            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
-
         }
     }
 
@@ -112,14 +110,6 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Bomba")) {
             System.out.println("Has obtenido una bomba! Puedes usarla para destruir muros.");
             jugador.aumentarBomba();
-
-            usuarioActivo.setBombasRecolectadas(usuarioActivo.getBombasRecolectadas()+1);
-            System.out.println(usuarioActivo.getBombasRecolectadas() + "- " + usuarioActivo.getCorreo());
-            GestionUsuario.actualizarUsuario(usuarioActivo);
-            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
-
-
-
         }
     }
 
@@ -152,6 +142,19 @@ public class GestorLaberinto {
         int fila = laberinto.getSalidaPos().first;
         int columna = laberinto.getSalidaPos().second;
         return fila == getPosicionJugador().first && columna == getPosicionJugador().second && jugador.isLlave();
+    }
+    public boolean verificarDerrota() {
+        return jugador.getVida() <= 0;
+    }
+
+    private static boolean haPerdido;
+
+    public static boolean isHaPerdido() {
+        return haPerdido;
+    }
+
+    public static void setHaPerdido(boolean estado) {
+        haPerdido = estado;
     }
 
     public void mover(int fila, int columna) {
@@ -274,11 +277,5 @@ public class GestorLaberinto {
     }
 
 
-    public DatosJson getDatosJson() {
-        return datosJson;
-    }
 
-    public void setDatosJson(DatosJson datosJson) {
-        this.datosJson = datosJson;
-    }
 }
