@@ -26,6 +26,16 @@ public class Laberinto {
     private Pair<Integer, Integer> salidaPos;
     private Pair<Integer, Integer> llavePos;
     private Random random;
+    /**
+     * Constructor que inicializa las dimensiones, dificultad y genera la estructura del laberinto.
+     *
+     * @author Jesus Sifontes y Darwin Marcano
+     * @param filas Número de filas del laberinto.
+     * @param columnas Número de columnas del laberinto.
+     * @param dificultad Nivel de dificultad que determina la cantidad de obstáculos y objetos.
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     public Laberinto(int filas, int columnas, int dificultad) {
         this.filas = filas;
         this.columnas = columnas;
@@ -35,14 +45,36 @@ public class Laberinto {
         generarLaberinto();
     }
 
+    /**
+     * Obtiene la matriz bidimensional de celdas que representa el laberinto.
+     * @author Jesus Sifontes y Darwin Marcano
+     * @return La matriz de objetos Celda.
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     public Celda[][] getLaberinto() {
         return laberinto;
     }
 
+    /**
+     * Establece una nueva matriz de celdas para el laberinto.
+     * @author Jesus Sifontes y Darwin Marcano
+     * @param laberinto Matriz de celdas a asignar.
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     public void setLaberinto(Celda[][] laberinto) {
         this.laberinto = laberinto;
     }
 
+
+    /**
+     * Obtiene la cantidad total de filas del laberinto.
+     * @author Jesus Sifontes y Darwin Marcano
+     * @return Entero con el número de filas.
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     public int getFilas() {
         return filas;
     }
@@ -179,7 +211,7 @@ public class Laberinto {
             numeroTrampas = 40;
             numeroEnergias = 25;
         }
-        
+
         Random rand = new Random();
         int max = filas - 1;
         int min = 1;
@@ -216,7 +248,7 @@ public class Laberinto {
                 numeroCristales--;
             }
         }
-        
+
         rand = new Random();
         max = filas - 2;
         while(numeroBombas > 0) {
@@ -228,7 +260,7 @@ public class Laberinto {
             }
         }
 
-        
+
         rand = new Random();
         max = filas - 1;
         while(numeroEnergias > 0) {
@@ -469,17 +501,5 @@ public class Laberinto {
             laberinto[posicion.first][posicion.second + 1] = new Camino();
             return;
         }
-    }
-    public void imprimirLaberinto() {
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                System.out.print(laberinto[i][j].getTipo());
-            }
-            System.out.println();
-        }
-    }
-
-    public static void main(String[] args) {
-        Laberinto laberinto = new Laberinto(15, 25, 1);
     }
 }
