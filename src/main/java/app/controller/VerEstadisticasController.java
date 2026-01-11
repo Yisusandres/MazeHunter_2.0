@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
-public class VerEstadisticasController extends ControllerBase{
+public class VerEstadisticasController extends ControllerBase {
 
     @FXML
     private Button backButton;

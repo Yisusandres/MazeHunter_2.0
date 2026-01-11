@@ -24,6 +24,7 @@
           <MenuItem fx:id="facilMenuItem" mnemonicParsing="false" onAction="#onFacil" text="Facil" />
           <MenuItem fx:id="normalMenuItem" mnemonicParsing="false" onAction="#onNormal" text="Normal" />
             <MenuItem fx:id="dificilMenuItem" mnemonicParsing="false" onAction="#onDificil" text="Dificil" />
+            <MenuItem fx:id="avanzadoMenuItem" mnemonicParsing="false" onAction="#onAvanzado" text="Avanzado" />
         </items>
          <font>
             <Font name="Consolas Bold" size="12.0" />

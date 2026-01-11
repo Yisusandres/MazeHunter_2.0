@@ -16,7 +16,7 @@ import laberinto.Laberinto;
 import laberinto.celdas.Celda;
 import laberinto.celdas.GestorImagenes;
 
-public class LaberintoController {
+public class LaberintoController extends ControllerBase {
 
     public static int filas;
     public static int columnas;
@@ -100,6 +100,13 @@ public class LaberintoController {
             manejarMovimientoNormal(event);
         }
         actualizarLaberinto();
+        if (gestor.verificarVictoria()) {
+            try {
+                cambiarEscenaDesdeNodo("/app/verEstadisticas.fxml", 500, 370, rootGridPane);
+            } catch (Exception e) {
+                System.out.println("Error al cargar la pantalla de victoria: " + e.getMessage());
+            }
+        }
     }
 
     private void activarModoBomba() {

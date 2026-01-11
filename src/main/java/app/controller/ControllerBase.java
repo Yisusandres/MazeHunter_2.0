@@ -13,4 +13,12 @@ public class ControllerBase implements ICambioDeScene {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void cambiarEscenaDesdeNodo(String fxmlFilePath, double width, double height, javafx.scene.Node node) throws Exception {
+        Pane root = javafx.fxml.FXMLLoader.load(java.util.Objects.requireNonNull(getClass().getResource(fxmlFilePath)));
+        Stage stage = (Stage) node.getScene().getWindow();
+        Scene scene = new Scene(root, width, height);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

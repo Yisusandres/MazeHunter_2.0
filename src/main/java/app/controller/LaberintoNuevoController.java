@@ -57,6 +57,12 @@ public class LaberintoNuevoController extends ControllerBase{
         setDificultadSeleccionada(3);
     }
 
+    public void onAvanzado(ActionEvent event) {
+        setLabelDificultad("46x66 a 55x75", "40", "25", "25");
+        dificultadLabel.setText("Dificil");
+        setDificultadSeleccionada(4);
+    }
+
     public void onContinuar(ActionEvent event) throws IOException {
         String nombre = usuario.getNombreUsuario();
         String correo = usuario.getCorreo();
@@ -132,6 +138,11 @@ public class LaberintoNuevoController extends ControllerBase{
             } else{
                 columnas = filas + 20;
             }
+            tamano.first = filas;
+            tamano.second = columnas;
+        } else if(dificultad == 4) {
+            filas = GestorLaberinto.aleatorio(46, 75);
+            columnas = filas + 20;
             tamano.first = filas;
             tamano.second = columnas;
         }

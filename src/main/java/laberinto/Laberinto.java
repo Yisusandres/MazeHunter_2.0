@@ -173,6 +173,12 @@ public class Laberinto {
                 }
             }
         }
+
+        if(this.dificultad == 4) {
+            numeroBombas = 25;
+            numeroTrampas = 40;
+            numeroEnergias = 25;
+        }
         
         Random rand = new Random();
         int max = filas - 1;

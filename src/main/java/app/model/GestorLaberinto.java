@@ -130,6 +130,11 @@ public class GestorLaberinto {
     public boolean chequearSiEsSalida(int fila, int columna) {
         return fila == posicionSalida.first && columna == posicionSalida.second;
     }
+    public boolean verificarVictoria() {
+        int fila = laberinto.getSalidaPos().first;
+        int columna = laberinto.getSalidaPos().second;
+        return fila == getPosicionJugador().first && columna == getPosicionJugador().second && jugador.isLlave();
+    }
 
     public void mover(int fila, int columna) {
 
@@ -147,12 +152,13 @@ public class GestorLaberinto {
         chequearSiEsLlave(fila, columna);
         if(chequearSiEsSalida(fila, columna)) {
             if(jugador.isLlave()) {
+                posicionJugador.first = laberinto.getSalidaPos().first;
+                posicionJugador.second = laberinto.getSalidaPos().second;
                 System.out.println("Felicidades! Has salido del laberinto.");
-                return;
             } else {
                 System.out.println("Necesitas la llave para salir del laberinto.");
-                return;
             }
+            return;
         }
 
         mapa[posicionJugador.first][posicionJugador.second] = new Celda();
