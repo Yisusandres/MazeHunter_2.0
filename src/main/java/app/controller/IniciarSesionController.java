@@ -51,6 +51,7 @@ public class IniciarSesionController extends ControllerBase{
         if (correo.equals("jjj")){
             System.out.println("Correo de administrador detectado");
             MenuJuegoController.setUsuario(listaUsuarios.getFirst());
+            GestorLaberinto.setUsuarioActivo(listaUsuarios.getFirst());
             try {
                 cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
             } catch (Exception e) {

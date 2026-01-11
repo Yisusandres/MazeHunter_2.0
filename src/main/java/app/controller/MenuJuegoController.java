@@ -32,7 +32,7 @@ public class MenuJuegoController extends ControllerBase{
     }
     @FXML
     public void verEstadisticas(ActionEvent event) throws Exception {
-        cambiarEscena("/app/verEstadisticas.fxml", 350, 370, event);
+        cambiarEscena("/app/verEstadisticas.fxml", 500, 350, event);
 
     }
     @FXML

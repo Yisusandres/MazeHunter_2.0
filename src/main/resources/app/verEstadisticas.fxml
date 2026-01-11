@@ -8,30 +8,147 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="281.0" prefWidth="458.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.VerEstadisticasController">
+<Pane prefHeight="281.0" prefWidth="537.0" style="-fx-background-color: #1A022B;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.VerEstadisticasController">
    <children>
-      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="129.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="169.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/textoTitulo/tituloEstadisticas.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="estadisticasGridPane" gridLinesVisible="true" layoutX="11.0" layoutY="135.0" prefHeight="96.0" prefWidth="436.0" style="-fx-background-color: #300680;">
+      <GridPane fx:id="estadisticasGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="11.0" layoutY="135.0" prefHeight="73.0" prefWidth="513.0" style="-fx-background-color: #300680;">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="109.66666666666667" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="86.33331298828125" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="81.66668701171876" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="88.33335367838544" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="92.00002034505206" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="95.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="81.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="53.66668701171875" minHeight="10.0" prefHeight="47.66668701171875" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="69.33334350585938" minHeight="10.0" prefHeight="42.33331298828125" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <VBox>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="Laberintos" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="90.0" text="Ganados" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="1">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="Laberintos" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="90.0" text="Perdidos" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="2">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="Laberintos" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="90.0" text="Jugados" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="3">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="Trampas" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="90.0" text="Activadas" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="4">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="Cristales" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="90.0" text="Recolectados" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="39.0" prefWidth="61.0" GridPane.columnIndex="5">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="Bombas" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="90.0" text="Recolectadas" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label fx:id="laberintosGanados" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="0" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="laberintosPerdidos" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="laberintosJugados" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="0" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="trampasActivadas" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="0" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="cristalesRecolectados" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="0" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="bombasRecolectadas" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="90.0" text="0" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Label>
+         </children>
       </GridPane>
-      <Label fx:id="usuarioLabel" layoutX="46.0" layoutY="112.0" text="Usuario:" textFill="WHITE">
+      <Label fx:id="usuarioLabel" layoutX="11.0" layoutY="112.0" text="Usuario:" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold Italic" size="16.0" />
          </font>

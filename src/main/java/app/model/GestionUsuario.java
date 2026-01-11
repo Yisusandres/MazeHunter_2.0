@@ -2,6 +2,7 @@ package app.model;
 
 import app.model.usuarios.Usuario;
 import app.repository.DatosJson;
+import app.service.Encriptacion;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -16,20 +17,11 @@ public class GestionUsuario {
     public GestionUsuario() {
         listaUsuarios = new ArrayList<>();
     }
-    public static Usuario usuarioActivo;
 
     public static void printUsuarios(){
         for (Usuario u: listaUsuarios) {
             System.out.println("Nombre: " + u.getNombreUsuario() + ", Correo: " + u.getCorreo());
         }
-    }
-
-    public static Usuario getUsuarioActivo() {
-        return usuarioActivo;
-    }
-
-    public static void setUsuarioActivo(Usuario usuarioActivo) {
-        GestionUsuario.usuarioActivo = usuarioActivo;
     }
 
     public static ArrayList<Usuario> getListaUsuarios() {
@@ -86,8 +78,12 @@ public class GestionUsuario {
         return "Usuario no existe";
     }
 
-    public static void guardarEnJSON(){
-        DatosJson datosJson = new DatosJson();
-        datosJson.actualizarDatos(listaUsuarios);
+    public static void actualizarUsuario(Usuario usuario){
+        for (Usuario user : listaUsuarios){
+            if (user.getCorreo().equals(usuario.getCorreo())){
+                listaUsuarios.remove(user);
+                listaUsuarios.add(usuario);
+            }
+        }
     }
 }

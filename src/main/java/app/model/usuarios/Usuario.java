@@ -5,27 +5,39 @@ public class Usuario {
     private String correo;
     private String contrasena;
     private GuardadoPartida guardadoPartida;
-    private EstadisticasUsuario estadisticasUsuario;
     private int partidasGanadas;
     private int partidasPerdidas;
+    private int bombasRecolectadas;
     private int trampasActivadas;
     private int cristalesObtenidos;
     private int laberintosJugados;
+
+    // Nuevo usuario
+
 
     public Usuario(String nombreUsuario, String correo, String contrasena) {
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;
         this.contrasena = contrasena;
-        this.guardadoPartida = null;
-        this.estadisticasUsuario = new EstadisticasUsuario(0,0,0,0, 0);
+        this.partidasGanadas = 0;
+        this.partidasPerdidas = 0;
+        this.laberintosJugados = 0;
+        this.bombasRecolectadas = 0;
+        this.cristalesObtenidos = 0;
+        this.trampasActivadas = 0;
     }
 
-    public Usuario(String nombreUsuario, String correo, String contrasena, GuardadoPartida guardadoPartida, EstadisticasUsuario estadisticasUsuario) {
+    public Usuario(String nombreUsuario, int laberintosJugados, int cristalesObtenidos, int trampasActivadas, int bombasRecolectadas, int partidasPerdidas, int partidasGanadas, GuardadoPartida guardadoPartida, String contrasena, String correo) {
         this.nombreUsuario = nombreUsuario;
-        this.correo = correo;
-        this.contrasena = contrasena;
+        this.laberintosJugados = laberintosJugados;
+        this.cristalesObtenidos = cristalesObtenidos;
+        this.trampasActivadas = trampasActivadas;
+        this.bombasRecolectadas = bombasRecolectadas;
+        this.partidasPerdidas = partidasPerdidas;
+        this.partidasGanadas = partidasGanadas;
         this.guardadoPartida = guardadoPartida;
-        this.estadisticasUsuario = estadisticasUsuario;
+        this.contrasena = contrasena;
+        this.correo = correo;
     }
 
     public Usuario(){
@@ -63,11 +75,51 @@ public class Usuario {
         this.guardadoPartida = guardadoPartida;
     }
 
-    public EstadisticasUsuario getEstadisticasUsuario() {
-        return estadisticasUsuario;
+    public int getPartidasGanadas() {
+        return partidasGanadas;
     }
 
-    public void setEstadisticasUsuario(EstadisticasUsuario estadisticasUsuario) {
-        this.estadisticasUsuario = estadisticasUsuario;
+    public void setPartidasGanadas(int partidasGanadas) {
+        this.partidasGanadas = partidasGanadas;
+    }
+
+    public int getPartidasPerdidas() {
+        return partidasPerdidas;
+    }
+
+    public void setPartidasPerdidas(int partidasPerdidas) {
+        this.partidasPerdidas = partidasPerdidas;
+    }
+
+    public int getBombasRecolectadas() {
+        return bombasRecolectadas;
+    }
+
+    public void setBombasRecolectadas(int bombasRecolectadas) {
+        this.bombasRecolectadas = bombasRecolectadas;
+    }
+
+    public int getTrampasActivadas() {
+        return trampasActivadas;
+    }
+
+    public void setTrampasActivadas(int trampasActivadas) {
+        this.trampasActivadas = trampasActivadas;
+    }
+
+    public int getCristalesObtenidos() {
+        return cristalesObtenidos;
+    }
+
+    public void setCristalesObtenidos(int cristalesObtenidos) {
+        this.cristalesObtenidos = cristalesObtenidos;
+    }
+
+    public int getLaberintosJugados() {
+        return laberintosJugados;
+    }
+
+    public void setLaberintosJugados(int laberintosJugados) {
+        this.laberintosJugados = laberintosJugados;
     }
 }

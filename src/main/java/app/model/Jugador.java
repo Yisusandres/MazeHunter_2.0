@@ -84,6 +84,7 @@ public class Jugador extends Usuario {
 
     public void aumentarBomba(){
         this.bombas += 1;
+        System.out.println(this.bombas);
     }
 
     public boolean isLlaveDeExplosion() {
