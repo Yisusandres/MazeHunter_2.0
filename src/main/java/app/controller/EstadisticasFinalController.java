@@ -12,50 +12,49 @@ import javafx.scene.layout.GridPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EstadisticasFinalController extends ControllerBase implements Initializable {
-    @FXML private Button continuarButton;
-
-    @FXML private GridPane estadisticasGridPane;
-
-    @FXML private Label mensajeLabel;
-
-    @FXML private Label bombasObtenidasLabel;
-
-    @FXML private Label cristalesObtenidosLabel;
-
-    @FXML private Label energiaObtenidaLabel;
-
-    @FXML private Label trampasActivadasLabel;
-
-    @FXML private Label vidaExtraObtenidaLabel;
-
-    @FXML private Label vidaRestanteLabel;
+public class EstadisticasFinalController extends ControllerBase{
+    @FXML
+    private Label bombasObtenidas;
 
     @FXML
-    void onBackButton(ActionEvent event) throws Exception {
-        cambiarEscena("/app/menuJuego.fxml", 500, 370, event);
-    }
+    private Label cristalesRecolectados;
 
     @FXML
-    void onContinuarButton(ActionEvent event) {
+    private Label energiaRestante;
 
+    @FXML
+    private GridPane estadisticasGridPane;
+
+    @FXML
+    private Label mensajeLabel;
+
+    @FXML
+    private Label trampasActivadas;
+
+    @FXML
+    private Label vidaRestante;
+
+    @FXML
+    private Label vidasExtraObtenidas;
+
+    @FXML
+    public void onContinuarButton(ActionEvent event) throws Exception {
+        cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
         Jugador jugadorParaEstadisticas = GestorLaberinto.getJugador();
         System.out.println(jugadorParaEstadisticas.getVida());
         System.out.println(jugadorParaEstadisticas.getCristales());
         System.out.println(jugadorParaEstadisticas.getBombas());
         System.out.println(jugadorParaEstadisticas.getEnergia());
-        /*
-        vidaRestanteLabel.setText(String.valueOf(jugadorParaEstadisticas.getVida()));
-        cristalesObtenidosLabel.setText(String.valueOf(jugadorParaEstadisticas.getCristales()));
-        vidaExtraObtenidaLabel.setText(String.valueOf("0"));
-        trampasActivadasLabel.setText("0");
-        bombasObtenidasLabel.setText(String.valueOf(jugadorParaEstadisticas.getBombas()));
-        energiaObtenidaLabel.setText(String.valueOf(jugadorParaEstadisticas.getEnergia()));*/
+
+        vidaRestante.setText(String.valueOf(jugadorParaEstadisticas.getVida()));
+        cristalesRecolectados.setText(String.valueOf(jugadorParaEstadisticas.getCristales()));
+        vidasExtraObtenidas.setText(String.valueOf("0"));
+        trampasActivadas.setText("0");
+        bombasObtenidas.setText(String.valueOf(jugadorParaEstadisticas.getBombas()));
+        energiaRestante.setText(String.valueOf(jugadorParaEstadisticas.getEnergia()));
 
         if (GestorLaberinto.isHaPerdido()) {
             mensajeLabel.setText("PERDISTE");

@@ -2,6 +2,7 @@ package app.model;
 
 import app.controller.LaberintoController;
 import app.model.usuarios.Usuario;
+import app.repository.DatosJson;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import laberinto.Laberinto;
@@ -17,6 +18,7 @@ public class GestorLaberinto {
     private Pair<Integer, Integer> posicionSalida;
     private Pair<Integer, Integer> posicionJugador;
     private static ArrayList<Integer> celdasEnNumero = new ArrayList<>();
+    private final DatosJson datosJson = new DatosJson();
 
 
     public static Usuario getUsuarioActivo() {
@@ -77,7 +79,10 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Trampa")) {
             jugador.perderVida(20);
             System.out.println("Cuidado! Has caido en una trampa. Vida restante: " + jugador.getVida());
-
+            usuarioActivo.setTrampasActivadas(usuarioActivo.getTrampasActivadas()+1);
+            System.out.println(usuarioActivo.getTrampasActivadas() + " - " + usuarioActivo.getCorreo());
+            GestionUsuario.actualizarUsuario(usuarioActivo);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
         }
     }
 
@@ -87,6 +92,10 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Cristal")) {
             jugador.setCristales(jugador.getCristales() + aleatorio);
             System.out.println("Has recogido un cristal! Cristales: " + jugador.getCristales());
+            usuarioActivo.setCristalesObtenidos(usuarioActivo.getCristalesObtenidos()+aleatorio);
+            System.out.println(usuarioActivo.getCristalesObtenidos() + " - " + usuarioActivo.getCorreo());
+            GestionUsuario.actualizarUsuario(usuarioActivo);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
         }
     }
 
@@ -109,6 +118,10 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Bomba")) {
             System.out.println("Has obtenido una bomba! Puedes usarla para destruir muros.");
             jugador.aumentarBomba();
+            usuarioActivo.setBombasRecolectadas(usuarioActivo.getBombasRecolectadas()+1);
+            System.out.println(usuarioActivo.getBombasRecolectadas() + " - " + usuarioActivo.getCorreo());
+            GestionUsuario.actualizarUsuario(usuarioActivo);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
         }
     }
 
