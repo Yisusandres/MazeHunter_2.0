@@ -1,9 +1,11 @@
 package app.controller;
 
 import app.TestLaberinto;
+import app.model.GestionUsuario;
 import app.model.GestorLaberinto;
 import app.model.Jugador;
 import app.model.usuarios.Usuario;
+import app.repository.DatosJson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +32,15 @@ public class LaberintoNuevoController extends ControllerBase{
 
     Stage stage;
     public static Usuario usuario = new Usuario();
+    private DatosJson datosJson = new DatosJson();
+
+    public DatosJson getDatosJson() {
+        return datosJson;
+    }
+
+    public void setDatosJson(DatosJson datosJson) {
+        this.datosJson = datosJson;
+    }
 
     public void initialize() {
         usuario = MenuJuegoController.getUsuario();
@@ -74,6 +85,10 @@ public class LaberintoNuevoController extends ControllerBase{
         System.out.println("Tamano laberinto: " + tamano.first + "x" + tamano.second);
         LaberintoController.setDificultad(dificultadSeleccionada);
 
+        usuario.setLaberintosJugados(usuario.getLaberintosJugados()+1);
+        System.out.println(usuario.getLaberintosJugados() + "- " + usuario.getCorreo());
+        GestionUsuario.actualizarUsuario(usuario);
+        datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
         /*
         Pane root = javafx.fxml.FXMLLoader.load(java.util.Objects.requireNonNull(getClass().getResource("laberinto.fxml")));
         Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
@@ -94,7 +109,7 @@ public class LaberintoNuevoController extends ControllerBase{
     }
 
     public void onBackButton(ActionEvent event) throws Exception {
-        cambiarEscena("/app/laberintoNuevo.fxml", 500, 370, event);
+        cambiarEscena("/app/menuInicial.fxml", 380, 340, event);
     }
 
     public void setLabelDificultad(String tamano, String trampas, String energia, String bomba) {

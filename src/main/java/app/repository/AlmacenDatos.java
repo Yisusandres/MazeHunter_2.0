@@ -13,4 +13,8 @@ public abstract class AlmacenDatos{
     public ArrayList<Usuario> cargarDatos() {
         return new ArrayList<>();
     }
+
+    public void nuevosUsuarios(){
+        System.out.println("x");
+    }
 }

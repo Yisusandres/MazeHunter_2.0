@@ -21,6 +21,11 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        /*
+        AlmacenDatos datos = new DatosJson();
+        datos.nuevosUsuarios();
+        */
+
         AlmacenDatos datos = new DatosJson();
         ArrayList<Usuario> usuarios = datos.cargarDatos();
         GestionUsuario.setListaUsuarios(usuarios);

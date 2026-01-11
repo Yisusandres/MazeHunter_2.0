@@ -1,7 +1,6 @@
 package app.model;
 
 import app.controller.LaberintoController;
-import app.model.usuarios.EstadisticasUsuario;
 import app.model.usuarios.Usuario;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;

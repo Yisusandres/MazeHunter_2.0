@@ -1,5 +1,6 @@
 package app.repository;
 
+import app.model.GestionUsuario;
 import app.model.usuarios.Usuario;
 import app.service.Encriptacion;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -15,7 +16,7 @@ public class DatosJson extends AlmacenDatos{
     static String direccionArchivo = "src/main/resources/JSON/usuarios.json";
 
 
-    public  ArrayList<Usuario> cargarDatos() {
+    public ArrayList<Usuario> cargarDatos() {
         File archivoUsuarios = new File(direccionArchivo);
 
         Encriptacion desencriptador = new Encriptacion();
@@ -49,18 +50,35 @@ public class DatosJson extends AlmacenDatos{
     }
 
     public void actualizarDatos(ArrayList<Usuario> listaUsuarios) {
+        ArrayList<Usuario> usuariosNuevos;
+        usuariosNuevos = listaUsuarios;
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         File archivoUsuarios = new File(direccionArchivo);
         Encriptacion encriptacion = new Encriptacion();
-        for (Usuario user : listaUsuarios){
+        for (Usuario user : usuariosNuevos){
             user.setCorreo(encriptacion.encriptar(user.getCorreo()));
             user.setContrasena(encriptacion.encriptar(user.getContrasena()));
         }
         try {
-            mapper.writeValue(archivoUsuarios, listaUsuarios);
+            mapper.writeValue(archivoUsuarios, usuariosNuevos);
         } catch (IOException e) {
             System.out.println("Error al actualizar usuarios: " + e.getMessage());
         }
+        for (Usuario user : usuariosNuevos){
+            user.setCorreo(encriptacion.desencriptar(user.getCorreo()));
+            user.setContrasena(encriptacion.desencriptar(user.getContrasena()));
+        }
+        GestionUsuario.setListaUsuarios(usuariosNuevos);
+    }
+
+    public void nuevosUsuarios(){
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(new Usuario("Jesus", "jasifontes@gmail.com", "12345"));
+        usuarios.add(new Usuario("Darwin", "dbmarcano@gmail.com", "54321"));
+        GestionUsuario.setListaUsuarios(usuarios);
+        actualizarDatos(GestionUsuario.getListaUsuarios());
+        GestionUsuario.printUsuarios();
+
     }
 
 }
