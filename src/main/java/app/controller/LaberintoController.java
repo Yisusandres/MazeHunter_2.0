@@ -20,7 +20,12 @@ import javafx.scene.layout.Pane;
 import laberinto.Laberinto;
 import laberinto.celdas.Celda;
 import laberinto.celdas.GestorImagenes;
-
+/**
+ * Clase encargada de manejar la interfaz grafica del laberinto 
+ * @author Jesus Sifontes
+ * @version 22.0.2
+ * @since 11-01-2026
+ */
 public class LaberintoController extends ControllerBase {
 
     public static int filas;
@@ -45,14 +50,30 @@ public class LaberintoController extends ControllerBase {
     public static Jugador jugador;
     private static Usuario usuario = GestorLaberinto.getUsuarioActivo();
     private static DatosJson datosJson = new DatosJson();
+    /**
+     * Obtiene el jugador actual
+     * Proporciona métodos para la autenticación, búsqueda, registro y recuperación de credenciales.
+     * @author Jesus Sifontes
+     * @return Jugador 
+     */
     public static Jugador getJugador() {
         return jugador;
     }
 
+    /**
+     * Establece el jugador actual
+     * @author Jesus Sifontes
+     * @param jugador 
+     */
     public static void setJugador(Jugador jugador) {
         LaberintoController.jugador = jugador;
     }
 
+    /**
+     * Establece la matriz correspondiente a la partida anterior del jugador actual
+     * @author Jesus Sifontes
+     * @param matrizLaberinto 
+     */
     public static void setMatrizLaberinto(Celda[][] matrizLaberinto) {
         LaberintoController.matrizLaberinto = matrizLaberinto;
     }
@@ -94,7 +115,11 @@ public class LaberintoController extends ControllerBase {
         }
     }*/
 
-
+    /**
+     * Metodo que funciona para manejar toda la logica de juego
+     * @author Darwin Marcano y Jesus Sifontes
+     * @param event 
+     */
     public void manejarTeclado(KeyEvent event) {
         if (event.getCode() == KeyCode.F) {
             if (!modoBombaActivo) {
@@ -155,6 +180,10 @@ public class LaberintoController extends ControllerBase {
         }
     }
 
+    /**
+     * Metodo para verificar si el usuario desea activar el radar de bombas
+     * @author Darwin Marcano
+     */
     private void activarModoBomba() {
         modoBombaActivo = true;
         filaObjetivo = gestor.getPosicionJugador().first;
@@ -162,6 +191,10 @@ public class LaberintoController extends ControllerBase {
         gestor.radearBomba(filaObjetivo, columnaObjetivo);
     }
 
+    /**
+     * Metodo para manejar la logica de explosion de bombas
+     * @author Darwin Marcano
+     */
     private void manejarSeleccionBomba(KeyEvent event) {
         if (jugador.getBombas() == 0 ){
             System.out.println("No tienes bombas disponibles");
@@ -199,6 +232,10 @@ public class LaberintoController extends ControllerBase {
         actualizarLaberinto();
     }
 
+    /**
+     * Metodo para manejar el movimiento del jugador con teclas WASD
+     * @author Darwin Marcano
+     */
     private void manejarMovimientoNormal(KeyEvent event) {
         Command comando = null;
         int fila = gestor.getPosicionJugador().first;
@@ -216,6 +253,10 @@ public class LaberintoController extends ControllerBase {
         }
     }
 
+    /**
+     * Establece los valores de tamanio para el GridPane
+     * @author Jesus Sifontes 
+     */
     public void initialize() {
         usuario = GestorLaberinto.getUsuarioActivo();
 
@@ -251,6 +292,10 @@ public class LaberintoController extends ControllerBase {
         }
     }
 
+    /**
+     * Metodo para actualizar la vista del laberinto con cada movimiento
+     * @author Jesus Sifontes
+     */
     public void actualizarLaberinto() {
         Celda[][] matrizLaberinto = laberinto.getLaberinto();
 
@@ -276,37 +321,82 @@ public class LaberintoController extends ControllerBase {
     }
 
 
+    /**
+     * Obtiene el numero de filas
+     * @author Jesus Sifontes
+     * @return int numero de filas 
+     */
     public static int getFilas() {
         return filas;
     }
 
+    /**
+     * Establece el numero de filas
+     * @author Jesus Sifontes
+     * @param filas
+     */
     public static void setFilas(int filas) {
         LaberintoController.filas = filas;
     }
 
+    /**
+     * Obtiene el numero de columnas
+     * @author Jesus Sifontes
+     * @return int numero de columnas 
+     */
     public static int getColumnas() {
         return columnas;
     }
 
+    /**
+     * Establece el numero de columnas
+     * @author Jesus Sifontes
+     * @param columnas
+     */
     public static void setColumnas(int columnas) {
         LaberintoController.columnas = columnas;
     }
 
+    /**
+     * Obtiene la dificultad seleccionada
+     * @author Jesus Sifontes
+     * @return int numero de dificultad 
+     */
     public static int getDificultad() {
         return dificultad;
     }
 
+    /**
+     * Establece la dificultad del laberinto correspondiente
+     * @author Jesus Sifontes
+     * @param dificultad
+     */
     public static void setDificultad(int dificultad) {
         LaberintoController.dificultad = dificultad;
     }
 
+    /**
+     * Obtiene el laberinto del jugador
+     * @author Jesus Sifontes
+     * @return Laberinto 
+     */
     public static Laberinto getLaberinto() {
         return laberinto;
     }
 
+    /**
+     * Establece el laberinto
+     * @author Jesus Sifontes
+     * @param laberinto
+     */
     public static void setLaberinto(Laberinto laberinto) {
         LaberintoController.laberinto = laberinto;
     }
+    /**
+     * Metodo que devuelve al usuario a la ventana anterior
+     * @author Jesus Sifontes
+     * @param event
+     */
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
         GuardadoPartida guardadoPartida = new GuardadoPartida();
@@ -316,6 +406,11 @@ public class LaberintoController extends ControllerBase {
         cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
     }
 
+    /**
+     * Establece el gestor para obtener datos guardados
+     * @author Jesus Sifontes
+     * @param gestor
+     */
     public static void setGestor(GestorLaberinto gestor) {
         LaberintoController.gestor = gestor;
     }
