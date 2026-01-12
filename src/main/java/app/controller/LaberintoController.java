@@ -395,7 +395,6 @@ public class LaberintoController extends ControllerBase {
     /**
      * Metodo que devuelve al usuario a la ventana anterior
      * @author Jesus Sifontes
-     * @param event
      */
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
@@ -409,7 +408,6 @@ public class LaberintoController extends ControllerBase {
     /**
      * Establece el gestor para obtener datos guardados
      * @author Jesus Sifontes
-     * @param gestor
      */
     public static void setGestor(GestorLaberinto gestor) {
         LaberintoController.gestor = gestor;

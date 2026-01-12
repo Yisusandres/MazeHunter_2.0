@@ -15,6 +15,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Clase encargada de manejar la interfaz grafica del inicio de sesion
+ * @author Jesus Sifontes
+ * @version 22.0.2
+ * @since 11-01-2026
+ */
 public class IniciarSesionController extends ControllerBase{
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
@@ -27,15 +33,27 @@ public class IniciarSesionController extends ControllerBase{
     @FXML private Label errorCorreo;
     @FXML private Label errorAutenticacion;
 
+    /**
+     * Metodo que se ejecuta al ejecutar el archivo .fxml
+     * @author Jesus Sifontes
+     */
     public void initialize(){
         listaUsuarios = GestionUsuario.getListaUsuarios();
     }
 
+    /**
+     * Metodo que devuelve al usuario a la ventana anterior
+     * @author Jesus Sifontes
+     */
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/menuInicial.fxml", 350, 370, event);
     }
 
+    /**
+     * Metodo que controla la logica del boton iniciar sesion
+     * @author Jesus Sifontes
+     */
     @FXML
     public void onLoginButton(ActionEvent event) {
         String correo = campoCorreo.getText().strip();
@@ -90,6 +108,10 @@ public class IniciarSesionController extends ControllerBase{
     }
 
 
+    /**
+     * Metodo que maneja la logica de contrasena
+     * @author Jesus Sifontes
+     */
     @FXML
     public void verContrasena() {
         String contrasena = "";
@@ -106,6 +128,10 @@ public class IniciarSesionController extends ControllerBase{
         }
     }
 
+    /**
+     * Metodo que dirige al usuario a otra ventana para manejo de contrasena
+     * @author Jesus Sifontes
+     */
     @FXML
     public void onRecuperarContrasena(ActionEvent event) throws Exception {
         cambiarEscena("/app/recuperarContrasena.fxml", 264, 204, event);
