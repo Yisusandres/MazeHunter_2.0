@@ -49,6 +49,12 @@ public class VerEstadisticasController extends ControllerBase {
         cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
     }
 
+    /**
+     * Inicializar verEstadisticas.fxml
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     public void initialize(){
         usuario = GestorLaberinto.getUsuarioActivo();
         usuarioLabel.setText(usuario.getNombreUsuario());
