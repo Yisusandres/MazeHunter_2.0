@@ -35,12 +35,24 @@ public class RegistrarController extends ControllerBase{
     @FXML private Label errorContrasena;
     @FXML private Label errorCorreo;
     @FXML private Label errorNombreUsuario;
-
+    /**
+     * Cambiar escena al menu Inicial
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/menuInicial.fxml", 350, 370, event);
     }
-
+    /**
+     * Cambiar escena al menu de juego y crear usuario
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void onCrearButton(ActionEvent event) throws Exception {
         String correo = campoCorreo.getText().strip();

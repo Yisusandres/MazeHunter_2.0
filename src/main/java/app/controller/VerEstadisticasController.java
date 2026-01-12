@@ -35,15 +35,35 @@ public class VerEstadisticasController extends ControllerBase {
     @FXML private Label laberintosPerdidos;
     @FXML private Label trampasActivadas;
     private Usuario usuario;
-
+    /**
+     * Obtener usuario del controller
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @return Usuario del controlador
+     */
     public Usuario getUsuario() {
         return usuario;
     }
 
+    /**
+     * Settear usuario en el controller
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param usuario parametro usuario
+     */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * Cambiar escena al menu del juego
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     void onBackButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/menuJuego.fxml", 380, 340, event);

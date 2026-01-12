@@ -26,6 +26,12 @@ public class RecuperarContrasenaController extends ControllerBase {
     @FXML public Label contrasena;
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
+    /**
+     * Buscar el correo ingresado
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     @FXML
     public void onBuscar(){
         String correo = campoCorreo.getText().strip();
@@ -45,6 +51,13 @@ public class RecuperarContrasenaController extends ControllerBase {
         }
     }
 
+    /**
+     * Cambiar escena a ventana iniciar sesion
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/iniciarSesion.fxml", 520, 370, event);

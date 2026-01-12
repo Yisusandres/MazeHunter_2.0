@@ -24,6 +24,12 @@ public class MenuInicialController extends ControllerBase {
         cambiarEscena("/app/registrar.fxml", 520, 370, event);
     }
 
+    /**
+     * Cerrar juego
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     @FXML
     private void onSalir() {
         System.exit(0);

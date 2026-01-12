@@ -33,17 +33,43 @@ public class MenuJuegoController extends ControllerBase{
     private Label nombreUsuarioLabel;
     private DatosJson datosJson = new DatosJson();
 
+    /**
+     * Obtener objeto datosJson del controlador
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @return DatosJson del controlador
+     */
     public DatosJson getDatosJson() {
         return datosJson;
     }
 
+    /**
+     * settear datosJson del controlador
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param datosJson nuevo.
+     */
     public void setDatosJson(DatosJson datosJson) {
         this.datosJson = datosJson;
     }
 
+    /**
+     * Constructor vacio del controlador
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     public MenuJuegoController() {
     }
 
+    /**
+     * inicializar escena menuJuego.fxml
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     public void initialize() {
         if (usuario != null) {
             nombreUsuarioLabel.setText(usuario.getNombreUsuario());
@@ -55,10 +81,25 @@ public class MenuJuegoController extends ControllerBase{
         errorLaberinto.setVisible(false);
     }
 
+    /**
+     * Cambiar escena a crear laberinto nuevo
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void jugarNuevoLaberinto(ActionEvent event) throws Exception {
         cambiarEscena("/app/laberintoNuevo.fxml", 400, 320, event);
     }
+
+    /**
+     * Cambiar escena al laberinto guardado
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void cargarLaberintoGuardado(ActionEvent event) throws IOException {
         GuardadoPartida guardadoPartida = usuario.getGuardadoPartida();
@@ -137,20 +178,50 @@ public class MenuJuegoController extends ControllerBase{
         stage.show();
 
     }
+
+    /**
+     * Cambiar escena a verEstadisticas.fxml
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void verEstadisticas(ActionEvent event) throws Exception {
         cambiarEscena("/app/verEstadisticas.fxml", 520, 350, event);
 
     }
 
+    /**
+     * Cambiar escena al menu inicial
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void onBackButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/menuInicial.fxml", 350, 370, event);
     }
+
+    /**
+     * Obtener usuario registrado del controlador
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @return Usuario del controlador
+     */
     public static Usuario getUsuario() {
         return usuario;
     }
 
+    /**
+     * Settear el usuario que jugará el laberinto
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param usuario nuevo o registrado.
+     */
     public static void setUsuario(Usuario usuario) {
         MenuJuegoController.usuario = usuario;
     }

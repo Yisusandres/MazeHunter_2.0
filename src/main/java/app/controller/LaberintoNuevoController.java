@@ -34,49 +34,87 @@ public class LaberintoNuevoController extends ControllerBase{
 
     Stage stage;
     public static Usuario usuario = new Usuario();
-    private DatosJson datosJson = new DatosJson();
+    private final DatosJson datosJson = new DatosJson();
 
-    public DatosJson getDatosJson() {
-        return datosJson;
-    }
-
-    public void setDatosJson(DatosJson datosJson) {
-        this.datosJson = datosJson;
-    }
-
+    /**
+     * Inicializar ventana para crear laberinto nuevo
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     public void initialize() {
         usuario = MenuJuegoController.getUsuario();
         dificultadSeleccionada = 0;
     }
 
+    /**
+     * Poner dificultad del laberinto
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param dificultadSeleccionada del laberinto.
+     */
     public static void setDificultadSeleccionada(int dificultadSeleccionada) {
         LaberintoNuevoController.dificultadSeleccionada = dificultadSeleccionada;
     }
 
+
+    /**
+     * Cambiar dificultad a facil (1)
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     public void onFacil(ActionEvent event) {
         setLabelDificultad("5x10 a 15x25", "2 o 3", "2 o 3", "5");
         dificultadLabel.setText("Fácil");
         setDificultadSeleccionada(1);
     }
-
+    /**
+     * Cambiar dificultad a normal (2)
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     public void onNormal(ActionEvent event) {
         setLabelDificultad("16x26 a 25x35", "4 o 5", "4 o 5", "15");
         dificultadLabel.setText("Normal");
         setDificultadSeleccionada(2);
     }
-
+    /**
+     * Cambiar dificultad a dificil (3)
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     public void onDificil(ActionEvent event) {
         setLabelDificultad("26x36 a 45x65", "6, 12 y 18", "6, 12 y 18", "20");
         dificultadLabel.setText("Dificil");
         setDificultadSeleccionada(3);
     }
-
+    /**
+     * Cambiar dificultad a avanzado (4)
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     public void onAvanzado(ActionEvent event) {
         setLabelDificultad("46x66 a 55x75", "40", "25", "25");
         dificultadLabel.setText("Avanzado");
         setDificultadSeleccionada(4);
     }
 
+    /**
+     * Cambiar escena al laberinto
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     public void onContinuar(ActionEvent event) throws IOException {
         if (dificultadSeleccionada == 0){
             errorDificultad.setVisible(true);
@@ -118,10 +156,27 @@ public class LaberintoNuevoController extends ControllerBase{
 
     }
 
+    /**
+     * Cambiar escena al menu inicial
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     public void onBackButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/menuInicial.fxml", 380, 340, event);
     }
 
+    /**
+     * Poner texto en los Label del fxml
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param tamano del laberinto.
+     * @param trampas cantidad en el laberinto.
+     * @param energia cantidad en el laberinto.
+     * @param bomba cantidad en el laberinto.
+     */
     public void setLabelDificultad(String tamano, String trampas, String energia, String bomba) {
         tamanoLabel.setText(tamano);
         tamanoLabel.setVisible(true);
@@ -133,12 +188,27 @@ public class LaberintoNuevoController extends ControllerBase{
         bombaLabel.setVisible(true);
     }
 
-    private static int dificultadSeleccionada = 0; // 0: Ninguna, 1: Fácil, 2: Normal, 3: Difícil
 
+    private static int dificultadSeleccionada = 0; // 0: Ninguna, 1: Fácil, 2: Normal, 3: Difícil
+    /**
+     * Obtener dificultad del laberinto
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @return int de dificultad
+     */
     public static int getDificultadSeleccionada() {
         return dificultadSeleccionada;
     }
 
+    /**
+     * Seleccionar tamano aleatorio del laberinto
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param dificultad que define el tamano
+     * @return Pair<Integer, Integer> filas y columnas
+     */
     public Pair<Integer, Integer> devolverTamano(int dificultad){
         int filas, columnas;
         Pair<Integer, Integer> tamano = new Pair<>();
