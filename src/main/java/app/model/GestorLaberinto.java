@@ -10,6 +10,14 @@ import laberinto.celdas.*;
 
 import java.util.*;
 
+/**
+ * Clase encargada de gestionar la lógica de interacción entre el jugador y el laberinto,
+ * controlando movimientos, colisiones, recolección de objetos y estados de victoria o derrota.
+ *
+ * @author Darwin Marcano
+ * @version 22.0.2
+ * @since 11-01-2026
+ */
 public class GestorLaberinto {
     private static Laberinto laberinto;
     private static Jugador jugador;
@@ -18,15 +26,30 @@ public class GestorLaberinto {
     private Pair<Integer, Integer> posicionJugador;
     private static ArrayList<Integer> celdasEnNumero = new ArrayList<>();
 
-
+    /**
+     * Obtiene el usuario que se encuentra actualmente en sesión.
+     * @author Darwin Marcano
+     * @return Objeto Usuario activo.
+     */
     public static Usuario getUsuarioActivo() {
         return usuarioActivo;
     }
 
+    /**
+     * Asigna el usuario que participará en la sesión de juego.
+     * @author Darwin Marcano
+     * @param usuarioActivo Objeto Usuario a activar.
+     */
     public static void setUsuarioActivo(Usuario usuarioActivo) {
         GestorLaberinto.usuarioActivo = usuarioActivo;
     }
 
+    /**
+     * Constructor que vincula un laberinto específico con un jugador para iniciar la gestión.
+     * @author Darwin Marcano
+     * @param laberinto Instancia del laberinto generado.
+     * @param jugador Instancia del jugador que se moverá.
+     */
     public GestorLaberinto(Laberinto laberinto, Jugador jugador)
     {
         this.laberinto = laberinto;
@@ -36,8 +59,21 @@ public class GestorLaberinto {
     }
 
 
+    /**
+     * Recupera las coordenadas actuales del jugador dentro del mapa.
+     * @author Darwin Marcano
+     * @return Par de coordenadas (fila, columna).
+     */
     public Pair<Integer, Integer> getPosicionJugador() {return posicionJugador;}
 
+
+    /**
+     * Determina si una coordenada específica está dentro de los límites y es transitable.
+     * @author Darwin Marcano
+     * @param fila Índice de la fila.
+     * @param columna Índice de la columna.
+     * @return true si el jugador puede ocupar esa celda, false en caso contrario.
+     */
     public boolean posicionValida(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(fila < 0 || fila >= laberinto.getFilas() || columna < 0 || columna >= laberinto.getColumnas()) {
@@ -46,32 +82,75 @@ public class GestorLaberinto {
         return mapa[fila][columna].isTraspasable();
     }
 
+
+    /**
+     * Obtiene la instancia del objeto Jugador gestionado.
+     * @author Darwin Marcano
+     * @return El objeto Jugador.
+     */
     public static Jugador getJugador() {
         return jugador;
     }
 
-    public static void setJugador(Jugador jugador) {
-        GestorLaberinto.jugador = jugador;
-    }
 
+    /**
+     * Ejecuta el movimiento del jugador hacia la derecha.
+     * @author Darwin Marcano
+     * @param fila Nueva fila destino.
+     * @param columna Nueva columna destino.
+     */
     public void derecha(int fila, int columna) {
         mover(fila, columna);
     }
+
+    /**
+     * Ejecuta el movimiento del jugador hacia la izquierda.
+     * @author Darwin Marcano
+     * @param fila Nueva fila destino.
+     * @param columna Nueva columna destino.
+     */
     public void izquierda(int fila, int columna) {
         mover(fila, columna);
     }
+
+    /**
+     * Ejecuta el movimiento del jugador hacia arriba.
+     * @author Darwin Marcano
+     * @param fila Nueva fila destino.
+     * @param columna Nueva columna destino.
+     */
     public void arriba(int fila, int columna) {
         mover(fila, columna);
     }
+
+    /**
+     * Ejecuta el movimiento del jugador hacia abajo.
+     * @author Darwin Marcano
+     * @param fila Nueva fila destino.
+     * @param columna Nueva columna destino.
+     */
     public void abajo(int fila, int columna) {
         mover(fila, columna);
     }
 
+    /**
+     * Genera un número entero aleatorio dentro de un rango específico.
+     * @author Darwin Marcano
+     * @param min Valor mínimo inclusivo.
+     * @param max Valor máximo inclusivo.
+     * @return Número aleatorio generado.
+     */
     public static int aleatorio(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
 
+    /**
+     * Verifica si la posición actual contiene una trampa y resta vida al jugador si es así.
+     * @author Darwin Marcano
+     * @param fila Fila a comprobar.
+     * @param columna Columna a comprobar.
+     */
     public void chequearSiEsTrampa(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[fila][columna].getTipo().equals("Trampa")) {
@@ -81,6 +160,12 @@ public class GestorLaberinto {
         }
     }
 
+    /**
+     * Comprueba si hay un cristal en la celda y añade una cantidad aleatoria al inventario.
+     * @author Darwin Marcano
+     * @param fila Fila a comprobar.
+     * @param columna Columna a comprobar.
+     */
     public void chequearSiEsCristal(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         int aleatorio =  aleatorio(1, 5);
@@ -90,6 +175,13 @@ public class GestorLaberinto {
         }
     }
 
+
+    /**
+     * Verifica si la celda contiene un ítem de vida y cura al jugador si no tiene la salud máxima.
+     * @author Darwin Marcano
+     * @param fila Fila a comprobar.
+     * @param columna Columna a comprobar.
+     */
     public void chequearSiEsVida(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         int aleatorio =  aleatorio(1, 2);
@@ -104,6 +196,12 @@ public class GestorLaberinto {
         }
     }
 
+    /**
+     * Verifica si el jugador ha recogido una bomba para aumentar su munición.
+     * @author Darwin Marcano
+     * @param fila Fila a comprobar.
+     * @param columna Columna a comprobar.
+     */
     public void chequearSiEsBomba(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[fila][columna].getTipo().equals("Bomba")) {
@@ -112,6 +210,13 @@ public class GestorLaberinto {
         }
     }
 
+
+    /**
+     * Comprueba si la celda contiene energía y aumenta la reserva del jugador.
+     * @author Darwin Marcano
+     * @param fila Fila a comprobar.
+     * @param columna Columna a comprobar.
+     */
     public void chequearSiEsEnergia(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         int aleatorio =  aleatorio(1, 2);
@@ -121,6 +226,13 @@ public class GestorLaberinto {
         }
     }
 
+
+    /**
+     * Verifica si el jugador ha obtenido la llave de salida o la llave de explosión.
+     * @author Darwin Marcano
+     * @param fila Fila a comprobar.
+     * @param columna Columna a comprobar.
+     */
     public void chequearSiEsLlave(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[fila][columna].getTipo().equals("Llave")) {
@@ -134,28 +246,65 @@ public class GestorLaberinto {
         }
     }
 
+
+    /**
+     * Determina si las coordenadas dadas corresponden a la ubicación de la salida.
+     * @author Darwin Marcano
+     * @param fila Fila a comprobar.
+     * @param columna Columna a comprobar.
+     * @return true si es la celda de salida.
+     */
     public boolean chequearSiEsSalida(int fila, int columna) {
         return fila == posicionSalida.first && columna == posicionSalida.second;
     }
+
+    /**
+     * Evalúa si el jugador ha llegado a la salida poseyendo la llave.
+     * @author Darwin Marcano
+     * @return true si se cumplen las condiciones de victoria.
+     */
     public boolean verificarVictoria() {
         int fila = laberinto.getSalidaPos().first;
         int columna = laberinto.getSalidaPos().second;
         return fila == getPosicionJugador().first && columna == getPosicionJugador().second && jugador.isLlave();
     }
+
+    /**
+     * Evalúa si el jugador ha perdido toda su vida.
+     * @author Darwin Marcano
+     * @return true si la vida es menor o igual a cero.
+     */
     public boolean verificarDerrota() {
         return jugador.getVida() <= 0;
     }
 
     private static boolean haPerdido;
 
+
+    /**
+     * Consulta el estado actual de derrota del jugador.
+     * @author Darwin Marcano
+     * @return true si el jugador ha perdido.
+     */
     public static boolean isHaPerdido() {
         return haPerdido;
     }
 
+    /**
+     * Establece el estado de derrota del jugador.
+     * @author Darwin Marcano
+     * @param estado Nuevo estado de pérdida.
+     */
     public static void setHaPerdido(boolean estado) {
         haPerdido = estado;
     }
 
+    /**
+     * Gestiona el desplazamiento del jugador, validando la celda y procesando los ítems encontrados.
+     * @author Darwin Marcano
+     * @param fila Fila destino.
+     * @param columna Columna destino.
+     */
     public void mover(int fila, int columna) {
 
         if(!posicionValida(fila, columna)) {
@@ -192,6 +341,11 @@ public class GestorLaberinto {
         laberinto.setLaberinto(mapa);
     }
 
+    /**
+     * Transforma la matriz de celdas en una lista de enteros para facilitar su almacenamiento.
+     * @author Darwin Marcano
+     * @return ArrayList con los identificadores numéricos de cada celda.
+     */
     public static ArrayList<Integer> guardarLaberinto() {
         Map<String, Integer> celdas = new HashMap<>();
         celdas.put("Muro", 1);
@@ -217,6 +371,12 @@ public class GestorLaberinto {
         return celdasEnNumero;
     }
 
+    /**
+     * Marca visualmente los caminos adyacentes donde el jugador puede colocar una bomba.
+     * @author Darwin Marcano
+     * @param filaActual Fila donde se encuentra el jugador.
+     * @param columnaActual Columna donde se encuentra el jugador.
+     */
     public void radearBomba(int filaActual, int columnaActual) {
         Celda[][] mapa = laberinto.getLaberinto();
         Pair<Integer, Integer> posicionDelJugador = new Pair<>();
@@ -231,6 +391,12 @@ public class GestorLaberinto {
         }
     }
 
+    /**
+     * Coloca una bomba en la posición indicada e inicia el temporizador para su explosión.
+     * @author Darwin Marcano
+     * @param filaObjetivo Fila donde se sitúa la bomba.
+     * @param columnaObjetivo Columna donde se sitúa la bomba.
+     */
     public void ponerBomba(int filaObjetivo, int columnaObjetivo) {
         Celda[][] mapa = laberinto.getLaberinto();
         if(mapa[filaObjetivo][columnaObjetivo].getTipo().equals("Muro")) return;
@@ -246,6 +412,12 @@ public class GestorLaberinto {
         pausa.play();
     }
 
+    /**
+     * Procesa la explosión de la bomba, eliminando muros rojos en las cercanías y consumiendo energía.
+     * @author Darwin Marcano
+     * @param filaObjetivo Fila origen de la explosión.
+     * @param columnaObjetivo Columna origen de la explosión.
+     */
     public void explotarBomba(int filaObjetivo, int columnaObjetivo) {
         Celda[][] mapa = laberinto.getLaberinto();
         Pair<Integer, Integer> posicionBomba = new Pair<>();
@@ -263,6 +435,10 @@ public class GestorLaberinto {
         mapa[filaObjetivo][columnaObjetivo] = new Camino();
     }
 
+    /**
+     * Elimina los indicadores visuales de colocación de bomba del laberinto.
+     * @author Darwin Marcano
+     */
     public void quitarCaminosConPuntos() {
         Celda[][] mapa = laberinto.getLaberinto();
         Pair<Integer, Integer> posicionDelJugador = laberinto.getJugadorPos();
@@ -274,7 +450,4 @@ public class GestorLaberinto {
             }
         }
     }
-
-
-
 }

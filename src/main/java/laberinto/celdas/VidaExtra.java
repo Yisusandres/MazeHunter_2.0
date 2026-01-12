@@ -9,15 +9,19 @@ import java.util.Objects;
  * sumarle vida al personaje del usuario en
  * el laberinto.
  *
- * @author Juan Meneses
+ * @author Jesus Sifontes y Darwin Marcano
  * @version 22.0.2
- * @since 01-11-2025
+ * @since 11-01-2026
  */
 
 public class VidaExtra extends Celda {
     private int valor;
     GestorImagenes gestor = new GestorImagenes();
 
+    /**
+     * Constructor que inicializa la celda como vida extra.
+     * @author Jesus Sifontes y Darwin Marcano
+     */
     public VidaExtra(int valor){
         ImageView imagen = gestor.getImagenVidaExtra();
         setImagenCelda(imagen);

@@ -2,15 +2,18 @@ package laberinto.celdas;
 import javafx.scene.image.ImageView;
 
 /**
- * Clase que hereda de Celda y es la clave
- * para salir del laberinto y ganar.
- * @author Juan Meneses
+ * Representa la llave especial que habilita el uso de bombas para destruir muros.
+ * @author Jesus Sifontes y Darwin Marcano
  * @version 22.0.2
- * @since 01-11-2025
+ * @since 11-01-2026
  */
 public class LLaveDeExplosion extends Celda {
     boolean encontrada;
     GestorImagenes gestor = new GestorImagenes();
+    /**
+     * Constructor que inicializa la celda como llave de explosion.
+     * @author Jesus Sifontes y Darwin Marcano
+     */
     public LLaveDeExplosion(){
         ImageView imagen = gestor.getImagenLlaveDeExplosion();
         setImagenCelda(imagen);
@@ -18,13 +21,5 @@ public class LLaveDeExplosion extends Celda {
         setVisible(true);
         encontrada = false;
         setTipo("LlaveDeExplosion");
-    }
-
-    public boolean isEncontrada() {
-        return encontrada;
-    }
-
-    public void setEncontrada(boolean encontrada) {
-        this.encontrada = encontrada;
     }
 }

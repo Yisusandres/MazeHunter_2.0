@@ -7,14 +7,18 @@ import java.util.Objects;
 /**
  * Clase que hereda de celda y representa la
  * puntuación del usuario en el laberinto.
- * @author Juan Meneses
+ * @author Jesus Sifontes y Darwin Marcano
  * @version 22.0.2
- * @since 01-11-2025
+ * @since 11-01-2026
  */
 
 public class Cristal extends Celda {
     private int valor;
     GestorImagenes gestor = new GestorImagenes();
+    /**
+     * Constructor que inicializa la celda como cristal.
+     * @author Jesus Sifontes y Darwin Marcano
+     */
     public Cristal(int valor){
         this.valor = valor;
         ImageView imagen = gestor.getImagenCristal();
@@ -22,13 +26,5 @@ public class Cristal extends Celda {
         setTraspasable(true);
         setVisible(true);
         setTipo("Cristal");
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
     }
 }

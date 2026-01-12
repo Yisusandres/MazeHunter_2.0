@@ -11,11 +11,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementación de AlmacenDatos que utiliza archivos en formato JSON para guardar el laberinto. Incluye lógica de
+ * encriptación para proteger correos y contraseñas.
+ * * @author Jesus Sifontes
+ * @version 22.0.2
+ * @since 11-01-2026
+ */
 public class DatosJson extends AlmacenDatos{
     static ObjectMapper mapper = new ObjectMapper();
     static String direccionArchivo = "src/main/resources/JSON/usuarios.json";
 
 
+    /**
+     * Carga los datos de los usuarios desde un archivo JSON, realizando la
+     * desencriptación.
+     * @author Jesus Sifontes
+     * @return ArrayList de usuarios con datos legibles.
+     */
     public ArrayList<Usuario> cargarDatos() {
         File archivoUsuarios = new File(direccionArchivo);
 
@@ -49,6 +62,13 @@ public class DatosJson extends AlmacenDatos{
         return listaUsuarios;
     }
 
+    /**
+     * Serializa la lista de usuarios a un archivo JSON. Antes de guardar,
+     * encripta la información sensible y la desencripta después del proceso
+     * para mantener la integridad en memoria.
+     * @author Jesus Sifontes
+     * @param listaUsuarios Lista de usuarios a guardar.
+     */
     public void actualizarDatos(ArrayList<Usuario> listaUsuarios) {
         ArrayList<Usuario> usuariosNuevos;
         usuariosNuevos = listaUsuarios;
@@ -71,6 +91,11 @@ public class DatosJson extends AlmacenDatos{
         GestionUsuario.setListaUsuarios(usuariosNuevos);
     }
 
+    /**
+     * Crea usuarios iniciales de prueba, los añade a la gestión
+     * global y actualiza el archivo.
+     * @author Jesus Sifontes
+     */
     public void nuevosUsuarios(){
         ArrayList<Usuario> usuarios = new ArrayList<>();
         usuarios.add(new Usuario("Jesus", "jasifontes@gmail.com", "12345"));

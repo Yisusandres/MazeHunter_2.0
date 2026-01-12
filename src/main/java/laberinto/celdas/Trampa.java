@@ -9,15 +9,20 @@ import java.util.Objects;
  * restarle vida al personaje del usuario en
  * el laberinto.
  *
- * @author Juan Meneses
+ * @author Jesus Sifontes y Darwin Marcano
  * @version 22.0.2
- * @since 01-11-2025
+ * @since 11-01-2026
  */
 
 public class Trampa extends Celda {
     private int porcentajeDanio;
     GestorImagenes gestor = new GestorImagenes();
 
+    /**
+     * Constructor que inicializa la trampa con una imagen específica,
+     * permite el paso del jugador y establece un daño predeterminado del 20%.
+     * * @author Jesus Sifontes y Darwin Marcano
+     */
     public Trampa() {
         ImageView imagen = gestor.getImagenTrampa();
         setImagenCelda(imagen);
@@ -25,13 +30,5 @@ public class Trampa extends Celda {
         setVisible(true);
         this.porcentajeDanio = 20;
         setTipo("Trampa");
-    }
-
-    public int getPorcentajeDanio() {
-        return porcentajeDanio;
-    }
-
-    public void setPorcentajeDanio(int porcentajeDanio) {
-        this.porcentajeDanio = porcentajeDanio;
     }
 }

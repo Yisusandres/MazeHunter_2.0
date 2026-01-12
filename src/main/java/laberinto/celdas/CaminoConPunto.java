@@ -2,11 +2,10 @@ package laberinto.celdas;
 import javafx.scene.image.ImageView;
 
 /**
- * Clase que hereda de Celda y pertenece a
- * laberinto.
- * @author Juan Meneses
+ * Variación visual del camino utilizada para simular radar o casillas de explosión.
+ * * @author Darwin Marcano
  * @version 22.0.2
- * @since 01-11-2025
+ * @since 11-01-2026
  */
 public class CaminoConPunto extends Celda {
     GestorImagenes gestor = new GestorImagenes();

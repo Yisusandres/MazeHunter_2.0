@@ -3,11 +3,12 @@ import javafx.scene.image.ImageView;
 
 /**
  * Clase que hereda de Celda y representa los espacios
- * por donde el usuario no puede transitar.
+ * por donde el usuario no puede transitar pero puede
+ * ser destruida por bombas
  *
- * @author Juan Meneses
+ * @author Darwin Marcano
  * @version 22.0.2
- * @since 01-11-2025
+ * @since 11-01-2026
  */
 public class MuroRojo extends Celda {
     GestorImagenes gestor = new GestorImagenes();

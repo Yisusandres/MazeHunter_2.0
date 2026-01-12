@@ -79,20 +79,67 @@ public class Laberinto {
         return filas;
     }
 
+    /**
+     * Obtiene la cantidad total de columnas del laberinto.
+     * @author Jesus Sifontes y Darwin Marcano
+     * @return Entero con el número de columnas.
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     public int getColumnas() {
         return columnas;
     }
 
+
+    /**
+     * Obtiene las coordenadas actuales del jugador en el tablero.
+     * @author Jesus Sifontes y Darwin Marcano
+     * @return Un objeto Pair con la fila (first) y columna (second).
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     public Pair<Integer, Integer> getJugadorPos() {
         return jugadorPos;
     }
 
+    /**
+     * Actualiza la posición del jugador en el sistema de coordenadas.
+     * @author Jesus Sifontes y Darwin Marcano
+     * @param jugadorPos Objeto Pair con la nueva ubicación.
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     public void setJugadorPos(Pair<Integer, Integer> jugadorPos) {
         this.jugadorPos = jugadorPos;
     }
 
+    /**
+     * Obtiene la ubicación de la celda de salida del laberinto.
+     * @author Jesus Sifontes y Darwin Marcano
+     * @return Coordenadas de la salida.
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     public Pair<Integer, Integer> getSalidaPos() {return salidaPos;}
 
+
+    /**
+     * Rellena la matriz inicial con muros y muros rojos de forma aleatoria antes de generar caminos.
+     * Ejecuta el proceso completo de creación: inicialización, generacion de caminos y colocación de elementos.
+     * Implementa el algoritmo de búsqueda en profundidad (DFS) con una pila para crear los pasillos del laberinto.
+     * Distribuye dinámicamente al jugador, la llave, la salida y los consumibles según la dificultad elegida.
+     * Elige un punto de origen aleatorio para comenzar la excavación del algoritmo DFS.
+     * Identifica las celdas vecinas a una distancia de dos posiciones para la generación de caminos.
+     * Localiza celdas adyacentes inmediatas (distancia 1) para calcular el área de efecto de una explosión.
+     * Busca una posición aleatoria que no sea un muro para situar al usuario al inicio del juego.
+     * Determina la ubicación de la salida intentando que esté lo más alejada posible del jugador.
+     * Decide la ubicación de la llave de forma que no coincida con el jugador ni con la salida.
+     * Asegura que una posición clave (como la llave o salida) tenga al menos un camino adyacente para ser accesible.
+     * Imprime en la consola la representación visual del laberinto basada en el tipo de cada celda.
+     * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * */
     private void inicializarLaberinto() {
         int aleatorio, numeroMurosRojos = 0;
         for (int i = 0; i < filas; i++) {

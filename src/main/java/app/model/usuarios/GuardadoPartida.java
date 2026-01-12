@@ -1,5 +1,12 @@
 package app.model.usuarios;
 
+/**
+ * Clase que actúa como un contenedor de datos para mantener el estado
+ * actual de una partida.
+ * @author Jesus Sifontes
+ * @version 22.0.2
+ * @since 11-01-2026
+ */
 public class GuardadoPartida {
     private int cristalesGuardados;
     private int energiaGuardada;
@@ -9,6 +16,17 @@ public class GuardadoPartida {
     private boolean llaveObtenida;
     private int[][] laberintoGuardado;
 
+    /**
+     * Constructor completo para inicializar un estado de guardado con todos los parámetros.
+     * @author Jesus Sifontes
+     * @param cristalesGuardados Cantidad de cristales en el inventario.
+     * @param energiaGuardada Nivel de energía del jugador.
+     * @param bombasGuardadas Número de bombas disponibles.
+     * @param tiempoGuardado Tiempo transcurrido en la partida.
+     * @param vidaGuardada Puntos de salud restantes.
+     * @param llaveObtenida Estado de la llave de salida (true si se posee).
+     * @param laberintoGuardado Matriz de enteros que representa el diseño del laberinto.
+     */
     public GuardadoPartida(int cristalesGuardados, int energiaGuardada, int bombasGuardadas, double tiempoGuardado, int vidaGuardada, boolean llaveObtenida, int[][] laberintoGuardado) {
         this.cristalesGuardados = cristalesGuardados;
         this.energiaGuardada = energiaGuardada;
@@ -19,6 +37,10 @@ public class GuardadoPartida {
         this.laberintoGuardado = laberintoGuardado;
     }
 
+    /**
+     * Constructor por defecto que inicializa una partida vacía con valores en cero.
+     * @author Jesus Sifontes
+     */
     public GuardadoPartida() {
         this.laberintoGuardado = null;
         this.cristalesGuardados = 0;
@@ -29,7 +51,51 @@ public class GuardadoPartida {
         this.llaveObtenida = false;
     }
 
-    public int getCristalesGuardados() {
+    /** @author Jesus Sifontes @return Cantidad de cristales guardados. */
+    public int getCristalesGuardados() { return cristalesGuardados; }
+
+    /** @author Jesus Sifontes @param cristalesGuardados Cantidad de cristales a guardar. */
+    public void setCristalesGuardados(int cristalesGuardados) { this.cristalesGuardados = cristalesGuardados; }
+
+    /** @author Jesus Sifontes @return Nivel de energía guardado. */
+    public int getEnergiaGuardada() { return energiaGuardada; }
+
+    /** @author Jesus Sifontes @param energiaGuardada Nivel de energía a guardar. */
+    public void setEnergiaGuardada(int energiaGuardada) { this.energiaGuardada = energiaGuardada; }
+
+    /** @author Jesus Sifontes @return Número de bombas guardadas. */
+    public int getBombasGuardadas() { return bombasGuardadas; }
+
+    /** @author Jesus Sifontes @param bombasGuardadas Cantidad de bombas a guardar. */
+    public void setBombasGuardadas(int bombasGuardadas) { this.bombasGuardadas = bombasGuardadas; }
+
+    /** @author Jesus Sifontes @return Tiempo transcurrido guardado. */
+    public double getTiempoGuardado() { return tiempoGuardado; }
+
+    /** @author Jesus Sifontes @param tiempoGuardado Tiempo a guardar. */
+    public void setTiempoGuardado(double tiempoGuardado) { this.tiempoGuardado = tiempoGuardado; }
+
+    /** @author Jesus Sifontes @return Salud guardada. */
+    public int getVidaGuardada() { return vidaGuardada; }
+
+    /** @author Jesus Sifontes @param vidaGuardada Salud a guardar. */
+    public void setVidaGuardada(int vidaGuardada) { this.vidaGuardada = vidaGuardada; }
+
+    /** @author Jesus Sifontes @return true si la llave fue obtenida, false en caso contrario. */
+    public boolean isLlaveObtenida() { return llaveObtenida; }
+
+    /** @author Jesus Sifontes @param llaveObtenida Estado de la llave a guardar. */
+    public void setLlaveObtenida(boolean llaveObtenida) { this.llaveObtenida = llaveObtenida; }
+
+    /** @author Jesus Sifontes @return Matriz del laberinto guardado. */
+    public int[][] getLaberintoGuardado() { return laberintoGuardado; }
+
+    /** @author Jesus Sifontes @param laberintoGuardado Matriz del laberinto a guardar. */
+    public void setLaberintoGuardado(int[][] laberintoGuardado) { this.laberintoGuardado = laberintoGuardado; }
+
+
+
+    /*public int getCristalesGuardados() {
         return cristalesGuardados;
     }
 
@@ -83,5 +149,5 @@ public class GuardadoPartida {
 
     public void setLaberintoGuardado(int[][] laberintoGuardado) {
         this.laberintoGuardado = laberintoGuardado;
-    }
+    }*/
 }
