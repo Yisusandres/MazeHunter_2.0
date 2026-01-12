@@ -145,6 +145,7 @@ public class GestionUsuario {
             if (user.getCorreo().equals(usuario.getCorreo())){
                 listaUsuarios.remove(user);
                 listaUsuarios.add(usuario);
+                return;
             }
         }
     }

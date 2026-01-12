@@ -13,7 +13,6 @@ public class GuardadoPartida {
     private int bombasGuardadas;
     private double tiempoGuardado;
     private int vidaGuardada;
-    private boolean llaveObtenida;
     private int[][] laberintoGuardado;
 
     /**
@@ -24,16 +23,14 @@ public class GuardadoPartida {
      * @param bombasGuardadas Número de bombas disponibles.
      * @param tiempoGuardado Tiempo transcurrido en la partida.
      * @param vidaGuardada Puntos de salud restantes.
-     * @param llaveObtenida Estado de la llave de salida (true si se posee).
      * @param laberintoGuardado Matriz de enteros que representa el diseño del laberinto.
      */
-    public GuardadoPartida(int cristalesGuardados, int energiaGuardada, int bombasGuardadas, double tiempoGuardado, int vidaGuardada, boolean llaveObtenida, int[][] laberintoGuardado) {
+    public GuardadoPartida(int cristalesGuardados, int energiaGuardada, int bombasGuardadas, double tiempoGuardado, int vidaGuardada, int[][] laberintoGuardado) {
         this.cristalesGuardados = cristalesGuardados;
         this.energiaGuardada = energiaGuardada;
         this.bombasGuardadas = bombasGuardadas;
         this.tiempoGuardado = tiempoGuardado;
         this.vidaGuardada = vidaGuardada;
-        this.llaveObtenida = llaveObtenida;
         this.laberintoGuardado = laberintoGuardado;
     }
 
@@ -44,11 +41,10 @@ public class GuardadoPartida {
     public GuardadoPartida() {
         this.laberintoGuardado = null;
         this.cristalesGuardados = 0;
-        this.energiaGuardada = 0;
+        this.energiaGuardada = 100;
         this.bombasGuardadas = 0;
         this.tiempoGuardado = 0;
-        this.vidaGuardada = 0;
-        this.llaveObtenida = false;
+        this.vidaGuardada = 100;
     }
 
     /** @author Jesus Sifontes @return Cantidad de cristales guardados. */
@@ -80,12 +76,6 @@ public class GuardadoPartida {
 
     /** @author Jesus Sifontes @param vidaGuardada Salud a guardar. */
     public void setVidaGuardada(int vidaGuardada) { this.vidaGuardada = vidaGuardada; }
-
-    /** @author Jesus Sifontes @return true si la llave fue obtenida, false en caso contrario. */
-    public boolean isLlaveObtenida() { return llaveObtenida; }
-
-    /** @author Jesus Sifontes @param llaveObtenida Estado de la llave a guardar. */
-    public void setLlaveObtenida(boolean llaveObtenida) { this.llaveObtenida = llaveObtenida; }
 
     /** @author Jesus Sifontes @return Matriz del laberinto guardado. */
     public int[][] getLaberintoGuardado() { return laberintoGuardado; }

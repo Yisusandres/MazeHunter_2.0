@@ -1,23 +1,52 @@
 [ {
+  "nombreUsuario" : "Darwin",
+  "correo" : "vjvkHArOQwoe6ugXKdhdnF6h3l+wzPWjpylMpuVhbC8=",
+  "contrasena" : "Sq9H3RjWJPfrQeyi2otv9g==",
+  "guardadoPartida" : {
+    "cristalesGuardados" : 0,
+    "energiaGuardada" : 0,
+    "bombasGuardadas" : 0,
+    "tiempoGuardado" : 0.0,
+    "vidaGuardada" : 0,
+    "laberintoGuardado" : [ [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 3, 3, 3, 3, 3, 1, 6, 3, 3, 3, 3, 3, 6, 3, 3, 1, 3, 3, 3, 1, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 1 ], [ 1, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 3, 1, 3, 1, 6, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1 ], [ 1, 1, 3, 3, 3, 2, 3, 3, 3, 1, 3, 1, 3, 1, 3, 3, 6, 2, 3, 2, 3, 1, 3, 2, 3, 2, 3, 1, 3, 3, 3, 3, 3, 2, 3, 1, 1 ], [ 1, 1, 3, 1, 3, 1, 3, 1, 1, 1, 5, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1 ], [ 1, 1, 3, 2, 6, 2, 3, 1, 3, 3, 3, 1, 3, 5, 3, 2, 3, 7, 3, 2, 3, 1, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 1, 3, 1, 1 ], [ 1, 1, 3, 1, 3, 1, 5, 1, 3, 1, 3, 1, 1, 1, 3, 1, 5, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 3, 1, 3, 1, 1 ], [ 1, 1, 3, 1, 3, 2, 3, 3, 10, 3, 3, 3, 3, 1, 3, 3, 3, 1, 3, 3, 3, 3, 4, 2, 6, 1, 3, 1, 3, 3, 3, 3, 3, 2, 3, 1, 1 ], [ 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 3, 1, 5, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1 ], [ 1, 1, 3, 3, 3, 6, 3, 3, 4, 1, 3, 3, 3, 2, 3, 3, 7, 2, 5, 3, 3, 2, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 2, 3, 1, 1 ], [ 1, 1, 3, 1, 1, 1, 3, 1, 3, 1, 3, 1, 1, 1, 1, 1, 5, 1, 1, 1, 3, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1 ], [ 1, 1, 3, 2, 3, 3, 6, 1, 7, 1, 3, 3, 3, 6, 3, 2, 3, 3, 3, 1, 8, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 1, 1 ], [ 1, 1, 3, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 3, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1 ], [ 1, 1, 3, 2, 3, 2, 3, 3, 3, 1, 3, 3, 9, 3, 3, 2, 3, 2, 3, 1, 3, 3, 3, 1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1 ], [ 1, 1, 1, 1, 5, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 6, 1, 1, 1, 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 3, 3, 3, 2, 3, 2, 5, 2, 3, 2, 3, 6, 3, 1, 3, 2, 3, 3, 3, 2, 4, 3, 3, 1, 3, 2, 3, 3, 3, 3, 3, 3, 3, 1, 1 ], [ 1, 1, 3, 1, 1, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1 ], [ 1, 1, 3, 5, 3, 2, 3, 1, 3, 2, 3, 1, 3, 1, 3, 3, 7, 2, 3, 3, 5, 3, 3, 1, 3, 2, 3, 3, 3, 3, 3, 2, 3, 1, 3, 1, 1 ], [ 1, 1, 1, 1, 3, 1, 3, 1, 3, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1 ], [ 1, 1, 3, 3, 3, 2, 6, 3, 6, 2, 3, 3, 3, 6, 3, 3, 6, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 1, 1 ], [ 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 3, 1, 3, 1, 1 ], [ 1, 1, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4, 1, 3, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 3, 3, 2, 3, 2, 3, 1, 1 ], [ 1, 1, 3, 1, 3, 1, 3, 1, 3, 1, 1, 1, 1, 1, 1, 1, 6, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1 ], [ 1, 1, 3, 2, 3, 3, 3, 1, 3, 1, 3, 8, 3, 3, 3, 2, 3, 7, 3, 2, 3, 2, 5, 2, 3, 1, 3, 2, 3, 3, 3, 3, 3, 3, 3, 1, 1 ], [ 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1 ], [ 1, 1, 6, 3, 3, 3, 3, 1, 3, 3, 8, 4, 3, 1, 3, 3, 6, 3, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 11, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ] ]
+  },
+  "partidasGanadas" : 1,
+  "partidasPerdidas" : 2,
+  "bombasRecolectadas" : 6,
+  "trampasActivadas" : 2,
+  "cristalesObtenidos" : 9,
+  "laberintosJugados" : 8
+}, {
+  "nombreUsuario" : "Jesus2",
+  "correo" : "lNHgccjCRtK3EiXIp1qR9Q==",
+  "contrasena" : "+hHNIP4rAltHBMlitZ4FiA==",
+  "guardadoPartida" : null,
+  "partidasGanadas" : 0,
+  "partidasPerdidas" : 0,
+  "bombasRecolectadas" : 8,
+  "trampasActivadas" : 3,
+  "cristalesObtenidos" : 32,
+  "laberintosJugados" : 2
+}, {
+  "nombreUsuario" : "Fraime",
+  "correo" : "7g8okYX3Eg49YiR/XgEACad1JjUz4D/X2942yBMVRyQ=",
+  "contrasena" : "5Xa5pO4eV9Z4GKHb/2hq0g==",
+  "guardadoPartida" : null,
+  "partidasGanadas" : 0,
+  "partidasPerdidas" : 0,
+  "bombasRecolectadas" : 0,
+  "trampasActivadas" : 0,
+  "cristalesObtenidos" : 0,
+  "laberintosJugados" : 1
+}, {
   "nombreUsuario" : "Jesus",
   "correo" : "7pDt0BSR4kaTP0Gx8IxCEsWvpemcsM8uomMpf6XUO2w=",
   "contrasena" : "oKW2OR+EAfBmq4MCkWLMNQ==",
   "guardadoPartida" : null,
-  "partidasGanadas" : 1,
-  "partidasPerdidas" : 0,
-  "bombasRecolectadas" : 8,
-  "trampasActivadas" : 1,
-  "cristalesObtenidos" : 5,
-  "laberintosJugados" : 9
-}, {
-  "nombreUsuario" : "Darwin",
-  "correo" : "vjvkHArOQwoe6ugXKdhdnF6h3l+wzPWjpylMpuVhbC8=",
-  "contrasena" : "Sq9H3RjWJPfrQeyi2otv9g==",
-  "guardadoPartida" : null,
-  "partidasGanadas" : 1,
-  "partidasPerdidas" : 2,
-  "bombasRecolectadas" : 4,
-  "trampasActivadas" : 1,
-  "cristalesObtenidos" : 4,
-  "laberintosJugados" : 6
+  "partidasGanadas" : 22,
+  "partidasPerdidas" : 9,
+  "bombasRecolectadas" : 208,
+  "trampasActivadas" : 111,
+  "cristalesObtenidos" : 464,
+  "laberintosJugados" : 10
 } ]

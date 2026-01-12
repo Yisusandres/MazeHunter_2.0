@@ -45,6 +45,17 @@ public class Laberinto {
         generarLaberinto();
     }
 
+    public Laberinto(int filas, int columnas, Celda[][] laberinto) {
+        this.filas = filas;
+        this.columnas = columnas;
+        this.random = new Random();
+        this.laberinto = laberinto;
+    }
+
+    public void setSalidaPos(Pair<Integer, Integer> salidaPos) {
+        this.salidaPos = salidaPos;
+    }
+
     /**
      * Obtiene la matriz bidimensional de celdas que representa el laberinto.
      * @author Jesus Sifontes y Darwin Marcano
@@ -549,4 +560,6 @@ public class Laberinto {
             return;
         }
     }
+
+
 }

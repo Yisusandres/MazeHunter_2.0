@@ -48,18 +48,6 @@ public class IniciarSesionController extends ControllerBase{
 
         String autenticado = GestionUsuario.autenticarCorreo(correo, contrasena, listaUsuarios);
 
-        if (correo.equals("jjj")){
-            System.out.println("Correo de administrador detectado");
-            MenuJuegoController.setUsuario(listaUsuarios.getFirst());
-            GestorLaberinto.setUsuarioActivo(listaUsuarios.getFirst());
-            try {
-                cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
-            } catch (Exception e) {
-                System.out.println("Error al cargar la ventana de administrador: " + e.getMessage());
-            }
-            return;
-        }
-
         if (correo.isEmpty()){
             System.out.println("correo vacío");
             errorCorreo.setText("El correo no puede estar vacío.");
@@ -93,7 +81,6 @@ public class IniciarSesionController extends ControllerBase{
             Usuario usuario = GestionUsuario.buscarUsuarioPorCorreo(correo, listaUsuarios);
             MenuJuegoController.setUsuario(usuario);
             GestorLaberinto.setUsuarioActivo(usuario);
-
             try {
                 cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
             } catch (Exception e) {

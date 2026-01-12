@@ -37,12 +37,8 @@ public class RegistrarController extends ControllerBase{
     @FXML private Label errorNombreUsuario;
 
     @FXML
-    public void onBackButton(ActionEvent event) throws IOException {
-        VBox root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/app/menuInicial.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 350, 370);
-        stage.setScene(scene);
-        stage.show();
+    public void onBackButton(ActionEvent event) throws Exception {
+        cambiarEscena("/app/menuInicial.fxml", 350, 370, event);
     }
 
     @FXML

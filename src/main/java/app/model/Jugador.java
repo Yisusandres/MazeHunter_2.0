@@ -38,7 +38,6 @@ public class Jugador extends Usuario {
      */
     public Jugador(String nombreUsuario, String correo, String contrasena, GuardadoPartida guardadoPartida) {
         super(nombreUsuario, correo, contrasena);
-        this.llave = guardadoPartida.isLlaveObtenida();
         this.vida = guardadoPartida.getVidaGuardada();
         this.cristales = guardadoPartida.getCristalesGuardados();
         this.energia = guardadoPartida.getEnergiaGuardada();

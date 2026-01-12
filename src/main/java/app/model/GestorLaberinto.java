@@ -1,8 +1,9 @@
 package app.model;
 
-import app.controller.LaberintoController;
+import app.model.usuarios.GuardadoPartida;
 import app.model.usuarios.Usuario;
 import app.repository.DatosJson;
+import javafx.animation.Interpolatable;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import laberinto.Laberinto;
@@ -23,9 +24,9 @@ public class GestorLaberinto {
     private static Laberinto laberinto;
     private static Jugador jugador;
     private static Usuario usuarioActivo = new Usuario();
-    private Pair<Integer, Integer> posicionSalida;
+    private static Pair<Integer, Integer> posicionSalida;
     private Pair<Integer, Integer> posicionJugador;
-    private static ArrayList<Integer> celdasEnNumero = new ArrayList<>();
+    private static int[][] celdasEnNumero;
     private final DatosJson datosJson = new DatosJson();
 
     /**
@@ -61,6 +62,15 @@ public class GestorLaberinto {
     }
 
 
+    public GestorLaberinto(Laberinto laberinto, Jugador jugador, Pair<Integer, Integer> posicionJugador, Pair<Integer, Integer> posicionSalida)
+    {
+        this.laberinto = laberinto;
+        laberinto.setSalidaPos(posicionSalida);
+        laberinto.setJugadorPos(posicionJugador);
+        GestorLaberinto.jugador = jugador;
+        this.posicionSalida = laberinto.getSalidaPos();
+        this.posicionJugador = laberinto.getJugadorPos();
+    }
     /**
      * Recupera las coordenadas actuales del jugador dentro del mapa.
      * @author Darwin Marcano
@@ -158,6 +168,11 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Trampa")) {
             jugador.perderVida(20);
             System.out.println("Cuidado! Has caido en una trampa. Vida restante: " + jugador.getVida());
+
+            GuardadoPartida guardadoPartida = usuarioActivo.getGuardadoPartida();
+            guardadoPartida.setVidaGuardada((int) jugador.getVida());
+            usuarioActivo.setGuardadoPartida(guardadoPartida);
+
             usuarioActivo.setTrampasActivadas(usuarioActivo.getTrampasActivadas()+1);
             System.out.println(usuarioActivo.getTrampasActivadas() + " - " + usuarioActivo.getCorreo());
             GestionUsuario.actualizarUsuario(usuarioActivo);
@@ -177,6 +192,11 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Cristal")) {
             jugador.setCristales(jugador.getCristales() + aleatorio);
             System.out.println("Has recogido un cristal! Cristales: " + jugador.getCristales());
+
+            GuardadoPartida guardadoPartida = usuarioActivo.getGuardadoPartida();
+            guardadoPartida.setCristalesGuardados(jugador.getCristales());
+            usuarioActivo.setGuardadoPartida(guardadoPartida);
+
             usuarioActivo.setCristalesObtenidos(usuarioActivo.getCristalesObtenidos()+aleatorio);
             System.out.println(usuarioActivo.getCristalesObtenidos() + " - " + usuarioActivo.getCorreo());
             GestionUsuario.actualizarUsuario(usuarioActivo);
@@ -198,6 +218,10 @@ public class GestorLaberinto {
             if(jugador.getVida() + aleatorio * 5 < 100) {
                 jugador.setVida(jugador.getVida() + aleatorio * 5);
                 System.out.println("Has recogido vida! Vida aumentada: " + jugador.getVida());
+
+                GuardadoPartida guardadoPartida = usuarioActivo.getGuardadoPartida();
+                guardadoPartida.setVidaGuardada((int) jugador.getVida());
+                usuarioActivo.setGuardadoPartida(guardadoPartida);
             }
             else {
                 System.out.println("Ya tienes 100% de vida!");
@@ -216,6 +240,11 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Bomba")) {
             System.out.println("Has obtenido una bomba! Puedes usarla para destruir muros.");
             jugador.aumentarBomba();
+
+            GuardadoPartida guardadoPartida = usuarioActivo.getGuardadoPartida();
+            guardadoPartida.setBombasGuardadas(jugador.getBombas());
+            usuarioActivo.setGuardadoPartida(guardadoPartida);
+
             usuarioActivo.setBombasRecolectadas(usuarioActivo.getBombasRecolectadas()+1);
             System.out.println(usuarioActivo.getBombasRecolectadas() + " - " + usuarioActivo.getCorreo());
             GestionUsuario.actualizarUsuario(usuarioActivo);
@@ -236,6 +265,11 @@ public class GestorLaberinto {
         if(mapa[fila][columna].getTipo().equals("Energia")) {
             jugador.setEnergia(jugador.getEnergia() + aleatorio * 10);
             System.out.println("Has recogido energia! Energia aumentada: " + jugador.getEnergia());
+            GuardadoPartida guardadoPartida = usuarioActivo.getGuardadoPartida();
+            guardadoPartida.setEnergiaGuardada(jugador.getEnergia());
+            usuarioActivo.setGuardadoPartida(guardadoPartida);
+            GestionUsuario.actualizarUsuario(usuarioActivo);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
         }
     }
 
@@ -356,10 +390,11 @@ public class GestorLaberinto {
 
     /**
      * Transforma la matriz de celdas en una lista de enteros para facilitar su almacenamiento.
-     * @author Darwin Marcano
+     *
      * @return ArrayList con los identificadores numéricos de cada celda.
+     * @author Darwin Marcano
      */
-    public static ArrayList<Integer> guardarLaberinto() {
+    public static int[][] guardarLaberinto() {
         Map<String, Integer> celdas = new HashMap<>();
         celdas.put("Muro", 1);
         celdas.put("MuroRojo", 2);
@@ -375,10 +410,11 @@ public class GestorLaberinto {
         celdas.put("LlaveDeExplosion", 12);
         String celda;
         Celda[][] mapa = laberinto.getLaberinto();
+        celdasEnNumero = new int[laberinto.getFilas()][laberinto.getColumnas()];
         for (int i = 0; i < laberinto.getFilas(); i++) {
             for (int j = 0; j < laberinto.getColumnas(); j++) {
                 celda = mapa[i][j].getTipo();
-                celdasEnNumero.add(celdas.get(celda));
+                celdasEnNumero[i][j] = celdas.get(celda);
             }
         }
         return celdasEnNumero;
@@ -463,4 +499,12 @@ public class GestorLaberinto {
             }
         }
     }
+
+    public static void desbloquearPuerta(boolean isLLave){
+        Celda[][] mapa = laberinto.getLaberinto();
+        if (!isLLave){
+            mapa[posicionSalida.first][posicionSalida.second].setTraspasable(true);
+        }
+    }
+
 }

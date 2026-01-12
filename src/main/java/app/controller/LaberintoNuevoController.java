@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import laberinto.Laberinto;
 import laberinto.Posicion.Pair;
 
 import java.io.IOException;
@@ -90,11 +91,19 @@ public class LaberintoNuevoController extends ControllerBase{
             LaberintoController.setFilas(tamano.first);
             System.out.println("Tamano laberinto: " + tamano.first + "x" + tamano.second);
             LaberintoController.setDificultad(dificultadSeleccionada);
+            Laberinto laberinto = new Laberinto(tamano.first, tamano.second, dificultadSeleccionada);
+            LaberintoController.setLaberinto(laberinto);
+            LaberintoController.setMatrizLaberinto(laberinto.getLaberinto());
+
+            Jugador jugador = new Jugador(usuario.getNombreUsuario(), usuario.getCorreo(), usuario.getContrasena());
+            LaberintoController.setJugador(jugador);
+            LaberintoController.setGestor(new GestorLaberinto(laberinto, jugador));
 
             usuario.setLaberintosJugados(usuario.getLaberintosJugados()+1);
             System.out.println(usuario.getLaberintosJugados() + "- " + usuario.getCorreo());
             GestionUsuario.actualizarUsuario(usuario);
             datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/laberinto.fxml"));
             Pane root = loader.load();
             Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();

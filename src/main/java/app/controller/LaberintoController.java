@@ -7,6 +7,7 @@ import app.model.Jugador;
 import app.model.movimiento.*;
 import app.model.usuarios.Usuario;
 import app.repository.DatosJson;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,9 +37,11 @@ public class LaberintoController extends ControllerBase {
     @FXML private Label vidaLabel;
     @FXML private Label userLabel;
 
-    GestorLaberinto gestor;
-    Laberinto laberinto;
+    static GestorLaberinto gestor;
+    private static Laberinto laberinto;
+    private static Celda[][] matrizLaberinto;
     GestorImagenes gestorImage = new GestorImagenes();
+
     public static Jugador jugador;
     private static Usuario usuario = GestorLaberinto.getUsuarioActivo();
     private static DatosJson datosJson = new DatosJson();
@@ -48,6 +51,10 @@ public class LaberintoController extends ControllerBase {
 
     public static void setJugador(Jugador jugador) {
         LaberintoController.jugador = jugador;
+    }
+
+    public static void setMatrizLaberinto(Celda[][] matrizLaberinto) {
+        LaberintoController.matrizLaberinto = matrizLaberinto;
     }
 
     /*
@@ -106,12 +113,23 @@ public class LaberintoController extends ControllerBase {
             manejarMovimientoNormal(event);
         }
         actualizarLaberinto();
+        GuardadoPartida guardadoPartida = usuario.getGuardadoPartida();
+        guardadoPartida.setLaberintoGuardado(GestorLaberinto.guardarLaberinto());
+
+        usuario.setGuardadoPartida(guardadoPartida);
+        GestionUsuario.actualizarUsuario(usuario);
+        datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
         if (gestor.verificarVictoria()) {
             usuario.setPartidasGanadas(usuario.getPartidasGanadas()+1);
             System.out.println(usuario.getPartidasGanadas() + "- " + usuario.getCorreo());
             GestionUsuario.actualizarUsuario(usuario);
             datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
             GestorLaberinto.setHaPerdido(false);
+            Jugador jugadorFinal = new Jugador(usuario.getNombreUsuario(), usuario.getCorreo(), usuario.getContrasena(), usuario.getGuardadoPartida());
+            EstadisticasFinalController.setJugadorParaEstadisticas(jugadorFinal);
+            usuario.setGuardadoPartida(null);
+            GestionUsuario.actualizarUsuario(usuario);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
             try {
                 cambiarEscenaDesdeNodo("/app/estadisticasFinal.fxml", 500, 370, rootGridPane);
             } catch (Exception e) {
@@ -124,6 +142,11 @@ public class LaberintoController extends ControllerBase {
             GestionUsuario.actualizarUsuario(usuario);
             datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
             GestorLaberinto.setHaPerdido(true);
+            Jugador jugadorFinal = new Jugador(usuario.getNombreUsuario(), usuario.getCorreo(), usuario.getContrasena(), usuario.getGuardadoPartida());
+            EstadisticasFinalController.setJugadorParaEstadisticas(jugadorFinal);
+            usuario.setGuardadoPartida(null);
+            GestionUsuario.actualizarUsuario(usuario);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
             try {
                 cambiarEscenaDesdeNodo("/app/estadisticasFinal.fxml", 500, 370, rootGridPane);
             } catch (Exception e) {
@@ -195,21 +218,25 @@ public class LaberintoController extends ControllerBase {
 
     public void initialize() {
         usuario = GestorLaberinto.getUsuarioActivo();
-        laberinto = new Laberinto(filas, columnas, dificultad);
-        Celda[][] matrizLaberinto = laberinto.getLaberinto();
+
         rootGridPane.getChildren().clear();
         rootGridPane.getColumnConstraints().clear();
         rootGridPane.getRowConstraints().clear();
         rootGridPane.setPrefSize(columnas * 20, filas * 20);
+
         vidaLabel.setText("Vida " + jugador.getVida());
         energiaLabel.setText("Energía: " + jugador.getEnergia());
         bombasLabel.setText("Bombas: " + jugador.getBombas());
         cristalesLabel.setText("Cristales: " + jugador.getCristales());
         userLabel.setText("Usuario: " + jugador.getNombreUsuario());
 
-
         GuardadoPartida guardadoPartida = new GuardadoPartida();
-        this.gestor = new GestorLaberinto(laberinto, jugador);
+        guardadoPartida.setLaberintoGuardado(GestorLaberinto.guardarLaberinto());
+        usuario.setGuardadoPartida(guardadoPartida);
+        GestionUsuario.actualizarUsuario(usuario);
+
+        datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
+
 
         for (int i = 0; i < filas; i++){
             for (int j = 0; j < columnas; j++){
@@ -273,8 +300,23 @@ public class LaberintoController extends ControllerBase {
         LaberintoController.dificultad = dificultad;
     }
 
-    @FXML
-    public void onBackButton(KeyEvent event){
+    public static Laberinto getLaberinto() {
+        return laberinto;
+    }
 
+    public static void setLaberinto(Laberinto laberinto) {
+        LaberintoController.laberinto = laberinto;
+    }
+    @FXML
+    public void onBackButton(ActionEvent event) throws Exception {
+        GuardadoPartida guardadoPartida = new GuardadoPartida();
+        guardadoPartida.setLaberintoGuardado(GestorLaberinto.guardarLaberinto());
+        usuario.setGuardadoPartida(guardadoPartida);
+        GestionUsuario.actualizarUsuario(usuario);
+        cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
+    }
+
+    public static void setGestor(GestorLaberinto gestor) {
+        LaberintoController.gestor = gestor;
     }
 }
