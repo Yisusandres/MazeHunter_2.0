@@ -11,6 +11,7 @@ module com.view.mazehunterapp {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.core;
+    requires com.view.mazehunterapp;
     //requires com.view.mazehunterapp;
 
     opens app.controller to javafx.fxml;

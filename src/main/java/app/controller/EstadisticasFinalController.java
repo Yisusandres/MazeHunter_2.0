@@ -33,14 +33,25 @@ public class EstadisticasFinalController extends ControllerBase{
     private Label mensajeLabel;
     @FXML
     private Label vidaRestante;
-
+    /**
+     * Cambiar escena al menu del juego
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param event evento al presionar.
+     */
     @FXML
     public void onContinuarButton(ActionEvent event) throws Exception {
         cambiarEscena("/app/menuJuego.fxml", 380, 340, event);
     }
 
     private static Jugador jugador;
-
+    /**
+     * Inicializar escena de estadisticas finales
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     */
     public void initialize() {
         Jugador jugadorParaEstadisticas = jugador;
         System.out.println(jugadorParaEstadisticas.getVida());
@@ -61,7 +72,13 @@ public class EstadisticasFinalController extends ControllerBase{
             mensajeLabel.setTextFill(javafx.scene.paint.Color.GREEN);
         }
     }
-
+    /**
+     * Poner jugador con las estadisticas finales del laberinto
+     * * @author Darwin Marcano
+     * @version 22.0.2
+     * @since 11-01-2026
+     * @param jugadorParaEstadisticas jugador que jugó el laberinto.
+     */
     public static void setJugadorParaEstadisticas(Jugador jugadorParaEstadisticas) {
         EstadisticasFinalController.jugador = jugadorParaEstadisticas;
     }
