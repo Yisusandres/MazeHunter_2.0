@@ -1,0 +1,1 @@
+moduleSearchIndex = [{"l":"com.view.mazehunterapp"}];updateSearchResults();
