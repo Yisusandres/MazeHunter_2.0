@@ -82,4 +82,5 @@ public class EstadisticasFinalController extends ControllerBase{
     public static void setJugadorParaEstadisticas(Jugador jugadorParaEstadisticas) {
         EstadisticasFinalController.jugador = jugadorParaEstadisticas;
     }
+
 }
