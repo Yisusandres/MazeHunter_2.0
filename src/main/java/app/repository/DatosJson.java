@@ -75,6 +75,7 @@ public class DatosJson extends AlmacenDatos{
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         File archivoUsuarios = new File(direccionArchivo);
         Encriptacion encriptacion = new Encriptacion();
+
         for (Usuario user : usuariosNuevos){
             user.setCorreo(encriptacion.encriptar(user.getCorreo()));
             user.setContrasena(encriptacion.encriptar(user.getContrasena()));

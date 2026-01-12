@@ -29,6 +29,7 @@ public class LaberintoNuevoController extends ControllerBase{
     @FXML private MenuItem facilMenuItem;
     @FXML private MenuItem normalMenuItem;
     @FXML private MenuItem dificilMenuItem;
+    @FXML private Label errorDificultad;
 
     Stage stage;
     public static Usuario usuario = new Usuario();
@@ -44,6 +45,7 @@ public class LaberintoNuevoController extends ControllerBase{
 
     public void initialize() {
         usuario = MenuJuegoController.getUsuario();
+        dificultadSeleccionada = 0;
     }
 
     public static void setDificultadSeleccionada(int dificultadSeleccionada) {
@@ -75,37 +77,36 @@ public class LaberintoNuevoController extends ControllerBase{
     }
 
     public void onContinuar(ActionEvent event) throws IOException {
-        String nombre = usuario.getNombreUsuario();
-        String correo = usuario.getCorreo();
-        String contrasena = usuario.getContrasena();
-        LaberintoController.setJugador(new Jugador(nombre, correo, contrasena));
-        Pair<Integer, Integer> tamano = devolverTamano(dificultadSeleccionada);
-        LaberintoController.setColumnas(tamano.second);
-        LaberintoController.setFilas(tamano.first);
-        System.out.println("Tamano laberinto: " + tamano.first + "x" + tamano.second);
-        LaberintoController.setDificultad(dificultadSeleccionada);
+        if (dificultadSeleccionada == 0){
+            errorDificultad.setVisible(true);
+        } else {
+            errorDificultad.setVisible(false);
+            String nombre = usuario.getNombreUsuario();
+            String correo = usuario.getCorreo();
+            String contrasena = usuario.getContrasena();
+            LaberintoController.setJugador(new Jugador(nombre, correo, contrasena));
+            Pair<Integer, Integer> tamano = devolverTamano(dificultadSeleccionada);
+            LaberintoController.setColumnas(tamano.second);
+            LaberintoController.setFilas(tamano.first);
+            System.out.println("Tamano laberinto: " + tamano.first + "x" + tamano.second);
+            LaberintoController.setDificultad(dificultadSeleccionada);
 
-        usuario.setLaberintosJugados(usuario.getLaberintosJugados()+1);
-        System.out.println(usuario.getLaberintosJugados() + "- " + usuario.getCorreo());
-        GestionUsuario.actualizarUsuario(usuario);
-        datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
-        /*
-        Pane root = javafx.fxml.FXMLLoader.load(java.util.Objects.requireNonNull(getClass().getResource("laberinto.fxml")));
-        Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
-        Scene scene = new javafx.scene.Scene(root, 800, 620);
-        stage.setScene(scene);
-        stage.show();
-        */
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/laberinto.fxml"));
-        Pane root = loader.load();
-        Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
-        LaberintoController controller = loader.getController();
-        Scene scene = new Scene(root, 800, 620);
-        scene.setFill(javafx.scene.paint.Color.web("#3D3452"));
-        scene.setOnKeyPressed(controller::manejarTeclado);
-        stage.setTitle("Laberinto");
-        stage.setScene(scene);
-        stage.show();
+            usuario.setLaberintosJugados(usuario.getLaberintosJugados()+1);
+            System.out.println(usuario.getLaberintosJugados() + "- " + usuario.getCorreo());
+            GestionUsuario.actualizarUsuario(usuario);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/laberinto.fxml"));
+            Pane root = loader.load();
+            Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+            LaberintoController controller = loader.getController();
+            Scene scene = new Scene(root, 800, 620);
+            scene.setFill(javafx.scene.paint.Color.web("#3D3452"));
+            scene.setOnKeyPressed(controller::manejarTeclado);
+            stage.setTitle("Laberinto");
+            stage.setScene(scene);
+            stage.show();
+        }
+
     }
 
     public void onBackButton(ActionEvent event) throws Exception {

@@ -1,13 +1,17 @@
 package app.controller;
 
+import app.model.GestionUsuario;
 import app.model.GestorLaberinto;
 import app.model.usuarios.GuardadoPartida;
 import app.model.Jugador;
 import app.model.movimiento.*;
+import app.model.usuarios.Usuario;
+import app.repository.DatosJson;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.GestureEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -36,7 +40,8 @@ public class LaberintoController extends ControllerBase {
     Laberinto laberinto;
     GestorImagenes gestorImage = new GestorImagenes();
     public static Jugador jugador;
-
+    private static Usuario usuario = GestorLaberinto.getUsuarioActivo();
+    private static DatosJson datosJson = new DatosJson();
     public static Jugador getJugador() {
         return jugador;
     }
@@ -45,7 +50,8 @@ public class LaberintoController extends ControllerBase {
         LaberintoController.jugador = jugador;
     }
 
-    /*public void manejarTeclado(KeyEvent event) {
+    /*
+    public void manejarTeclado(KeyEvent event) {
         Command comando = null;
         int filaActual = gestor.getPosicionJugador().first;
         int columnaActual = gestor.getPosicionJugador().second;
@@ -101,6 +107,10 @@ public class LaberintoController extends ControllerBase {
         }
         actualizarLaberinto();
         if (gestor.verificarVictoria()) {
+            usuario.setPartidasGanadas(usuario.getPartidasGanadas()+1);
+            System.out.println(usuario.getPartidasGanadas() + "- " + usuario.getCorreo());
+            GestionUsuario.actualizarUsuario(usuario);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
             GestorLaberinto.setHaPerdido(false);
             try {
                 cambiarEscenaDesdeNodo("/app/estadisticasFinal.fxml", 500, 370, rootGridPane);
@@ -109,7 +119,10 @@ public class LaberintoController extends ControllerBase {
             }
         }
         if(gestor.verificarDerrota()) {
-            System.out.println("Has perdido...");
+            usuario.setPartidasPerdidas(usuario.getPartidasPerdidas()+1);
+            System.out.println(usuario.getPartidasPerdidas() + "- " + usuario.getCorreo());
+            GestionUsuario.actualizarUsuario(usuario);
+            datosJson.actualizarDatos(GestionUsuario.getListaUsuarios());
             GestorLaberinto.setHaPerdido(true);
             try {
                 cambiarEscenaDesdeNodo("/app/estadisticasFinal.fxml", 500, 370, rootGridPane);
@@ -181,6 +194,7 @@ public class LaberintoController extends ControllerBase {
     }
 
     public void initialize() {
+        usuario = GestorLaberinto.getUsuarioActivo();
         laberinto = new Laberinto(filas, columnas, dificultad);
         Celda[][] matrizLaberinto = laberinto.getLaberinto();
         rootGridPane.getChildren().clear();

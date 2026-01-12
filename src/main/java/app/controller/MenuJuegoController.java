@@ -1,16 +1,29 @@
 package app.controller;
 
+import app.model.GestionUsuario;
 import app.model.GestorLaberinto;
 import app.model.usuarios.Usuario;
+import app.repository.DatosJson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import laberinto.celdas.GestorImagenes;
 
+import java.util.ArrayList;
+
 public class MenuJuegoController extends ControllerBase{
     static Usuario usuario = new Usuario();
     @FXML
     private Label nombreUsuarioLabel;
+    private DatosJson datosJson = new DatosJson();
+
+    public DatosJson getDatosJson() {
+        return datosJson;
+    }
+
+    public void setDatosJson(DatosJson datosJson) {
+        this.datosJson = datosJson;
+    }
 
     public MenuJuegoController() {
     }
@@ -20,6 +33,9 @@ public class MenuJuegoController extends ControllerBase{
             nombreUsuarioLabel.setText(usuario.getNombreUsuario());
         }
         GestorImagenes.setRutaPersonaje("/imagenes/personajes/personajeThomas.png");
+        ArrayList<Usuario> listaUsuarios = datosJson.cargarDatos();
+        GestionUsuario.setListaUsuarios(listaUsuarios);
+        usuario = GestionUsuario.buscarUsuarioPorCorreo(usuario.getCorreo(), listaUsuarios);
     }
 
     @FXML
