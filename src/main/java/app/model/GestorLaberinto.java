@@ -261,9 +261,9 @@ public class GestorLaberinto {
      */
     public void chequearSiEsEnergia(int fila, int columna) {
         Celda[][] mapa = laberinto.getLaberinto();
-        int aleatorio =  aleatorio(1, 2);
+        int aleatorio =  jugador.getEnergia() * 35 / 100;
         if(mapa[fila][columna].getTipo().equals("Energia")) {
-            jugador.setEnergia(jugador.getEnergia() + aleatorio * 10);
+            jugador.setEnergia(jugador.getEnergia() + aleatorio);
             System.out.println("Has recogido energia! Energia aumentada: " + jugador.getEnergia());
             GuardadoPartida guardadoPartida = usuarioActivo.getGuardadoPartida();
             guardadoPartida.setEnergiaGuardada(jugador.getEnergia());
