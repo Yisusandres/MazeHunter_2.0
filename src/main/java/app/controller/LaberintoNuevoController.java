@@ -213,7 +213,7 @@ public class LaberintoNuevoController extends ControllerBase{
         int filas, columnas;
         Pair<Integer, Integer> tamano = new Pair<>();
         if (dificultad == 1){
-            filas = GestorLaberinto.aleatorio(6, 15);
+            filas = GestorLaberinto.aleatorio(7, 15);
             if (filas < 15){
                 columnas = filas + 5;
             } else{
