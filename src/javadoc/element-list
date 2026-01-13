@@ -1,0 +1,10 @@
+module:com.view.mazehunterapp
+app
+app.controller
+app.model
+app.model.movimiento
+app.model.usuarios
+app.repository
+app.service
+laberinto
+laberinto.celdas
